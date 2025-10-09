@@ -1,0 +1,99 @@
+2025-10-07 11:46:45,720 [INFO] 当前主Token长度=24 兼容Token数量=0 严格模式=True
+2025-10-07 11:46:45,723 [INFO] 已禁用Ngrok，使用本地地址: http://localhost:9090/wechat
+2025-10-07 11:46:45,724 [INFO] 微信对接服务启动在端口 9090
+ * Serving Flask app 'wechat_server'
+ * Debug mode: off
+2025-10-07 11:46:45,743 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9090
+ * Running on http://10.0.0.74:9090
+2025-10-07 11:46:45,745 [INFO] [33mPress CTRL+C to quit[0m
+2025-10-07 11:46:55,310 [INFO] 127.0.0.1 - - [07/Oct/2025 11:46:55] "GET /health HTTP/1.1" 200 -
+2025-10-07 11:47:31,684 [INFO] 收到验证请求: signature=2c261ebb0fa5fda9de8937022152c9b863929eea, timestamp=1759837651, nonce=abc123, echostr(length)=8
+2025-10-07 11:47:31,686 [INFO] 签名验证成功(主Token)
+2025-10-07 11:47:31,687 [INFO] 验证通过，返回 echostr (len=8)
+2025-10-07 11:47:31,688 [INFO] 127.0.0.1 - - [07/Oct/2025 11:47:31] "GET /wechat?signature=2c261ebb0fa5fda9de8937022152c9b863929eea&timestamp=1759837651&nonce=abc123&echostr=unittest HTTP/1.1" 200 -
+2025-10-07 11:47:31,695 [INFO] 收到验证请求: signature=bad, timestamp=1, nonce=2, echostr(length)=3
+2025-10-07 11:47:31,696 [ERROR] 签名验证失败: received=bad expected(primary)=685c6fa7602771e7c5fd4a55e283380be075329f 主Token长度=24 兼容Token数量=0
+2025-10-07 11:47:31,697 [INFO] 127.0.0.1 - - [07/Oct/2025 11:47:31] "[31m[1mGET /wechat?signature=bad&timestamp=1&nonce=2&echostr=xxx HTTP/1.1[0m" 403 -
+2025-10-07 12:09:04,968 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 12:09:04,971 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 12:09:30,495 [INFO] 收到验证请求: signature=ae8e886eb0138bf6e859ad55fe6a179e5d1fc178, timestamp=1759838970, nonce=testnonce, echostr(length)=9
+2025-10-07 12:09:30,496 [INFO] 签名验证成功(主Token)
+2025-10-07 12:09:30,496 [INFO] 验证通过，返回 echostr (len=9)
+2025-10-07 12:09:39,749 [INFO] 收到验证请求: signature=d8b154b75ad835ab4d35fea6b2e290b2077524ce, timestamp=1759838979, nonce=testnonce, echostr(length)=9
+2025-10-07 12:09:39,750 [INFO] 签名验证成功(主Token)
+2025-10-07 12:09:39,750 [INFO] 验证通过，返回 echostr (len=9)
+2025-10-07 12:31:44,973 [INFO] 检测到安全模式配置，将尝试处理加密消息
+2025-10-07 12:31:45,133 [INFO] 检测到安全模式配置，将尝试处理加密消息
+2025-10-07 13:19:17,516 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:19:17,519 [INFO] 当前主Token长度=24 兼容Token数量=0 严格模式=True
+2025-10-07 13:19:18,545 [WARNING] NGROK_AUTH_TOKEN 未设置，使用本地地址
+2025-10-07 13:19:18,546 [WARNING] 使用本地地址，仅供本地测试。若需公网访问请配置 NGROK_AUTH_TOKEN 或使用 FRP/Nginx。
+2025-10-07 13:19:18,547 [INFO] 微信对接服务启动在端口 9090
+2025-10-07 13:19:36,271 [INFO] 收到消息: b''
+2025-10-07 13:19:36,274 [ERROR] 处理微信消息错误: no element found: line 1, column 0
+2025-10-07 13:19:59,945 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 13:19:59,946 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 13:19:59,960 [ERROR] API调用失败，状态码: 404
+2025-10-07 13:19:59,960 [INFO] 回复: 系统暂时无法处理请求，请稍后再试...
+2025-10-07 13:23:37,452 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 13:23:37,453 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 13:23:37,467 [ERROR] API调用失败，状态码: 404
+2025-10-07 13:23:37,469 [INFO] 回复: 系统暂时无法处理请求，请稍后再试...
+2025-10-07 13:29:24,895 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 13:29:24,896 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 13:29:29,669 [INFO] 回复: 【玄机AI回复】
+
+[API] 未知指令，请输入：学习成果、...
+2025-10-07 13:41:28,833 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 13:41:28,833 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 13:41:34,078 [INFO] 回复: 【玄机AI回复】
+
+[API] 未知指令，请输入：学习成果、...
+2025-10-07 13:44:57,293 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:44:57,299 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:45:29,372 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:45:47,023 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:50:54,529 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:50:54,591 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 13:51:04,476 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 13:51:04,477 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 13:51:04,478 [INFO] ACTIVATE: user=userA content=玄机设计与实现AI系统
+2025-10-07 14:18:27,033 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 14:18:27,393 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 14:18:35,202 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>123</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe7\x8e\x84\xe6\x9c\xba\xe8\xae\xbe\xe8\xae\xa1\xe4\xb8\x8e\xe5\xae\x9e\xe7\x8e\xb0AI\xe7\xb3'
+2025-10-07 14:18:35,203 [INFO] 用户 userA 发送: 玄机设计与实现AI系统
+2025-10-07 14:18:35,206 [INFO] ACTIVATE: user=userA content=玄机设计与实现AI系统
+2025-10-07 14:18:44,099 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userA]]></FromUserName><CreateTime>200</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[3]]></Content><MsgId>201<'
+2025-10-07 14:18:44,101 [INFO] 用户 userA 发送: 3
+2025-10-07 14:18:48,813 [INFO] 回复: 【玄机AI回复】
+
+[模型训练] 累计训练数据期数: 981...
+2025-10-07 14:22:54,256 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 14:22:54,294 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-07 14:23:07,877 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userB]]></FromUserName><CreateTime>300</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe5\x90\xaf\xe5\x8a\xa8\xe7\x8e\x84\xe6\x9c\xbaAI]]></Conten'
+2025-10-07 14:23:07,879 [INFO] 用户 userB 发送: 启动玄机AI
+2025-10-07 14:23:07,881 [INFO] ACTIVATE: user=userB content=启动玄机AI
+2025-10-07 14:23:17,530 [INFO] 收到消息: b'<xml><ToUserName><![CDATA[toUser]]></ToUserName><FromUserName><![CDATA[userB]]></FromUserName><CreateTime>301</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[\xe9\xa2\x84\xe6\xb5\x8b\xe4\xbb\xbb\xe5\x8a\xa1: \xe5\x88\x86\xe6\x9e\x90\xe6\x9c\x80\xe8\xbf'
+2025-10-07 14:23:17,531 [INFO] 用户 userB 发送: 预测任务: 分析最近10期冷热分布
+2025-10-07 14:23:22,364 [INFO] 回复: 【玄机AI回复】
+
+[API] 未知指令，请输入：学习成果、...
+2025-10-08 16:40:48,252 [WARNING] 
+[延迟启动] 检测到 WECHAT_LINK_PENDING.md ，当前暂不启动微信公众号对接服务。
+若需立即连接公众号：
+  1) 删除该文件 rm WECHAT_LINK_PENDING.md
+  2) 或设置环境变量 FORCE_WECHAT_LINK=1 重新运行
+  3) 然后执行 ./start_wechat_gunicorn.sh 或 python wechat_server.py
+
+2025-10-08 16:41:09,990 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-08 16:41:09,992 [INFO] 当前主Token长度=24 兼容Token数量=0 严格模式=True
+2025-10-08 16:41:11,000 [WARNING] NGROK_AUTH_TOKEN 未设置，使用本地地址
+2025-10-08 16:41:11,000 [WARNING] 使用本地地址，仅供本地测试。若需公网访问请配置 NGROK_AUTH_TOKEN 或使用 FRP/Nginx。
+2025-10-08 16:41:11,000 [INFO] 微信对接服务启动在端口 9090
+2025-10-08 16:41:11,054 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9090
+ * Running on http://10.0.3.100:9090
+2025-10-08 16:41:11,054 [INFO] [33mPress CTRL+C to quit[0m

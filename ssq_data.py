@@ -22,14 +22,31 @@ class SSQDataManager:
                 writer.writerow(['期号','红1','红2','红3','红4','红5','红6','蓝'])
 
     def load_csv(self, csv_path):
-        with open(csv_path, newline='', encoding='utf-8') as f:
-            reader = csv.reader(f)
-            next(reader, None)  # 跳过表头
-            for row in reader:
-                if len(row) >= 8:
-                    reds = [int(x) for x in row[1:7]]
-                    blue = int(row[7])
-                    self.history.append((reds, blue))
+        with open(csv_path, encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                # 跳过包含非数字内容的行（如表头、说明、异常行）
+                if any(word in line for word in ['红球', '蓝球', '期号', '日期', '星期', '说明', '球', '开奖', '注释']):
+                    continue
+                # tab分隔或逗号分隔
+                parts = line.split('\t') if '\t' in line else line.split(',')
+                # 红球部分
+                reds = []
+                if len(parts) >= 5:
+                    if ',' in parts[3]:
+                        reds = [int(x) for x in parts[3].split(',') if x.isdigit()]
+                    else:
+                        reds = [int(x) for x in parts[3:9] if x.isdigit()]
+                    # 蓝球部分
+                    blue = None
+                    if len(parts) > 4 and parts[4].isdigit():
+                        blue = int(parts[4])
+                    elif len(parts) > 0 and parts[-1].isdigit():
+                        blue = int(parts[-1])
+                    if len(reds) == 6 and blue is not None:
+                        self.history.append((reds, blue))
 
     def fetch_online(self):
         # 占位：可扩展为网络API采集真实数据

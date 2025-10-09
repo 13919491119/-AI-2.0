@@ -109,8 +109,10 @@ from celestial_nexus.ai_innovation import AIInnovationHub
 import time
 
 def auto_cycle_report():
+    import sys
+    # 获取主函数中的 deepseek_suggestion
+    global deepseek_suggestion
     while True:
-        # 可根据实际业务动态采集数据
         generate_cycle_report(
             new_patterns=random.randint(800, 1000),
             simulate_count=random.randint(50000, 100000),
@@ -119,7 +121,7 @@ def auto_cycle_report():
             verified_patterns=random.randint(150, 200),
             knowledge_count=random.randint(9000, 10000),
             security_status='安全',
-            deepseek_advice=None
+            deepseek_advice=deepseek_suggestion if 'deepseek_suggestion' in globals() else None
         )
         time.sleep(30)
 
@@ -136,25 +138,26 @@ def generate_cycle_report(
     advice_str = deepseek_advice if deepseek_advice is not None else '暂无建议'
     # 报告编号（时间戳后四位）
     report_id = now[-4:]
-    print("\033[1;46m" + "═"*90 + "\033[0m")
+    print("\033[1;36m" + "═"*90 + "\033[0m")
     print(f"\033[1;44m║{'🔮 玄机AI 3.0 周期运营报告（Deepseek） ':^86}║\033[0m")
-    print(f"\033[1;46m║{'🕒 时间':<14}{now:<60} 编号:{report_id:<8}║\033[0m")
-    print("\033[1;46m" + "━"*90 + "\033[0m")
-    print(f"\033[1;42m┃ {'【学习与推演】':<20} ┃\033[0m 🧠🔁🚀")
-    print(f"\033[1;42m┃ 1. 🧠 自我学习循环        ┃\033[0m 每30秒发现新模式  \033[1;32m{new_patterns:^6}\033[0m 个")
-    print(f"\033[1;46m┃ 2. 🔁 自主推演次数        ┃\033[0m 双色球/历史人物推演 \033[1;36m{simulate_count:^8}\033[0m 次")
-    print(f"\033[1;44m┃ 3. 🚀 自主升级次数        ┃\033[0m 系统自主升级 \033[1;34m{upgrade_count:^4}\033[0m 次")
-    print("\033[1;46m" + "━"*90 + "\033[0m")
-    print(f"\033[1;46m┃ {'【系统与安全】':<20} ┃\033[0m 💡✅📚🛡️")
-    print(f"\033[1;46m┃ 4. 💡 系统健康情况        ┃\033[0m \033[1;32m{health_status:^10}\033[0m")
-    print(f"\033[1;43m┃ 5. ✅ 智能验证            ┃\033[0m 置信度>70%过滤模式 \033[1;33m{verified_patterns:^6}\033[0m 个")
-    print(f"\033[1;46m┃ 6. 📚 知识库积累          ┃\033[0m 结构化记忆累计模式 \033[1;36m{knowledge_count:^8}\033[0m 条")
-    print(f"\033[1;45m┃ 7. 🛡️ 安全监控与恢复      ┃\033[0m \033[1;35m{security_status:^10}\033[0m")
-    print("\033[1;46m" + "━"*90 + "\033[0m")
-    print(f"\033[1;46m┃ {'【AI优化建议】':<20} ┃\033[0m 🤖✨")
-    print(f"\033[1;46m┃ 8. 🤖 AI优化建议（Deepseek）┃\033[0m \033[1;35m{advice_str:^60}\033[0m")
-    print("\033[1;46m" + "═"*90 + "\033[0m")
-    print(f"\033[1;44m║{'周期报告自动生成，系统持续自学习与升级中...':^86}║\033[0m\n")
+    print("\033[1;36m" + "─"*90 + "\033[0m")
+    print(f"\033[1;46m║ 🕒 时间      │ {now:<30} 编号:{report_id:<8}         ║\033[0m")
+    print(f"\033[1;46m║ {'='*82} ║\033[0m")
+    print(f"\033[1;42m║ {'【学习与推演】':<20} │ 🧠🔁🚀{' '*54}║\033[0m")
+    print(f"\033[1;42m║ 1. 🧠 自我学习循环 │ 每30秒新模式  \033[1;32m{new_patterns:^6}\033[0m 个{' '*44}║\033[0m")
+    print(f"\033[1;46m║ 2. 🔁 自主推演次数 │ 双色球/历史人物 \033[1;36m{simulate_count:^8}\033[0m 次{' '*38}║\033[0m")
+    print(f"\033[1;44m║ 3. 🚀 自主升级次数 │ 系统自主升级   \033[1;34m{upgrade_count:^4}\033[0m 次{' '*44}║\033[0m")
+    print(f"\033[1;46m║ {'='*82} ║\033[0m")
+    print(f"\033[1;46m║ {'【系统与安全】':<20} │ 💡✅📚🛡️{' '*54}║\033[0m")
+    print(f"\033[1;46m║ 4. 💡 系统健康情况 │ \033[1;32m{health_status:^10}\033[0m{' '*56}║\033[0m")
+    print(f"\033[1;43m║ 5. ✅ 智能验证     │ 置信度>70%过滤 \033[1;33m{verified_patterns:^6}\033[0m 个{' '*44}║\033[0m")
+    print(f"\033[1;46m║ 6. 📚 知识库积累   │ 结构化记忆累计 \033[1;36m{knowledge_count:^8}\033[0m 条{' '*40}║\033[0m")
+    print(f"\033[1;45m║ 7. 🛡️ 安全监控与恢复 │ \033[1;35m{security_status:^10}\033[0m{' '*56}║\033[0m")
+    print(f"\033[1;46m║ {'='*82} ║\033[0m")
+    print(f"\033[1;46m║ {'【AI优化建议】':<20} │ 🤖✨{' '*54}║\033[0m")
+    print(f"\033[1;46m║ 8. 🤖 AI优化建议（Deepseek）│ \033[1;35m{advice_str:^60}\033[0m{' '*10}║\033[0m")
+    print(f"\033[1;36m" + "═"*90 + "\033[0m")
+    print(f"\033[1;44m║{'感谢使用玄机AI系统，周期报告自动生成，系统持续自学习与升级中...':^86}║\033[0m\n")
     # 自动化集成：将AI优化建议作为自学习和系统升级的触发器
     with open("operation_cycle_log.txt", "a", encoding="utf-8") as logf:
         logf.write(f"[{now}] AI优化建议（Deepseek）：{deepseek_advice}\n")
@@ -301,6 +304,120 @@ def auto_algorithm_generation_and_fusion(data):
     }
 
 def main():
+    def fusion_ssq_predict_with_deepseek(period=None):
+        """
+        融合 deepseek AI 与本地模型进行双色球推演预测。
+        period: 可指定期号，默认最新一期。
+        """
+        # 1. 获取本地模型预测结果（示例：随机或已有算法）
+        reds_local = sorted(random.sample(range(1,34),6))
+        blue_local = random.randint(1,16)
+        # 2. 调用 deepseek AI 进行推理
+        prompt = f"请根据历史数据和AI知识，预测双色球下一期（{period or '最新一期'}）的6个红球和1个蓝球号码，输出格式：红球：x,x,x,x,x,x；蓝球：y。"
+        try:
+            deepseek_api = DeepseekAPI()
+            messages = [
+                {"role": "system", "content": "你是双色球AI推演专家。"},
+                {"role": "user", "content": prompt}
+            ]
+            resp = deepseek_api.chat(messages)
+            content = resp['choices'][0]['message']['content'] if resp and 'choices' in resp else ''
+            import re
+            reds_deepseek = re.findall(r'红球[:：]\s*([\d,， ]+)', content)
+            blue_deepseek = re.findall(r'蓝球[:：]\s*(\d+)', content)
+            reds_deepseek = [int(x) for x in re.split(r'[，,\s]+', reds_deepseek[0])] if reds_deepseek else reds_local
+            blue_deepseek = int(blue_deepseek[0]) if blue_deepseek else blue_local
+        except Exception:
+            reds_deepseek, blue_deepseek = reds_local, blue_local
+        # 3. 融合结果（可加权、投票或直接输出两组）
+        fusion_result = {
+            "period": period or "最新一期",
+            "local_model": {"reds": reds_local, "blue": blue_local},
+            "deepseek_ai": {"reds": reds_deepseek, "blue": blue_deepseek}
+        }
+        # 4. 输出或记录
+        with open("ssq_fusion_predict.log", "a", encoding="utf-8") as logf:
+            logf.write(f"[融合推演] {fusion_result}\n")
+        print("\033[1;45m【融合AI双色球推演预测】\033[0m")
+        print(f"期号：{fusion_result['period']}")
+        print(f"本地模型预测：红球 {fusion_result['local_model']['reds']} 蓝球 {fusion_result['local_model']['blue']}")
+        print(f"Deepseek AI预测：红球 {fusion_result['deepseek_ai']['reds']} 蓝球 {fusion_result['deepseek_ai']['blue']}")
+        print("\033[1;45m" + "═"*60 + "\033[0m\n")
+    # 启动时自动进行一次融合推演（可定时或按需调用）
+    fusion_ssq_predict_with_deepseek()
+    import threading
+    import time
+    def system_self_check_and_repair():
+        while True:
+            try:
+                # 1. 检查关键文件
+                files_to_check = ["ssq_history.csv", "main.py", "deepseek_api.py"]
+                for f in files_to_check:
+                    if not os.path.exists(f):
+                        with open("ai_system.log", "a", encoding="utf-8") as logf:
+                            logf.write(f"[自检] 文件缺失：{f}\n")
+                        # AI自动修复示例：可调用AI创新模块或自动恢复
+                        try:
+                            ai_innov = AIInnovationHub()
+                            ai_innov.gpt_infer([
+                                {"role": "system", "content": "你是AI自修复专家。"},
+                                {"role": "user", "content": f"系统文件 {f} 丢失，请自动修复。"}
+                            ])
+                        except Exception:
+                            pass
+                # 2. 检查依赖包
+                try:
+                    import requests
+                except ImportError:
+                    os.system("pip install requests")
+                # 3. 检查API可用性
+                try:
+                    api = DeepseekAPI()
+                    resp = api.chat([
+                        {"role": "system", "content": "你是AI健康检测助手。"},
+                        {"role": "user", "content": "请返回健康状态。"}
+                    ])
+                    if not resp or "choices" not in resp:
+                        raise Exception("DeepseekAPI异常")
+                except Exception as e:
+                    with open("ai_system.log", "a", encoding="utf-8") as logf:
+                        logf.write(f"[自检] DeepseekAPI异常：{e}\n")
+                    # AI自动修复示例
+                    try:
+                        ai_innov = AIInnovationHub()
+                        ai_innov.gpt_infer([
+                            {"role": "system", "content": "你是AI自修复专家。"},
+                            {"role": "user", "content": "DeepseekAPI异常，请自动修复。"}
+                        ])
+                    except Exception:
+                        pass
+                # 4. 检查数据完整性（如历史数据行数异常）
+                try:
+                    with open("ssq_history.csv", "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                    if len(lines) < 10:
+                        with open("ai_system.log", "a", encoding="utf-8") as logf:
+                            logf.write("[自检] 历史数据异常，行数过少\n")
+                        # AI自动修复
+                        try:
+                            ai_innov = AIInnovationHub()
+                            ai_innov.gpt_infer([
+                                {"role": "system", "content": "你是AI自修复专家。"},
+                                {"role": "user", "content": "历史数据异常，请自动修复。"}
+                            ])
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+                # 5. 检查主进程是否存活（可扩展）
+                # ...
+            except Exception as e:
+                with open("ai_system.log", "a", encoding="utf-8") as logf:
+                    logf.write(f"[自检] 未知异常：{e}\n")
+            time.sleep(1800)  # 每30分钟自检一次
+
+    # 启动自检与自动修复线程
+    threading.Thread(target=system_self_check_and_repair, daemon=True).start()
     # 个性化自动化策略参数（可根据实际需求调整）
     AUTO_LEARN_ENABLED = True
     AUTO_UPGRADE_ENABLED = True
@@ -541,4 +658,20 @@ def show_operation_report(learning_cycles, state, user_count, replay_count, accu
     print("\033[1;36m╚══════════════════════════════════════════════════════╝\033[0m")
 if __name__ == "__main__":
     main()
-    # 传统文化融合AI分析报告已取消，后台自学习、模拟预测、复盘分析由系统自动进行
+    # 后台静默推演：自动读取 ssq_predict_replay.csv 并分析
+    import os
+    if os.path.exists("ssq_predict_replay.csv"):
+        with open("ssq_predict_replay.csv", "r", encoding="utf-8") as f:
+            for line in f:
+                parts = line.strip().split(",")
+                if len(parts) == 8:
+                    period, *reds, blue = parts
+                    reds = [int(x) for x in reds[:6]]
+                    blue = int(blue)
+                    # 可调用 analyze_with_traditional_culture 或其他推演函数
+                    # 这里只做静默推演，不输出到终端
+                    try:
+                        # 示例：后台推演分析（可扩展为写入日志或数据库）
+                        _ = analyze_with_traditional_culture([(1, 0, 0, reds, blue)], set(reds), blue)
+                    except Exception:
+                        pass

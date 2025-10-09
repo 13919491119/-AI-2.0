@@ -37,6 +37,7 @@ def run_xuanji_ai(user_input: str) -> str:
     """
     ai = XuanjiAISystem()
     user_input = user_input.strip()
+    # ---------- 学习成果 ----------
     if user_input.startswith("学习成果"):
         result = []
         # 读取累计训练期数
@@ -61,6 +62,7 @@ def run_xuanji_ai(user_input: str) -> str:
             result.append(ai.upgrade_engine.format_upgrade_plan(plan))
         result.append("[DeepseekAI] 测试: 你可以在推理、复盘等环节调用大模型能力。")
         return "\n".join(result)
+    # ---------- 六爻分析 ----------
     elif user_input.startswith("六爻分析"):
         # 允许格式：六爻分析: 双色球 2025114期 红球[12, 19, 14, 10, 8, 11] 蓝球16
         try:
@@ -81,6 +83,7 @@ def run_xuanji_ai(user_input: str) -> str:
             return f"[六爻AI智能解读]\n{ds_content}"
         except Exception as e:
             return f"[六爻分析异常] {e}"
+    # ---------- ChatGPT 分析 ----------
     elif user_input.startswith("chatgpt分析"):
         # 支持命令：chatgpt分析: 双色球 2025114期
         try:
@@ -100,8 +103,319 @@ def run_xuanji_ai(user_input: str) -> str:
             return f"[ChatGPT智能分析]\n{content}"
         except Exception as e:
             return f"[ChatGPT分析异常] {e}"
+    # ---------- 双色球预测（新增） ----------
+    elif user_input.startswith("双色球预测"):
+        try:
+            import math, statistics, datetime, random
+            # 1. 内部基础预测
+            reds, blue = ai.ssq_ai.predict()
+            reds_sorted = sorted(reds)
+            # 2. 历史/冷热/频次特征
+            history = ai.ssq_data.history if hasattr(ai, 'ssq_data') else []
+            hot, cold = ai.ssq_data.get_hot_cold() if hasattr(ai.ssq_data, 'get_hot_cold') else ([], [])
+            freq = {n:0 for n in range(1,34)}
+            for rs, _b in history[-500:]:  # 仅近500期窗口，控制成本
+                for r in rs: freq[r]+=1
+            total_occ = sum(freq.values()) or 1
+            freq_sorted = sorted(freq.items(), key=lambda x: -x[1])
+            top10 = freq_sorted[:10]
+            # 3. 结构特征
+            odd_cnt = len([x for x in reds if x % 2 == 1])
+            even_cnt = 6 - odd_cnt
+            span = max(reds_sorted) - min(reds_sorted)
+            sum_reds = sum(reds_sorted)
+            prime_set = {2,3,5,7,11,13,17,19,23,29,31}
+            prime_cnt = len([x for x in reds if x in prime_set])
+            consecutive_groups = []
+            cur = [reds_sorted[0]]
+            for a,b in zip(reds_sorted, reds_sorted[1:]):
+                if b == a+1:
+                    cur.append(b)
+                else:
+                    if len(cur) > 1: consecutive_groups.append(cur)
+                    cur=[b]
+            if len(cur)>1: consecutive_groups.append(cur)
+            zones = {"1-11":0, "12-22":0, "23-33":0}
+            for r in reds_sorted:
+                if r <= 11: zones["1-11"] += 1
+                elif r <= 22: zones["12-22"] += 1
+                else: zones["23-33"] += 1
+            # Top热号命中情况
+            hot_hits = [r for r in reds if r in hot[:10]]
+            cold_hits = [r for r in reds if r in cold[:10]]
+            concentration = round(sum(v for _,v in freq_sorted[:5]) / total_occ, 3)
+            # 4. 置信度（启发式融合：奇偶均衡、跨度中位区、热冷混合、质数比例适中、分区均衡）
+            score = 0.5
+            if 2 <= odd_cnt <= 4: score += 0.05
+            if 12 <= span <= 25: score += 0.05
+            if 2 <= len(hot_hits) <= 4: score += 0.05
+            if len(cold_hits) >= 1: score += 0.03
+            if 2 <= prime_cnt <= 4: score += 0.04
+            if max(zones.values()) <= 3: score += 0.04
+            if consecutive_groups: score += 0.02  # 适度连号视为结构特征
+            score = min(0.88, round(score, 3))
+            # 5. Deepseek 多维解读
+            ds_section = "[Deepseek多维解读] 未启用或调用失败，采用内部启发式说明。"
+            try:
+                from deepseek_api import DeepseekAPI
+                ds = DeepseekAPI()
+                sys_prompt = (
+                    "你是融合统计学、概率建模、模式识别与结构分析的双色球智能分析师。" \
+                    "请对给定预测组合做多维解读，结构: 1) 组合特征概述 2) 热冷号与频次含义 3) 结构模式(奇偶/区间/跨度/连号) 4) 风险提示 5) 策略建议。" \
+                    "用简洁要点分行，避免过度夸张与绝对语气。"
+                )
+                ctx_summary = (
+                    f"预测红球: {reds_sorted} 蓝球:{blue}\n" \
+                    f"奇偶:{odd_cnt}:{even_cnt} 跨度:{span} 和值:{sum_reds} 质数:{prime_cnt} 连号组:{consecutive_groups if consecutive_groups else '无'}\n" \
+                    f"分区:{zones} 热号命中:{hot_hits} 冷号包含:{cold_hits} 集中度Top5:{concentration}\n" \
+                    f"Top10频次: {[(n,c) for n,c in top10]}"
+                )
+                user_prompt = (
+                    f"以下是系统内部生成的一组双色球预测及其特征，请按照要求输出结构化分析:\n{ctx_summary}"
+                )
+                resp = ds.chat([
+                    {"role":"system","content": sys_prompt},
+                    {"role":"user","content": user_prompt}
+                ], temperature=0.55, max_tokens=800)
+                ds_content = resp['choices'][0]['message']['content']
+                ds_section = f"[Deepseek多维解读]\n{ds_content.strip()}"
+            except Exception as e:
+                ds_section = ds_section + f" (fallback原因: {e})"
+            # 6. 综合格式化输出
+            lines = [
+                "[多维融合双色球预测报告]",
+                f"生成时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                "",
+                "[基础预测]",
+                f"红球: {reds_sorted}",
+                f"蓝球: {blue}",
+                "",
+                "[统计特征]",
+                f"奇偶分布: 奇{odd_cnt} 偶{even_cnt}",
+                f"跨度: {span} 和值: {sum_reds} 质数个数: {prime_cnt}",
+                f"分区分布: 1-11={zones['1-11']} 12-22={zones['12-22']} 23-33={zones['23-33']}",
+                f"连号组: {consecutive_groups if consecutive_groups else '无'}",
+                f"热号命中: {hot_hits if hot_hits else '无'} 冷号包含: {cold_hits if cold_hits else '无'}",
+                f"频次Top10: {top10}",
+                f"集中度(Top5出现占比): {concentration}",
+                "",
+                "[结构/走势洞察]",
+                ("奇偶相对均衡，跨度处于中等区，具备一定稳健性。" if 2 <= odd_cnt <=4 else "奇偶分布偏离均衡，可视为结构博弈风险。"),
+                ("热冷号融合（含冷号扰动）提升结构多样性。" if cold_hits else "缺少冷号扰动，可能被热号集中模式放大风险。"),
+                ("分区分布相对分散，有助于降低区间聚集度。" if max(zones.values())<=3 else "红球存在区间相对集中，可关注区间再均衡。"),
+                ("适度连号增强结构连续性特征。" if consecutive_groups else "本组合未引入连号，走势结构更离散。"),
+                "",
+                ds_section,
+                "",
+                "[启发式综合置信度]",
+                f"内部启发式评分: {score}",
+                "评分因素: 奇偶均衡/跨度合理/冷热结合/区间分散/结构特征/质数比例等",
+                "",
+                "[策略建议]",
+                "1) 可并行生成 2~3 组差异化结构(增加或减少连号/冷热倾斜) 做对冲",
+                "2) 关注下一期训练后热号序列是否变化，若变化剧烈需调低依赖度",
+                "3) 可引入和值、尾数分布、重号跟踪形成二级过滤层",
+                "",
+                "[免责声明] 本报告融合内部启发式与大模型语义推理，不构成投资/投注建议，存在不确定性。"
+            ]
+            return "\n".join(lines)
+        except Exception as e:
+            return f"[双色球预测异常] {e}"
+
+    # ---------- 预测任务 / task（新增核心逻辑 A） ----------
+    elif user_input.startswith("预测任务") or user_input.lower().startswith("task"):
+        try:
+            import re, random, datetime
+            raw = user_input
+            # 提取描述（兼容：预测任务: xxx / 预测任务 xxx / task: xxx）
+            desc_part = raw.split(':', 1)[1].strip() if ':' in raw else raw[len('预测任务'):].strip()
+            if not desc_part:
+                return "[预测任务] 请在 '预测任务:' 后补充任务描述，例如: 预测任务: 分析近30期冷热与奇偶分布"
+
+            # --------------- 领域自动识别 ---------------
+            lottery_keywords = ['双色球', '红球', '蓝球', '冷热', '奇偶', '跨度', '复盘', '选号', '概率', '命中', '号码']
+            is_lottery = any(k.lower() in desc_part.lower() for k in lottery_keywords)
+
+            # 若不是双色球/号码预测语义，则走通用 Deepseek 推理路径
+            if not is_lottery:
+                # 汇总系统上下文（精简）
+                try:
+                    history_len = len(ai.ssq_data.history) if hasattr(ai, 'ssq_data') else 0
+                    patterns_len = len(ai.patterns_knowledge) if hasattr(ai, 'patterns_knowledge') else 0
+                    cycles = getattr(ai, 'cumulative_learning_cycles', 0)
+                    hot, cold = (ai.ssq_data.get_hot_cold() if hasattr(ai.ssq_data, 'get_hot_cold') else ([], [])) if hasattr(ai, 'ssq_data') else ([], [])
+                    reds_pred, blue_pred = ai.ssq_ai.predict() if hasattr(ai, 'ssq_ai') else ([], None)
+                except Exception:
+                    history_len = patterns_len = cycles = 0
+                    hot = cold = []
+                    reds_pred, blue_pred = ([], None)
+
+                system_ctx = (
+                    f"数据期数:{history_len}; 学习周期:{cycles}; 模式库:{patterns_len}; "
+                    f"示例热号:{hot[:6] if hot else []}; 冷号:{cold[:6] if cold else []}; "
+                    f"示例内部预测:{reds_pred}|{blue_pred}"
+                )
+                try:
+                    from deepseek_api import DeepseekAPI
+                    ds = DeepseekAPI()
+                    sys_prompt = (
+                        "你是一个融合多源统计学习、概率推断、模式识别、启发式博弈推理的综合预测AI。" \
+                        "用户可能提出任何关于趋势、风险、发展、策略、投资、技术演进等问题。" \
+                        "请基于提供的系统上下文与一般公开常识进行前瞻性预测。" \
+                        "回答需结构化：\n" \
+                        "1) 问题理解\n2) 关键影响因子\n3) 多情景推演(至少2个情景)\n4) 核心预测结论\n5) 风险与不确定性\n6) 行动建议。" \
+                        "语气专业、克制，避免绝对化用语，明确不确定范围。"
+                    )
+                    user_prompt = (
+                        f"问题: {desc_part}\n系统上下文: {system_ctx}\n" \
+                        "请输出 JSON 风格的小节(无需严格JSON，仅分段清晰)。"
+                    )
+                    resp = ds.chat([
+                        {"role": "system", "content": sys_prompt},
+                        {"role": "user", "content": user_prompt}
+                    ], temperature=0.6, max_tokens=1024)
+                    content = resp["choices"][0]["message"]["content"]
+                    return (
+                        "[通用预测任务智能推理]\n" +
+                        f"任务描述: {desc_part}\n" +
+                        f"分析时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n" +
+                        f"系统上下文摘要: {system_ctx}\n\n" +
+                        content +
+                        "\n\n(以上内容由 Deepseek 大模型推理+内部上下文融合生成，结果具有不确定性，仅供参考。)"
+                    )
+                except Exception as e:
+                    # 回退：启发式占位回答
+                    return (
+                        "[通用预测任务启发式分析]\n" +
+                        f"任务描述: {desc_part}\n" +
+                        f"分析时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n" +
+                        "(Deepseek 推理暂不可用，使用启发式回退)\n\n" +
+                        "问题初步理解: 系统识别为跨领域/开放式预测问题。\n" +
+                        "关键影响因子: 数据可得性、宏观趋势、技术创新速度、政策/监管、竞争格局。\n" +
+                        "情景推演: 基础情景(稳步发展)、加速情景(外部催化突破)、受阻情景(政策/资金/技术瓶颈)。\n" +
+                        "核心预测: 在 6-12 个月区间呈阶段性波动+结构分化。\n" +
+                        "风险与不确定性: 黑天鹅(政策/地缘), 数据偏差, 模型不足。\n" +
+                        "行动建议: 分阶段验证假设, 设定监测指标, 采用多策略组合, 保留冗余与风险对冲。\n" +
+                        f"(错误详情: {e})"
+                    )
+
+            # 解析近N期窗口
+            m = re.search(r'近(\d+)期', desc_part)
+            window_n = 50
+            if m:
+                try:
+                    window_n = int(m.group(1))
+                    window_n = max(5, min(window_n, 300))  # 边界限制
+                except Exception:
+                    window_n = 50
+
+            history = ai.ssq_data.history if hasattr(ai.ssq_data, 'history') else []
+            if not history:
+                return "[预测任务] 历史数据为空，无法分析。"
+            window_slice = history[-window_n:] if len(history) >= window_n else history[:]
+            actual_n = len(window_slice)
+
+            # 统计红球频次
+            freq = {n: 0 for n in range(1, 34)}
+            blue_freq = {n: 0 for n in range(1, 17)}
+            for reds, b in window_slice:
+                for r in reds:
+                    freq[r] += 1
+                blue_freq[b] += 1
+            top_reds = sorted(freq.items(), key=lambda x: -x[1])[:10]
+            hot, cold = ai.ssq_data.get_hot_cold() if hasattr(ai.ssq_data, 'get_hot_cold') else ([], [])
+
+            # 奇偶 & 跨度 & 集中度
+            all_reds = [r for reds, _ in window_slice for r in reds]
+            odd_cnt = len([x for x in all_reds if x % 2 == 1])
+            even_cnt = len(all_reds) - odd_cnt
+            span = (max(all_reds) - min(all_reds)) if all_reds else 0
+            # 简单集中度：Top5 累计出现次数 / 总出现次数
+            total_occ = sum(freq.values()) or 1
+            top5 = sorted(freq.values(), reverse=True)[:5]
+            concentration = round(sum(top5) / total_occ, 3)
+
+            # 候选号码生成策略：热点 + 冷门混合 + 频次补足
+            candidate_reds = []
+            for n in hot[:4]:  # 先取热门前4
+                if n not in candidate_reds:
+                    candidate_reds.append(n)
+            for n in cold[:3]:  # 再引入1~2个冷号
+                if len(candidate_reds) >= 5:
+                    break
+                if n not in candidate_reds:
+                    candidate_reds.append(n)
+            # 频次排序填充
+            for n, _c in top_reds:
+                if len(candidate_reds) >= 6:
+                    break
+                if n not in candidate_reds:
+                    candidate_reds.append(n)
+            # 兜底随机补齐
+            while len(candidate_reds) < 6:
+                rnd = random.randint(1, 33)
+                if rnd not in candidate_reds:
+                    candidate_reds.append(rnd)
+            candidate_reds.sort()
+
+            # 蓝球：选取窗口内出现频次最高的两个中随机一个；若平局随机
+            max_blue_freq = max(blue_freq.values()) if blue_freq else 0
+            hot_blues = [b for b, c in blue_freq.items() if c == max_blue_freq and c > 0]
+            if not hot_blues:
+                blue_pick = random.randint(1, 16)
+            else:
+                blue_pick = random.choice(hot_blues)
+
+            # 置信度启发（简单规则叠加）
+            desc_lower = desc_part.lower()
+            confidence = 0.55
+            if '冷热' in desc_part or 'hot' in desc_lower or 'cold' in desc_lower:
+                confidence += 0.1
+            if '奇偶' in desc_part or 'odd' in desc_lower or 'even' in desc_lower:
+                confidence += 0.05
+            if '跨度' in desc_part:
+                confidence += 0.05
+            if '概率' in desc_part or '概率' in desc_lower:
+                confidence += 0.03
+            confidence = min(0.95, round(confidence, 2))
+
+            # 构造报告
+            lines = [
+                "[预测任务分析报告]",
+                f"任务描述: {desc_part}",
+                f"分析时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                f"数据窗口: 近{actual_n}期 (请求: {window_n})",
+                "",
+                "[核心统计]",
+                f"红球总出现次数: {total_occ}",
+                f"奇偶分布(累计红球): 奇{odd_cnt} / 偶{even_cnt} | 比例 {odd_cnt}:{even_cnt}",
+                f"号码跨度: {span}",
+                f"前10高频红球: " + ', '.join([f"{n}({c})" for n, c in top_reds]),
+                f"热号参考: {hot[:6] if hot else '无'}",
+                f"冷号参考: {cold[:6] if cold else '无'}",
+                f"集中度(Top5占比): {concentration}",
+                "",
+                "[智能候选建议]",
+                f"推荐红球组合: {candidate_reds}",
+                f"推荐蓝球: {blue_pick}",
+                f"策略说明: 热门优选 + 冷门扰动 + 频次补齐 (启发式模拟)",
+                "",
+                "[置信度评估]",
+                f"启发式置信度: {confidence}",
+                f"关键词影响: {'冷热 ' if '冷热' in desc_part else ''}{'奇偶 ' if '奇偶' in desc_part else ''}{'跨度 ' if '跨度' in desc_part else ''}".strip(),
+                "",
+                "[后续可扩展]",
+                " - 引入真实机器学习/深度模型概率输出",
+                " - 加入时间序列/模式识别特征",
+                " - 多策略集成与权重自适应调优",
+            ]
+            return "\n".join(lines)
+        except Exception as e:
+            return f"[预测任务处理异常] {e}"
+
+    # ---------- 未识别指令 ----------
     else:
-        return "[API] 未知指令，请输入：学习成果、双色球预测、双色球复盘: ..."
+        return "[API] 未知指令，请输入：学习成果、双色球预测、预测任务: ...、六爻分析: ...、chatgpt分析: ..."
 
 def main():
     def task_predict():

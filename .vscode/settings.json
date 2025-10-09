@@ -1,5 +1,6 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:system",
     "python-envs.pythonProjects": [],
-    "python.terminal.useEnvFile": true
+    "python.terminal.useEnvFile": true,
+    "remote.autoForwardPortsFallback": 0
 }
