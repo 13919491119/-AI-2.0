@@ -3,13 +3,30 @@ import logging
 from datetime import datetime
 import asyncio
 from typing import Dict, Any, List, Optional
+from core_enums import UpgradeStatus
+from dataclasses import dataclass
+
+@dataclass
+class SystemUpgradePlan:
+    plan_id: str
+    trigger_reason: str
+    current_version: str
+    target_version: str
+    status: UpgradeStatus
+    scheduled_time: Optional[str] = None
+    executed_time: Optional[str] = None
+    rollback_plan: Optional[str] = None
+
+
 
 
 # ==================== 快速启动与主程序块 ====================
 async def quick_start():
         # 可扩展：参数优化、模型微调等
+        print("quick_start 方法已执行")
+        logging.info("quick_start 方法已调用")
 
-    async def _analyze_performance_patterns(self) -> List[Dict]:
+async def _analyze_performance_patterns(self) -> List[Dict]:
         """分析性能模式"""
         # 示例：分析最近10条健康指标
         patterns = []
@@ -22,13 +39,13 @@ async def quick_start():
             })
         return patterns
 
-    async def _learn_user_preferences(self) -> Dict[str, Any]:
+async def _learn_user_preferences(self) -> Dict[str, Any]:
         """学习用户偏好"""
         # 示例：返回模拟偏好
         return {"preferred_mode": "aggressive", "custom_threshold": 0.75}
 
     # ==================== 自主升级核心方法 ====================
-    async def _monitor_upgrade_conditions(self) -> bool:
+async def _monitor_upgrade_conditions(self) -> bool:
         """监控升级条件"""
         # 示例：CPU使用率高于阈值则触发升级
         threshold = self.autonomous_parameters.get('upgrade_confidence_threshold', 0.8)
@@ -38,7 +55,7 @@ async def quick_start():
                 return True
         return False
 
-    async def _generate_upgrade_plan(self) -> SystemUpgradePlan:
+async def _generate_upgrade_plan(self) -> SystemUpgradePlan:
         """生成智能升级计划"""
         # 示例：生成简单升级计划
         from datetime import datetime
@@ -51,19 +68,19 @@ async def quick_start():
         )
         return plan
 
-    async def _execute_autonomous_upgrade(self):
+async def _execute_autonomous_upgrade(self):
         """执行安全升级（自动流程）"""
         plan = await self._generate_upgrade_plan()
         await self._execute_upgrade(plan)
 
-    async def _execute_upgrade(self, upgrade_plan: SystemUpgradePlan):
+async def _execute_upgrade(self, upgrade_plan: SystemUpgradePlan):
         """执行安全升级"""
         # 示例：打印升级流程
         self.logger.info(f"执行升级计划: {upgrade_plan.plan_id}，目标版本: {upgrade_plan.target_version}")
         # 预检查、备份、升级、验证、回滚等可扩展
 
     # ==================== 健康监控核心方法 ====================
-    async def _collect_health_metrics(self):
+async def _collect_health_metrics(self):
         """收集健康指标"""
         from datetime import datetime
         import random
@@ -79,7 +96,7 @@ async def quick_start():
         )
         self.health_metrics_history.append(metric)
 
-    async def _perform_self_healing(self):
+async def _perform_self_healing(self):
         """执行自愈操作"""
         # 示例：检测到错误则自愈
         if self.health_metrics_history:
@@ -87,7 +104,7 @@ async def quick_start():
             if getattr(last_metric, 'error_count', 0) > 0:
                 self.logger.info("检测到异常，执行自愈操作！")
 
-    async def _optimize_performance(self):
+async def _optimize_performance(self):
         """优化性能"""
         # 示例：分析并优化
         self.logger.info("执行性能优化分析与应用。")
@@ -196,17 +213,7 @@ class AutonomousLearningCycle:
     notes: Optional[str] = None
     # ... 可根据需要扩展字段
 
-@dataclass
-class SystemUpgradePlan:
-    plan_id: str
-    trigger_reason: str
-    current_version: str
-    target_version: str
-    status: UpgradeStatus
-    scheduled_time: Optional[str] = None
-    executed_time: Optional[str] = None
-    rollback_plan: Optional[str] = None
-    # ... 可根据需要扩展字段
+
 
 # SystemHealthMetrics, PerformanceOptimization, HistoricalPatterns, LearningContext 等可继续补充
 
@@ -310,7 +317,7 @@ class LearningContext:
     active_tasks: List[str]
     environment_state: Dict[str, float]
     notes: Optional[str] = None
-python3 core_structs.py
+
     def _setup_logging(self):
         logger = logging.getLogger(self.system_name)
         logger.setLevel(logging.DEBUG)
