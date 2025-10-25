@@ -114,7 +114,7 @@ def main():
             write_monlog('发现 upgrade_plan_rejected.json')
         # 简要资源统计
         try:
-            import psutil
+            import psutil # pyright: ignore[reportMissingModuleSource]
             mem = psutil.virtual_memory()
             write_monlog(f"mem_used={mem.percent}%")
         except Exception:

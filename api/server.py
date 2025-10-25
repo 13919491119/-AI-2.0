@@ -5,8 +5,8 @@ This file is intentionally minimal for smoke testing; model loading is done
 asynchronously on startup to avoid blocking the server.
 """
 # pyright: ignore[reportMissingImports]
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException # pyright: ignore[reportMissingImports]
+from pydantic import BaseModel # pyright: ignore[reportMissingImports]
 import threading
 
 
