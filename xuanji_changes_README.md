@@ -12,13 +12,13 @@
 
 ## 快速步骤
 
-1) 创建并切换到分支（在本地仓库根）
+1. 创建并切换到分支（在本地仓库根）
 
 ```bash
 git checkout -b xuanji/safe-updates
 ```
 
-2) 应用 patch（如果 patch 以 mbox/git format-patch 形式生成）
+1. 应用 patch（如果 patch 以 mbox/git format-patch 形式生成）
 
 ```bash
 # 首选（如果 patch 是 git format-patch 生成的 mbox）
@@ -29,14 +29,14 @@ git am --signoff < xuanji_changes.patch
 # git commit -m "Apply xuanji_changes.patch (safe autonomous updates)"
 ```
 
-3) 检查提交
+1. 检查提交
 
 ```bash
 git log -1 --stat
 git show --name-only HEAD
 ```
 
-4) 推送分支到远端（替换 <REMOTE_URL>）
+1. 推送分支到远端（替换 <REMOTE_URL>）
 
 ```bash
 # 仅在未添加远端时运行
@@ -47,7 +47,7 @@ git fetch target-origin
 git push -u target-origin xuanji/safe-updates
 ```
 
-5) 创建 PR（推荐 gh CLI）
+1. 创建 PR（推荐 gh CLI）
 
 ```bash
 gh pr create --title "feat: add safe autonomous workflow & api smoke tests" \
