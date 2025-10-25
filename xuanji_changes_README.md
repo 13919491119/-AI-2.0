@@ -1,19 +1,16 @@
 # xuanji_changes.patch 包使用说明
 
-目的
----
+## 目的
 
 本文件包含如何在本地将工作区生成的 patch 应用到一个新的分支并推送到远端以创建 PR 的最小步骤。
 
-前提
----
+## 前提
 
 - 在本地有对目标仓库的写权限（SSH key 或 HTTPS 凭据）。
 - 你正在在本地仓库根目录执行命令。
 - 推荐使用 SSH 方式：<git@github.com>:OWNER/REPO.git
 
-快速步骤
----
+## 快速步骤
 
 1) 创建并切换到分支（在本地仓库根）
 
@@ -58,14 +55,12 @@ gh pr create --title "feat: add safe autonomous workflow & api smoke tests" \
   --base main --head xuanji/safe-updates
 ```
 
-验证与故障排查
----
+## 验证与故障排查
 
 - 若 push 被拒绝：检查远端权限或分支保护策略。解决办法常为：向你的 fork 推送并从 fork 发起 PR，或请求仓库管理员允许创建分支。
 - 若 gh CLI 无法创建 PR：请确保 gh 已登录 (`gh auth login`) 或使用浏览器手动创建 PR（打开 `https://github.com/OWNER/REPO/compare/main...your-username:xuanji/safe-updates?expand=1`）。
 
-审计信息
----
+## 审计信息
 
 - 我已在工作区生成 `xuanji_changes.patch` 及本说明文件。你可以下载/复制到本地并按上面步骤执行。
 

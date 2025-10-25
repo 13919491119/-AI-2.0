@@ -1,4 +1,4 @@
-PR 审阅检查清单（xuanji/safe-updates）
+# PR 审阅检查清单（xuanji/safe-updates）
 
 目的：帮助审阅者在合并前快速验证安全改动和 smoke 测试。
 
