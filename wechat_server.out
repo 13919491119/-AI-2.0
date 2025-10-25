@@ -1,0 +1,24 @@
+2025-10-10 07:25:23,180 [INFO] 未启用安全模式(未设置 WECHAT_ENCODING_AES_KEY / WECHAT_APPID) - 使用明文模式
+2025-10-10 07:25:23,182 [INFO] 当前主Token长度=24 兼容Token数量=0 严格模式=True
+2025-10-10 07:25:24,191 [WARNING] NGROK_AUTH_TOKEN 未设置，使用本地地址
+2025-10-10 07:25:24,191 [WARNING] 使用本地地址，仅供本地测试。若需公网访问请配置 NGROK_AUTH_TOKEN 或使用 FRP/Nginx。
+2025-10-10 07:25:24,191 [INFO] 微信对接服务启动在端口 9090
+ * Serving Flask app 'wechat_server'
+ * Debug mode: off
+2025-10-10 07:25:24,198 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9090
+ * Running on http://10.0.3.87:9090
+2025-10-10 07:25:24,199 [INFO] [33mPress CTRL+C to quit[0m
+2025-10-10 07:25:39,712 [INFO] 127.0.0.1 - - [10/Oct/2025 07:25:39] "GET /health HTTP/1.1" 200 -
+2025-10-10 07:25:39,745 [INFO] 收到验证请求: signature=4c85ece27aef0fc0197467ba6edbbd29e3cd2256, timestamp=1760081139, nonce=testnonce, echostr(length)=4
+2025-10-10 07:25:39,746 [INFO] 签名验证成功(主Token)
+2025-10-10 07:25:39,746 [INFO] 验证通过，返回 echostr (len=4)
+2025-10-10 07:25:39,746 [INFO] 127.0.0.1 - - [10/Oct/2025 07:25:39] "GET /wechat?signature=4c85ece27aef0fc0197467ba6edbbd29e3cd2256&timestamp=1760081139&nonce=testnonce&echostr=ping HTTP/1.1" 200 -
+2025-10-10 07:25:39,754 [INFO] 127.0.0.1 - - [10/Oct/2025 07:25:39] "GET /metrics HTTP/1.1" 200 -
+2025-10-10 07:37:00,052 [INFO] 127.0.0.1 - - [10/Oct/2025 07:37:00] "GET /health HTTP/1.1" 200 -
+2025-10-10 07:37:00,093 [INFO] 收到验证请求: signature=1fb28029089c9335f8f851dd9610581bcc1f4e77, timestamp=1760081820, nonce=testnonce, echostr(length)=4
+2025-10-10 07:37:00,094 [INFO] 签名验证成功(主Token)
+2025-10-10 07:37:00,094 [INFO] 验证通过，返回 echostr (len=4)
+2025-10-10 07:37:00,094 [INFO] 127.0.0.1 - - [10/Oct/2025 07:37:00] "GET /wechat?signature=1fb28029089c9335f8f851dd9610581bcc1f4e77&timestamp=1760081820&nonce=testnonce&echostr=ping HTTP/1.1" 200 -
+2025-10-10 07:37:00,101 [INFO] 127.0.0.1 - - [10/Oct/2025 07:37:00] "GET /metrics HTTP/1.1" 200 -

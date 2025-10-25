@@ -1,0 +1,26 @@
+[
+  {
+    "input": {
+      "year": 1990,
+      "month": 1,
+      "day": 1,
+      "hour": 8
+    }
+  },
+  {
+    "input": {
+      "year": 2000,
+      "month": 5,
+      "day": 20,
+      "hour": 14
+    }
+  },
+  {
+    "input": {
+      "year": 2010,
+      "month": 12,
+      "day": 31,
+      "hour": 23
+    }
+  }
+]

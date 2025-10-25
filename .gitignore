@@ -1,0 +1,22 @@
+# 忽略超大日志和虚拟环境依赖
+xuanji_person_predict.log
+.venv/
+# Ignore environment files and secrets
+.env
+.env.*
+
+# Python cache and venv
+__pycache__/
+.pytest_cache/
+.venv/
+
+# Logs and results
+logs/
+*.log
+results/
+queue/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

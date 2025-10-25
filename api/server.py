@@ -8,6 +8,8 @@ asynchronously on startup to avoid blocking the server.
 from fastapi import FastAPI, HTTPException # pyright: ignore[reportMissingImports]
 from pydantic import BaseModel # pyright: ignore[reportMissingImports]
 import threading
+import os
+import logging
 
 
 app = FastAPI(title="Xuanji AI API")
@@ -54,6 +56,14 @@ def load_model():
 @app.on_event("startup")
 def startup_event():
     """Kick off background model loading on startup."""
+
+    # Log the configured port so operators know which PORT env var to set.
+    try:
+        cfg_port = os.environ.get("PORT", "8000")
+        logging.getLogger("uvicorn.error").info(f"Configured PORT={cfg_port} (set via env PORT). Start uvicorn with --port $PORT to bind to this port.")
+    except Exception:
+        # best-effort logging; don't fail startup because of logging
+        print("启动信息: 未能读取 PORT 环境变量，使用默认 8000")
 
     def _bg_load():
         try:

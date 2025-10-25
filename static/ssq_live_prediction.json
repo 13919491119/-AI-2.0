@@ -1,0 +1,147 @@
+{
+  "ts": 1760544014.3794727,
+  "virtual_issue": 5032,
+  "params": {
+    "interval": 60.0,
+    "candidates": 5,
+    "temp_red": 1.0,
+    "temp_blue": 1.0,
+    "top_p_red": 1.0,
+    "top_p_blue": 1.0,
+    "alpha_red": 0.1,
+    "alpha_blue": 0.1,
+    "diversify": true,
+    "max_overlap": 3
+  },
+  "attempts": [
+    {
+      "strategy": "liuyao",
+      "pred_reds": [
+        4,
+        7,
+        16,
+        19,
+        28,
+        31
+      ],
+      "pred_blue": 2
+    },
+    {
+      "strategy": "liuren",
+      "pred_reds": [
+        2,
+        8,
+        10,
+        16,
+        18,
+        19
+      ],
+      "pred_blue": 10
+    },
+    {
+      "strategy": "qimen",
+      "pred_reds": [
+        4,
+        11,
+        13,
+        14,
+        23,
+        26
+      ],
+      "pred_blue": 13
+    },
+    {
+      "strategy": "ai",
+      "pred_reds": [
+        29,
+        9,
+        14,
+        17,
+        21,
+        27
+      ],
+      "pred_blue": 3
+    },
+    {
+      "strategy": "cultural_dl",
+      "pred_reds": [
+        2,
+        6,
+        7,
+        13,
+        17,
+        29
+      ],
+      "pred_blue": 16
+    }
+  ],
+  "fused": {
+    "reds": [
+      2,
+      6,
+      7,
+      13,
+      17,
+      29
+    ],
+    "blue": 16
+  },
+  "candidates": [
+    {
+      "reds": [
+        2,
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "blue": 2
+    },
+    {
+      "reds": [
+        2,
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "blue": 2
+    },
+    {
+      "reds": [
+        2,
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "blue": 2
+    },
+    {
+      "reds": [
+        2,
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "blue": 2
+    },
+    {
+      "reds": [
+        2,
+        7,
+        12,
+        17,
+        22,
+        27
+      ],
+      "blue": 2
+    }
+  ],
+  "culture_learned": true
+}

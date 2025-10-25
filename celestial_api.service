@@ -1,0 +1,16 @@
+[Unit]
+Description=Celestial Nexus API Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+Environment=API_PORT=8000
+ExecStart=/usr/bin/env bash -c '/workspaces/-AI-2.0/start_api_gunicorn.sh'
+Restart=always
+RestartSec=5
+StandardOutput=append:/workspaces/-AI-2.0/celestial_api.out.log
+StandardError=append:/workspaces/-AI-2.0/celestial_api.err.log
+
+[Install]
+WantedBy=multi-user.target

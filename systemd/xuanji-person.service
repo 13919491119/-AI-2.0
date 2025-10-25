@@ -1,0 +1,19 @@
+[Unit]
+Description=Xuanji AI Person Prediction Cycle
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+EnvironmentFile=-/etc/default/xuanji-ai
+ExecStart=/usr/bin/env bash -lc 'source .venv/bin/activate 2>/dev/null || true; exec python -u person_predict_cycle.py'
+Restart=always
+RestartSec=5
+KillMode=process
+TimeoutStopSec=15
+StandardOutput=append:/workspaces/-AI-2.0/xuanji_person_predict.log
+StandardError=append:/workspaces/-AI-2.0/xuanji_person_predict.log
+
+[Install]
+WantedBy=multi-user.target

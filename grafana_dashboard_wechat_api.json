@@ -1,0 +1,45 @@
+{
+  "__inputs": [],
+  "title": "Celestial Nexus WeChat & API Overview",
+  "schemaVersion": 38,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "WeChat 签名失败 5m",
+      "targets": [{"expr": "increase(wechat_signature_fail_total[5m])"}],
+      "gridPos": {"x":0,"y":0,"w":4,"h":3}
+    },
+    {
+      "type": "graph",
+      "title": "WeChat 请求速率",
+      "targets": [{"expr": "rate(wechat_requests_total[5m])"}],
+      "gridPos": {"x":4,"y":0,"w":8,"h":6}
+    },
+    {
+      "type": "heatmap",
+      "title": "WeChat 延迟直方图",
+      "targets": [{"expr": "sum(rate(wechat_request_latency_seconds_bucket[5m])) by (le)"}],
+      "gridPos": {"x":12,"y":0,"w":12,"h":6}
+    },
+    {
+      "type": "graph",
+      "title": "API 请求速率",
+      "targets": [{"expr": "sum(rate(celestial_api_requests_total[5m])) by (path)"}],
+      "gridPos": {"x":0,"y":6,"w":12,"h":6}
+    },
+      {
+      "type": "heatmap",
+      "title": "API 延迟直方图",
+      "targets": [{"expr": "sum(rate(celestial_api_request_latency_seconds_bucket[5m])) by (le)"}],
+      "gridPos": {"x":12,"y":6,"w":12,"h":6}
+    },
+    {
+      "type": "stat",
+      "title": "WeChat 去重命中 5m",
+      "targets": [{"expr": "increase(wechat_dedup_hits_total[5m])"}],
+      "gridPos": {"x":0,"y":12,"w":4,"h":3}
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=Xuanji AI Background Auto-Run Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+Environment=PYTHONUNBUFFERED=1
+# 如需延迟公众号接入，请保留 WECHAT_LINK_PENDING.md；本服务不依赖 wechat_server
+ExecStart=/usr/bin/env bash -lc 'source .venv/bin/activate && python -u xuanji_ai_main.py >> ai_system.log 2>&1'
+Restart=always
+RestartSec=5
+StandardOutput=append:/workspaces/-AI-2.0/xuanji_ai.out.log
+StandardError=append:/workspaces/-AI-2.0/xuanji_ai.err.log
+
+[Install]
+WantedBy=multi-user.target

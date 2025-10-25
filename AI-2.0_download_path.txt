@@ -1,0 +1,13 @@
+【AI-2.0 资源管理器连接路径说明】
+
+本地工作区路径：/workspaces/-AI-2.0/
+
+腾讯云（cnb）下载建议路径：
+- 直接下载：/workspaces/-AI-2.0/
+- 推荐使用 COS 工具（如 coscmd）或腾讯云控制台，目标 Bucket 路径建议：
+  cos://<你的bucket名>/<你的目录>/AI-2.0/
+
+示例命令（coscmd）：
+coscmd download -r cos://your-bucket/AI-2.0/ /workspaces/-AI-2.0/
+
+如需自动同步脚本或批量下载/上传，请联系系统管理员或使用 workspace 下的相关 shell 工具。

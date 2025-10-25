@@ -1,0 +1,2865 @@
+{
+  "49864000de71562f89d45738f3c9a738c0b6741c1b21346f8e7ff9dbfd979a92": {
+    "ts": 1760091678.9870071,
+    "data": {
+      "summary": "【简要摘要 - 本地】\n主题: url: https://example.com\n内容节选: Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more...",
+      "sources": [
+        "https://example.com"
+      ],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "2a59ef740a527a9384ef87a6fcf824122711a9555fd273e3093bb8645d0b6ff3": {
+    "ts": 1760091679.987705,
+    "data": {
+      "summary": "未配置搜索API(SERPAPI_KEY/BING_SEARCH_KEY)，可使用 'url: https://...' 直接抓取。",
+      "sources": []
+    }
+  },
+  "596a7e32f2b71c98ae0053029935b8980d89453310411668d2c51b0841717c4e": {
+    "ts": 1760091923.3804069,
+    "data": {
+      "summary": "未配置搜索API(SERPAPI_KEY/BING_SEARCH_KEY)，可使用 'url: https://...' 直接抓取。\n\n【简要摘要 - 本地】\n主题: url: https://www.wikipedia.org\n内容节选: Wikipedia Wikipedia The Free Encyclopedia English 7,069,000+ articles æ¥æ¬èª 1,475,000+ è¨äº Ð ÑÑÑÐºÐ¸Ð¹ 2Â 065Â 000+ ÑÑÐ°ÑÐµÐ¹ Deutsch 3.056.000+ Artikel FranÃ§ais 2â¯712â¯000+ articles EspaÃ±ol 2.065.000+ artÃ­culos ä¸­æ 1,503,000+ æ¡ç® / æ¢ç® Italiano 1.938.000+ voci Polski 1Â 670Â 000+ haseÅ PortuguÃªs 1.156.000+ artigos Search Wikipedia Afrikaans Shqip Ø§ÙØ¹Ø±Ø¨ÙØ© Asturianu AzÉrbaycanca ÐÑÐ»Ð³Ð°ÑÑÐºÐ¸ é©åèª / BÃ¢n-lÃ¢m-gÃº à¦¬à¦¾à¦à¦²à¦¾ ÐÐµÐ»Ð°ÑÑÑÐºÐ°Ñ CatalÃ ÄeÅ¡tina Cymraeg Dansk Deutsch Eesti ÎÎ»Î»Î·Î½Î¹ÎºÎ¬ English EspaÃ±ol Esperanto Euskara ÙØ§Ø±Ø³Û FranÃ§ais Galego íêµ­ì´ ÕÕ¡ÕµÕ¥ÖÕ¥Õ¶ à¤¹à¤¿à¤¨à¥à¤¦à¥ Hrvatski Bahasa Indonesia Italiano ×¢××¨××ª á¥áá áá£áá Ladin Latina LatvieÅ¡u LietuviÅ³ Magyar ÐÐ°ÐºÐµÐ´Ð¾Ð½ÑÐºÐ¸ Malagasy à¤®à¤°à¤¾à¤ à¥ Ù ØµØ±Ù Bahasa Melayu Bahaso Minangkabau áá¼ááºáá¬áá¬áá¬ Ned...\n\n【简要摘要 - 本地】\n主题: url: https://news.ycombinator.com\n内容节选: Hacker News Hacker News new | past | comments | ask | show | jobs | submit login 1. Nobel Peace Prize 2025: María Corina Machado ( nobelprize.org ) 155 points by pykello 1 hour ago | hide | 98 comments 2. Datastar: Lightweight hypermedia framework for building interactive web apps ( data-star.dev ) 19 points by freetonik 1 hour ago | hide | 4 comments 3. A small number of samples can poison LLMs of any size ( anthropic.com ) 929 points by meetpateltech 18 hours ago | hide | 339 comments 4. My approach to building large technical projects (2023) ( mitchellh.com ) 162 points by mad2021 6 hours ago | hide | 17 comments 5. Show HN: I invented a new generative model and got accepted to ICLR ( discrete-distribution-networks.github.io ) 8 points by diyer22 1 hour ago | hide | discuss 6. Parallelizing Cellular Automata with WebGPU Compute Shaders ( vectrx.substack.com ) 8 points by ibobev 1 hour...",
+      "sources": [
+        "https://www.wikipedia.org",
+        "https://news.ycombinator.com"
+      ]
+    }
+  },
+  "6b1aee669555af3445744d4720016cbbb5328ba9be75a130a1d7618e84bb63c2": {
+    "ts": 1760179981.7582827,
+    "data": {
+      "summary": "未配置搜索API(SERPAPI_KEY/BING_SEARCH_KEY)，可使用 'url: https://...' 直接抓取。\n\n【简要摘要 - 本地】\n主题: url: https://www.wikipedia.org\n内容节选: Wikipedia Wikipedia The Free Encyclopedia English 7,069,000+ articles æ¥æ¬èª 1,475,000+ è¨äº Ð ÑÑÑÐºÐ¸Ð¹ 2Â 065Â 000+ ÑÑÐ°ÑÐµÐ¹ Deutsch 3.056.000+ Artikel FranÃ§ais 2â¯712â¯000+ articles EspaÃ±ol 2.065.000+ artÃ­culos ä¸­æ 1,503,000+ æ¡ç® / æ¢ç® Italiano 1.938.000+ voci Polski 1Â 670Â 000+ haseÅ PortuguÃªs 1.156.000+ artigos Search Wikipedia Afrikaans Shqip Ø§ÙØ¹Ø±Ø¨ÙØ© Asturianu AzÉrbaycanca ÐÑÐ»Ð³Ð°ÑÑÐºÐ¸ é©åèª / BÃ¢n-lÃ¢m-gÃº à¦¬à¦¾à¦à¦²à¦¾ ÐÐµÐ»Ð°ÑÑÑÐºÐ°Ñ CatalÃ ÄeÅ¡tina Cymraeg Dansk Deutsch Eesti ÎÎ»Î»Î·Î½Î¹ÎºÎ¬ English EspaÃ±ol Esperanto Euskara ÙØ§Ø±Ø³Û FranÃ§ais Galego íêµ­ì´ ÕÕ¡ÕµÕ¥ÖÕ¥Õ¶ à¤¹à¤¿à¤¨à¥à¤¦à¥ Hrvatski Bahasa Indonesia Italiano ×¢××¨××ª á¥áá áá£áá Ladin Latina LatvieÅ¡u LietuviÅ³ Magyar ÐÐ°ÐºÐµÐ´Ð¾Ð½ÑÐºÐ¸ Malagasy à¤®à¤°à¤¾à¤ à¥ Ù ØµØ±Ù Bahasa Melayu Bahaso Minangkabau áá¼ááºáá¬áá¬áá¬ Ned...\n\n【简要摘要 - 本地】\n主题: url: https://news.ycombinator.com\n内容节选: Hacker News Hacker News new | past | comments | ask | show | jobs | submit login 1. HTML's Best Kept Secret: The Output Tag ( denodell.com ) 186 points by todsacerdoti 2 hours ago | hide | 33 comments 2. AMD and Sony's PS6 chipset aims to rethink the current graphics pipeline ( arstechnica.com ) 122 points by zdw 6 hours ago | hide | 83 comments 3. Daniel Kahneman opted for assisted suicide in Switzerland ( bluewin.ch ) 45 points by kvam 2 hours ago | hide | 12 comments 4. Vietnam Airlines Data Breach ( haveibeenpwned.com ) 9 points by pbd 1 hour ago | hide | 1 comment 5. I built physical album cards with NFC tags to teach my son music discovery ( fulghum.io ) 394 points by jordanf 14 hours ago | hide | 128 comments 6. AV2 video codec delivers 30% lower bitrate than AV1, final spec due in late 2025 ( videocardz.com ) 72 points by ksec 2 hours ago | hide | 28 comments 7. (Re)Introducing t...",
+      "sources": [
+        "https://www.wikipedia.org",
+        "https://news.ycombinator.com"
+      ]
+    }
+  },
+  "fa8da4bdf59d9a665bd89cb01f7de51b3813751bda6c2c2174107b92c03ad4cc": {
+    "ts": 1760180329.3987353,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9e33c17cf90b7d39f6c77de3200a0b4e7e8dacd3544c86f76e9d6e985a2ae449": {
+    "ts": 1760180959.0100174,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "32a5af8ba1b88f67deb2a5ad1ff2ce89a63aa89df8fe4b3045123bf9cdd0829e": {
+    "ts": 1760187429.452004,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "65545d4483ea0299aabfc7cde74dc3eadaac1cc183b63eb10f38b67d53dd0269": {
+    "ts": 1760194393.522452,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7f29a0487e0cf83f6d75cc32d74d757ad51f3573b92698e4e09e5fe4a25604bc": {
+    "ts": 1760201209.1746716,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a644d0fd395d5416c50f8ca8693dcee3fbed7f85228e91c79d35b4cedc1c3eb3": {
+    "ts": 1760229004.9702742,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9ed2955ff9ec7f93c5ed827e645a68c42aac7d5694f281ee052db3280af9880c": {
+    "ts": 1760256615.62171,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a0eb41cb32b35ac3029d9c947cc7e78be0dc9fae5075f3a5b11d1da328fef18b": {
+    "ts": 1760262700.0395544,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ff21443872842dc0ecdac1db918e55b7d93834fd3f6c206a5712d94a698ad1bf": {
+    "ts": 1760318144.6795197,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "c278f279b8ad48b575abc4908226edfd1fc5814c49a82f89be6177b0d7fa1f7b": {
+    "ts": 1760318744.6950707,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6bf7ed8b874543f2fe24767523c37a4af23ea60c3553f3a2f45bedf32f3e7311": {
+    "ts": 1760318948.1604211,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1427a9111cd0b0da8f89470e58e3d2025320aa4c21238de412ae7adc4f31effd": {
+    "ts": 1760319008.2639883,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "00e0273ba19eef2657908931392d05e149d78bf737620d991e8a2455dfa11c17": {
+    "ts": 1760319608.2851164,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "c1c90480136328fbb2483ab788ca2fab14885dd2a78439d2f2a1de3905df4eed": {
+    "ts": 1760320208.2985423,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "6c82b7ea022795e34e8e0cdf22defb5c2171bf50d6d905ee57058a70d04e9639": {
+    "ts": 1760320808.3145783,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "886a834d7f9df35fc6dba9d2f59e154b62141386cf568b05322dc6ed0df43961": {
+    "ts": 1760321408.327097,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "4c82a3e04f398b48cf14bf297da978aec172d07013276eeb7d2df193a42c1dab": {
+    "ts": 1760322008.3847167,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "5cceb4ce62000cbfd05594780d5845ac808b20da8f21d78835410deef68d9d32": {
+    "ts": 1760322608.429833,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "a9898843755c2e8e6ea919bfe512bacf2eb7c45eb1c590e3142df84e6186f3d4": {
+    "ts": 1760323208.5474215,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "90984cd2bacd00c7f72b53140bb70538fabe7fde9987c6cc68d3b17e2ac40b0d": {
+    "ts": 1760417411.695032,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "d6d5ef8468c856c493f1a71c67248050b87100b16183c2f07d433a06a209dc6e": {
+    "ts": 1760418011.7181711,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "ad23ab0df91c73cf359a0a4d626438de8ad2d2e02f89d19876d300be852e62c9": {
+    "ts": 1760418611.7315214,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "cbbcb61772c28f058e2e5c75e1ee22a9efa1130c970cf877491555afdddb85ca": {
+    "ts": 1760419211.7842116,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "da9a87d6f45cd4dcbc66b2330ca23ea9b0afeaba9cd40f7e585c9ca44006e9f3": {
+    "ts": 1760419811.801214,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "0821ff8ed2592de650d35e9855ea6105cf6b81926ee76a10e7418b5ec9e052bd": {
+    "ts": 1760420411.8364463,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b52cbdb1d4f3e202d367fd32fc4bec991f89e7e4970ada8124786d7fcdf4cb99": {
+    "ts": 1760425738.344301,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "6ad090b9c5eb0d469199b73819347a4b207997054a8b6c3fc39f994f7107b979": {
+    "ts": 1760426338.432138,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "59f016f8fd22b38c80c7e0df4488a8d84823d6c98e041c0cf9e757d384edf72a": {
+    "ts": 1760426938.452097,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "3ef9f567fa9d2e1921a6a900fcb015bcd935bff05687591a3cf3b35bf41347f7": {
+    "ts": 1760427538.5116355,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "b900065435afef9211a08f052cb68bf0b5031276a5b941916c5eca6528cc3298": {
+    "ts": 1760428138.5420837,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "4346af9473e828961fa3087b8860ced5ff6cea3a903d71d8d6549cd721ccf2c1": {
+    "ts": 1760428738.5549104,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "5a43b79ed05b7cd429ea00caec46dbe75fc3b2fefe04addcef8fcee5403cf8be": {
+    "ts": 1760429338.5707095,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "bee3001ced823ae95e51308cadcd36c3d52bce168ef56e125ed49ebafdb4f136": {
+    "ts": 1760429938.5990837,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "37584f8669b238ebcccee53d6dd1352a460ed28d789304d1ae03abe7c549ebd6": {
+    "ts": 1760430538.6168578,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "c5fac5dc4b3bd4172304a746ac1006bced08d84a3d5b965d8371e5e5391c27cb": {
+    "ts": 1760431138.6577356,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5d08ec786678bf6394b1310aeb40dbb4030539914894288164545064a9fa98d9": {
+    "ts": 1760431487.3822536,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "72eda7c7631358afc484bfd4fbafd9114e9418fb755de15de13cdebb08098a99": {
+    "ts": 1760451476.1993906,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "e9afe440881fc3a4b98e96d7c4ab7811ee859c95f80fde546ddf98f466d91694": {
+    "ts": 1760452076.2695944,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "b0ed0a92c5c04c45599593fffa1cadb898c18b0598939d1410fc59907a1bae79": {
+    "ts": 1760452676.2991877,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "3dad891fcd13afd7f56a4c184e264270c00ab1e157ce73268ca72f4d5893f125": {
+    "ts": 1760453276.3474426,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "2cbf375b56f87341d06984194542b102e31ae8bfb738d3fba653a016b72b5e14": {
+    "ts": 1760453876.3874917,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "30364ddf3280349c0f52d43fb1678811995fc920f97b0b887c74f326d381a2ce": {
+    "ts": 1760454476.4521155,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b96bb0d6f6f86d3f915e5f27f810945057f8ef705090132f24a60c8048dec08d": {
+    "ts": 1760454757.9328842,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cf35784c932b568f5303cbfde91af33e261e6117ae8712be3fb5f0046801fb88": {
+    "ts": 1760454818.072964,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "63a2a3b8e220a9d2fb10d1664b1b0bb4e634abca8627bc8eedc75e495547e229": {
+    "ts": 1760456279.618599,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d8875db5599c184cd7e52898e18f84fa65a9e82726374b30ea31df1a71ef64b0": {
+    "ts": 1760456339.7533143,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1705447c0e8113dfa3d070d4def7a1b606f50ceba2d7b7fc8b01ecd24659f941": {
+    "ts": 1760461550.2565482,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "432c9fdb5f206a79b07bfb9b345b174e5b4708a750228b96b415d8052adcbce0": {
+    "ts": 1760462150.2852132,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "4511931bbf63dd435a27776cbb97e830fcfb10b02199135582ee0f4dbf628158": {
+    "ts": 1760462750.3092082,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "8ed2c46919d1ce711a2c02f5f4448f61519b532972690df6a880e092b4f0fd62": {
+    "ts": 1760463350.3396335,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d5046b1d099d3ff06d1b6fbb5cc41901260bbc683758f9c354ceb91abd03be17": {
+    "ts": 1760463926.2528772,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1a916d44a7db2579c787bd5ed6e28d245d3438b4cde25fa3de18e21e636a05c2": {
+    "ts": 1760463986.3798492,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1dcaf611524b031e3ac0f8cce5fc4e6f63bb941595a6c59579f0fb7ab11809a6": {
+    "ts": 1760532860.8987138,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "576548b7516ba9e29eee0a3d229aeb4eb8bbc6fd33c4441d7ea1fa4b32a04f8a": {
+    "ts": 1760533460.9538083,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "dab213610c1e3c2b04c822f9e690680a8f81aa2cdc0bb24b3d924ce40d556d86": {
+    "ts": 1760534060.9666524,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "94a65260115c2b3bc870a1943ad49663d44d009c0a30bcdd8390bd044f9ad0aa": {
+    "ts": 1760534661.0136151,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "bdeb65cbad03f0f414f1665f67f3b17a0042f9550b02110f62acef5bc0ead8eb": {
+    "ts": 1760535261.031665,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "860e3c9f9e0752e7d47a62379da839d65fc2669c342b7160a20f7ab3429ce9a9": {
+    "ts": 1760535861.0816245,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "c1a4cc951420109e96dc4d0f39c4613872a0e94aaaedc25a0997ee06812667bd": {
+    "ts": 1760536461.0907047,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "65c05485c19b3489140e711c2f5c7f16e1a7a333f34fe1180788a3daabd63039": {
+    "ts": 1760537061.1563237,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "83c0b405f0fce2413ecd48ca64d5cc3b1a78390bbe39040c05968e556b00d51e": {
+    "ts": 1760537661.1936686,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "cc169fc1bbb0ffd7c8e83a333cb8f5904cf919a5a4652b363ddf4cb90b11beaf": {
+    "ts": 1760538261.2225163,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "d08d33e0c5f07526e34c52519dd60948b84e2fa2dd0adae87acb889bfa7f00e4": {
+    "ts": 1760538861.2506452,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "41bd827642950da236778c970ebe5d73346e591af7d37ebf84d751370f8ed1a8": {
+    "ts": 1760539461.2681692,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "3ad80ff29492d821b20b82292ae894f7ba502756690f0a4ed99f30a969ec8655": {
+    "ts": 1760540061.2795372,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "45e3232e5a05299d9d14fc5f69ed4e2ecb69e3077e659caa13dde8469a25dcd5": {
+    "ts": 1760551227.8874903,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2d4e67015d8ae9884a454b1ac3a04f51c7f384f0c16da7160980c4b60d98d81b": {
+    "ts": 1760563503.5327632,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0e38c6d7f0ec77ae1c26d5df2a34d07735fa6008961b3e13fec9b979a8b3fb50": {
+    "ts": 1760563565.2705464,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "dbf3b899c964ba20bf181cb7600f6cb2a5741d2b84df3ccae9473f0a307237b5": {
+    "ts": 1760563625.7696972,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4c55d61567e8a30a0d13012ddbee60ab3a3e6f6107fb941c322ab5bc6714074f": {
+    "ts": 1760567675.1437597,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f3869261878484e5020e7d0a978edb432580735a8abb873ead24b26ff1106536": {
+    "ts": 1760567735.6708817,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "92df5725b3fc843a19bdbe6ca99e8f0b78194b44ce82862e5431e458617f9fee": {
+    "ts": 1760567795.8003244,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3ba6fe43cfdd5918547e44777b0b23123f9ffebc71f9ed3388d6b26e2c7fc396": {
+    "ts": 1760567856.1062014,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "aa53b1d9cfe5aff12aad7575e127ab2eb876260bdfd8d596265c9d09877c0b13": {
+    "ts": 1760567916.2439113,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0cd9be11f044a9e21fcad3bbdcb11e76fccec4471466062046cf03455e5e3eee": {
+    "ts": 1760567976.3887048,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cc3eaa8a2de6fb5b295edb909cdd1dcc3412cb466535b570c1bed09b4ae2ced4": {
+    "ts": 1760568038.788655,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0fa010492826ed79435c1b5db5c93f885fe67a0565a4582efca48d40a0df50ea": {
+    "ts": 1760568098.922362,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cd6aa842033b2bd9c581d1ad0fa8443a866238843ecaa7f281e1315af83e0535": {
+    "ts": 1760568159.0524566,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "21aadef05c4f252171b6625e10ed100fead9d367cdfd7d956af838e9699c1d07": {
+    "ts": 1760568219.1664665,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f598532e8c591a0c27d9e73c359c7337078c7b613f2ed16db9556cf76de04872": {
+    "ts": 1760568279.4348304,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "99adc3ae9ef68d152bb9d013b57afe6240857ab1a01c7c738dac8e14d607e7c6": {
+    "ts": 1760568339.585507,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e0435671422361b62b9636df709f83a11baae74e3ea1e948d3a0aae977e0cbbc": {
+    "ts": 1760568399.8153613,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ca5905c74da84177650320602d8c1b99010688aac8403412acea124058d6d18d": {
+    "ts": 1760568460.1250403,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "624976e320f912c7ace29e416444980265ed339c212308d61fdff8a4025711da": {
+    "ts": 1760568520.2565155,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a88e8f25b3e410e5b3c0b98075236aa0eec66626803abce38d27949cbd5ab6f1": {
+    "ts": 1760568580.9068809,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "eb73d05bcf23dfc3b211269de08dee409f083094976cb5c5ec91e69fe27e7ae9": {
+    "ts": 1760568641.0735126,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "44b0add795ded386646fa707951634e6b1ca5ae26083beff34b7d3274453ff6a": {
+    "ts": 1760568701.2058237,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8d90aa629ff3696f441a43ab9743e9bcc5f2d6cf41fe76034c8b92223c22f4c2": {
+    "ts": 1760568761.6260524,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1917f0a15393cfa7894fa963e66638f811e2c0b135b6f76017b09aa61a624adc": {
+    "ts": 1760568822.873264,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "18f983c5498214aef9607dc58c7490d1f1217ab5ef68838dbbcfa7e8e4b711f5": {
+    "ts": 1760568883.0620265,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "44d69b44f5a657ff5e3b71b7249681aacddbdeab0afad5efde4c04918abe8350": {
+    "ts": 1760568943.19595,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "533edb515aa7bc9aa394ffab804a15cfa016de697a236fcb5514f0ea7076721c": {
+    "ts": 1760569003.3280668,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f33b9e469b603c4ae8fed859eb126eb0c34f889398347852074aa5188141111e": {
+    "ts": 1760569063.466677,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ae69636ff39d95c086ff5dde1f481ece79fb2bd22fe90798baf68bb83d605ca2": {
+    "ts": 1760569124.8026743,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2d2f454d63dd70a926fc24ee9fbdc223c7ed71b795a80a5863d7beae80a7ab2f": {
+    "ts": 1760569184.944766,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5cf7febcf90279d7ecd551a3fabb019ca56ac04cfa8461a51d04708220280219": {
+    "ts": 1760569245.0795715,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "458c1c8f0c5209530d49f511898fd7d8d554d7f37bc261325255175dcc857a84": {
+    "ts": 1760569305.254051,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4b4f9a99c73061211d89ab82ead9a502e68212fd1b967cd3249947d7dd16cc81": {
+    "ts": 1760569365.632007,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "efd34154316582924bddcfc8c51ce5f486d0fff2858641b886714e7912393a91": {
+    "ts": 1760569425.7598398,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "07eca5cbfc1c96324b71f9c4f6a870ddf06f16d97918d129f60fe42179647266": {
+    "ts": 1760569485.8488092,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f01aad36f235d249bb085ba5bcc83e4886bcb3dcbbed91423df38b6f5e27a1f0": {
+    "ts": 1760569545.983218,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "47202e51af4ed7e7cb7cc4ef3f311498c1a3b231bce755e1577b103a5e48e9e9": {
+    "ts": 1760569606.1361434,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "68465c115a65e7b2dc28cf043d66b354bf1836b4fce20b908e1adb311212dd19": {
+    "ts": 1760569667.0750449,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "516aa7aeb89d036b1c9b58fe0aece418cf2d5906db363fa7884a09523165dde7": {
+    "ts": 1760569727.5264678,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "41b8e4cf4597720155f86a74e0c0c345680179b42ba7feb61e482eac4ff59e3f": {
+    "ts": 1760569787.6345105,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "53fcb4618ff45d6ad9cf6cf435f319f5331faa0df61edc6a4e8d0261597b9377": {
+    "ts": 1760569849.1607554,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "67a232906e3895dd7a12da0e901bae4c14899194d755739698733184aaad8746": {
+    "ts": 1760569909.2883863,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "97e62de844e42653891dca7566e99d0b1ab5c50528f9bbddc56c47508cc6918e": {
+    "ts": 1760569969.9963536,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "bc3d4cff301f653799879b07bbe5096e832f2379525292ffd2115cc02aaa2e12": {
+    "ts": 1760570030.1313984,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "77a3782c9afad660826e054e588a5fc94c5a171ddf803c59de86b22a2884b58f": {
+    "ts": 1760570090.2333903,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "333d229e8523162160b87340dca7426088e8e3a990d2e117c8813d9054b8e03b": {
+    "ts": 1760570150.3676124,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e57c99faa8397b912e1a8eff7da22a81b81f2ae7af642b1c0edd907a4df18dbc": {
+    "ts": 1760570210.5231414,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b54a9f072f94a551bfb71e2a0d92745340cb3ebc4104b35035b93bb8d1a2a3b7": {
+    "ts": 1760570270.6957667,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d5e9b3cc9c3128350b5ba148902d608069d1b31e832b1580a5bcea93180a355c": {
+    "ts": 1760570330.81363,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2192444e26460d98cb3e76181e55fbdc15f1d56dbceaa6bd1723c399678d1c95": {
+    "ts": 1760570390.9460607,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "42945c01dbd6fcea20d77c973bc0155ef77ed747e83f95302e100970e05c1196": {
+    "ts": 1760570451.0864806,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a50b7eee50f77a4b6f92a4e312428b520b8b370af8b046fc35ceb36ffb988e10": {
+    "ts": 1760570512.0889244,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ae422294fec29a4769c7d96c0f5d5e5f8a887917adf08561ff0e53196e5b4eb0": {
+    "ts": 1760570572.2973917,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c5b194a62aedeee592713b4cd59265ec70aaff1221b130c221e79752d466695a": {
+    "ts": 1760570632.8210635,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cd4b02e7a86cacb8a35f0cac4f124be853c22d7965b9c982fe611e0fd6275653": {
+    "ts": 1760570692.95532,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d7d21ab6de75334c98298017c606601cc422907ebe9acf4e1933354f04a21322": {
+    "ts": 1760570753.1014094,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5ce668b8d82854fc26e1df5585400b3e4e30b3dab66908568c46bbc17b1f0abb": {
+    "ts": 1760570814.7711613,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "44cbbcd11bcc8753c8fc2c342f82f924049aee615cfca0be68706d84955b5ad0": {
+    "ts": 1760570874.962804,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "147b26b46de5cf3da086d3ab968395db404a9bda2ccf7aa4fdb263755ff04ec0": {
+    "ts": 1760570935.1865625,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "87eca7f714760950866e56d5a0eb6e034161927a09ca7645d01cc7d5d8fe67d1": {
+    "ts": 1760570995.3284955,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3d72cafeb7c9eb741f262757a1c7c1798c01da8644ae575861728f25d2598f2f": {
+    "ts": 1760571055.4618862,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "72c184e1ddbab94e6aa5cbe0521f523769356ab8e4f5b4e20adde0a4ccc7e079": {
+    "ts": 1760571115.7615778,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c8ab1cc5bfae2bbc541d33371b5e084c81407ff5a355cdbe88ac0157fe233fd2": {
+    "ts": 1760571175.9384615,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "dafa7745afa05062f734bea50fd29cc010ea30e2cc39ce40bd3f8ebed7f60939": {
+    "ts": 1760571236.2108867,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9945eac2637513765fc6244011228301efa99a74f1c85cfcc2dfe4dedfe797b7": {
+    "ts": 1760571296.3533688,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a026a7c47fdaf0561ffc9e05796ee6408ec70e610031e91bba2e2afee3499493": {
+    "ts": 1760571356.4789898,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "40f5f6e19a8d12723194ccfe92d87c1c4d29bb9e08846ecd2bbc394fd842e631": {
+    "ts": 1760571417.344141,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5143d8e31d603bf9f809f80d73d70d03331ef022ff99c0c2541fbb56a816cd29": {
+    "ts": 1760571477.5083096,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6db49bdc31dd7c672522b3a653b9bea593c860513ab279f0d3e84b4bd4c82da6": {
+    "ts": 1760571537.8691525,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4f522e6077e4aeafc475f4173e68d2e7a9f199f90092cc0e0f34a86cd4bdecb4": {
+    "ts": 1760571598.1258223,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "143551d8dad6ef3c03c1ba54b31a9efc7edeab15ba67b683075137ecb4f60565": {
+    "ts": 1760571658.2545738,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "596acb43291c9ea1fee38bada2f7a8927ff1a304c9fe324de6c7385c9adcb8b7": {
+    "ts": 1760571719.2910225,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4edd373412ad5bb05359fe97680246ddcd02a42d60998736dbd2b2cb8c6fb1cc": {
+    "ts": 1760571779.4618251,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0dfe35c24935d53b9aa22f0a6c32a916b505c9dd44f714b3644b109764a7c7ca": {
+    "ts": 1760571840.6823642,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b80f165c1338d43bffc45a59dc863e81c025cec72eb02d164e3323cf4614c93d": {
+    "ts": 1760571900.8184438,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "bd5e374e8e7a56e09c2087668228836574b1704ae077c63eee5160a080e91f77": {
+    "ts": 1760571960.9400907,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "76861d5eb252e9d6e8beb4f978cab68313613404a402bf712be536a3ea638d7f": {
+    "ts": 1760572022.0115187,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "075798cd87ab09c1a1331b6d3c333d4f67c4b4e927acd79504d660b4b79a09b7": {
+    "ts": 1760572082.2154222,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "35a7cbd2f9a489c80eafd11204c4261484e3c82e9b0b8dc56fa4d453c89f2ad5": {
+    "ts": 1760572142.4271886,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9a0937bbd694e612ea23c211c0bc03bead6afe1d7fe70ed24decde76346a3a7b": {
+    "ts": 1760572202.6054492,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "fb31a9e10981d265489a0577b5c1efdc10e404f5a22010bb28498e24dcbbaefc": {
+    "ts": 1760572262.745911,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "310cc35f3ec9facf1053f623c218e0fe3e97b612f56ef2562c135d5a0bd3b1b4": {
+    "ts": 1760572322.8711324,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "66194928b5717aa60160c60510fd55e102ec8893dcd2606e03deef28ac3c11ef": {
+    "ts": 1760572382.9387517,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "fd7f6eead2415dd813043ba41f8d61972a21b4085efc6e9190bad5f9f41e71a5": {
+    "ts": 1760572443.0630214,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d35aed55203c3a280a20ace9659736275fb9391f7d04096d759563d38dab7bab": {
+    "ts": 1760572595.8957043,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "18238c2fd3505f26e2562cdf0ac779eb1060f65b01a4cc2bc746e407ad77ba2c": {
+    "ts": 1760572656.6754992,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "584de1e6b3b8d94a96adc5f89be04148cb24be3d5547f788e67cdeff18607019": {
+    "ts": 1760572716.9546373,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ca9f73233b6baa3078807f9078ee139ec7e6d291e22a6828e2502c217d9ab939": {
+    "ts": 1760572778.9048378,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cc165b16f68f079a024f3bab1222671f11514089df7bf60235c409fc857b7e53": {
+    "ts": 1760572839.0708268,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "36201c8b98487fe1d10e35267d5bf41d377241e4d4efbb715a54c15d9fd50bc2": {
+    "ts": 1760572912.9148207,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b5a2d7a593e29be3bf547e0d1e8bcb17bb2c992722dfb7d506a0d4d69cb83c9f": {
+    "ts": 1760572989.6672285,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b8eeda16d0fa07727c264c0371902152c518d1dfc1085b70d22af4e8f23adb96": {
+    "ts": 1760573094.5402896,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7020dd7127dba9e3b37f2dc1766d13fe8fe4961c775dd1ab8854a523d3b7d857": {
+    "ts": 1760573155.828006,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2c05c5d1feb1fdfbdc2946791d344f45d0ede54f7335f23898926e23b5fa295e": {
+    "ts": 1760573216.0063622,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7ad1fc69458237aa4f16779a85b077d6692b8dfa763b319025355d6140cce144": {
+    "ts": 1760573276.085148,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "176d1bed5f06825a45951b7e4c71838c9062adaf0dc6f1e9f076c014ee76f278": {
+    "ts": 1760573336.2142744,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b237d6e3b3bdb2f06441ecbbca502b1dd2f9b3185cf90d4848b45053dcd3a303": {
+    "ts": 1760573396.3510377,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ade5ecc98c81edebb934ad8fa137130d20a6a4ba95b437c2ee49a3880bccef1a": {
+    "ts": 1760573456.9562154,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6f2c831abd0dac36ae0d72fd592cb97f5c3e9a6232509b44fd3c134b8bbf28c8": {
+    "ts": 1760573517.3505387,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8d4af00a895b88b94b008fc6582c8728978ff183b303c24cca329bc1ffb8836c": {
+    "ts": 1760573577.48986,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "27a9a154898bcbd124f2a5f5c9154d770319fdcf66192f9ad2c5d8d449a61a6b": {
+    "ts": 1760573656.561616,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c59f17f4a7e5e0709f46c801a2e70d305f2d01bd231d980a4445962bcb969fb2": {
+    "ts": 1760573716.719113,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "392e6ca44695b0f635ea9423dfb8fe1ef682e54b24c67bda25388ebc444e6ee4": {
+    "ts": 1760574169.2999547,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2f1bd50a21332110c190d242bcbde553ac443c9f4c3ca932d4b586e2a9dd2016": {
+    "ts": 1760574333.3320334,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "711bee1d5537a788af3db88860d8f510777969ba684a66115515ec2feafe918f": {
+    "ts": 1760574427.401734,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "f496343f6bfe07cf911c82e8dd34349ae71d1fc90e0f0dc2fc05acb900c08808": {
+    "ts": 1760575027.4427378,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "e9932a99f1e4a91058f73cc27d41cabbe78ac5ff630399d959fe3c691573f43a": {
+    "ts": 1760575627.4590359,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4e154ac0aa8d5d51820f8cbc22ab856e9819668a9c4588b2dabb65732609d4a0": {
+    "ts": 1760624864.2566078,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4fcf0ae8262d53aa8966309be997971d9bcbe5e1381a72101370dbbedfe54288": {
+    "ts": 1760624927.642189,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ce872ba947b333ab78646a8a67dae763818080aa2588266a42fab57a8716dcd4": {
+    "ts": 1760624989.0080657,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3c069f43b02704f9010e7ce5c72a0d28fc8792b4b444a50b9140e7f56277a7d2": {
+    "ts": 1760625049.1458497,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3e4c4deafbedc5241038a938f5336fcc2cccb92a8b5daa8d6a6f0bb3a5410486": {
+    "ts": 1760625109.2855213,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "17a65d31cdcd7ce7e72caa108308cd2c9257907e0833473ca98b41fe73e239c0": {
+    "ts": 1760625169.422893,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "49f84bc6b7a6ffa0246b03c2c4747ec032d56b5b3ad14f4565f6dcd1e8938932": {
+    "ts": 1760625229.5760486,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c78fe575ab76fbe8ac5895f34603218ecba7841de448c8f9c32a5cdc0dc9eda6": {
+    "ts": 1760625289.9022136,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "17dbdaf4a8934e2752fc372519791747cf6c080c05d12c886b19a29e45d2257f": {
+    "ts": 1760625350.0940332,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e2e7ef6b1c28afce49d37052c1cd63fb2173c68a9948405aa391faa67b8bbc50": {
+    "ts": 1760625757.9342659,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a0ce95e6837c88475ca738d13ea4bfed0535248ce7a8f53d941eb2e9957ac90f": {
+    "ts": 1760625818.0904481,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2dca2edb3e3e463a94a383a57be1c279693c865c421bf4479af0574599399e88": {
+    "ts": 1760625878.2247422,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "702eace03d90424fae01027de7a1ba1497a101cfb2d5a0c864b4554c596559ea": {
+    "ts": 1760626329.3893056,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "57a4d7f62f351d4564ef5014ad1fe012815ab6328ae8be5eac6cf05ff871dae5": {
+    "ts": 1760626389.5321903,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0776c19243486360c61a67bb1ab4cd3f88297548f576f5442e81c0b8b15f2128": {
+    "ts": 1760626449.673217,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d66da270bc6405eec20fbd2e7e71cffc583f432344d76bb80da2d20caf61bfdb": {
+    "ts": 1760626509.8317325,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2b46478f71b3f83e80862dfbccdd456cb61998cc176473f32b35b27db3d5c217": {
+    "ts": 1760626570.0139954,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9af8b7a967b4df18fa8d166ee55d1aff7ea465dc17d713be8cce3b64a50d59f1": {
+    "ts": 1760626630.15151,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4266ba3f0b199e4fc4086d121d960c65e03b3d9b88758cfaa2b69265f23d00f9": {
+    "ts": 1760626690.2726917,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cbc23286c2214a937ef483c747731e47fcd173b04deb8063c661aeb3640b350f": {
+    "ts": 1760626750.4059403,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "450e6e1c67912ff01c55562e69ecdb88babd271f753e6618a1dfff8a9379703e": {
+    "ts": 1760626810.5746002,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3f35c7e5114b27b451a6d8912a88683222553496f78e7d8144bcb8c136f59554": {
+    "ts": 1760626870.7087104,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8058960c2502eac5331ce1d8d6cbf363fa518dcf0a722665128ae1c6e91be1b6": {
+    "ts": 1760626930.8226423,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "83a9b967e1b67b335120c712aa1aeaaee7ee1e2549d4fdc7e796e3a91c77f3d8": {
+    "ts": 1760626990.9569185,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7bc58146adb00f5e4108308a707bd2b119fea8cf73a5d807e424b8aebeb841fd": {
+    "ts": 1760627051.1002614,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a72b9f4a40ffc5c905b62afed037ee21b7ea3c9adaac3e450756bba837f6f35b": {
+    "ts": 1760627111.236774,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d5ec661f5372604529ce552c010e39879e2367b96b6c5f167b3cc782215d25ce": {
+    "ts": 1760878951.800053,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "50707a5b95cab22dcb106f805a427c9a7fca2a32d62dd5b17025650e41dc2e20": {
+    "ts": 1760879551.8206043,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "2f7270a155f17aa8feea4a05a6ebaad443511293b805def5b683bc3aa277a44c": {
+    "ts": 1760880151.8252425,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "98e9991a058f00d14f4c2c46494c3297c84d8191679e4304e21d727fa3e80d5f": {
+    "ts": 1760880751.8456783,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "1436c05bbde1dee340d0a22fcf02078a752882acda5f7ff75277f105be21f604": {
+    "ts": 1760881351.8613968,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "6bfea5efb514744dfad679b79d81c0590ece5a20c176b55b22f97678b6f6ba05": {
+    "ts": 1760881951.878473,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "ecdc8b2cff1757c24504067a15e3cf541698362c6c41b99ca772b91b7267ce86": {
+    "ts": 1760882551.8982236,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "131d9d2feafc9be2c2f1d5af94aa0e4103249bb880ae5dd0f9985314763aa9b4": {
+    "ts": 1760883151.9291759,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "c2df530bb067a4b06e031a7a860b64c17b1a9ce6a37f1b63e595b99dbf5706a0": {
+    "ts": 1760883751.9559524,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "242524a56e1b745659c0e8c4f307ddc4b068b21b5aa285a20c117eb50403c393": {
+    "ts": 1760886626.8892791,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "393b5233056e40e0773eaa0ee5a46e1d55dd7bc2ce92b72a0cd29bb8489dc4e2": {
+    "ts": 1760886953.197396,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "efa5454002e43e75b4f13fac9dec23bc2a847fd5513aba5b9a934ca9b5e398b8": {
+    "ts": 1760887553.2291803,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d6c7358e02e0345b8c40575816bbf6ca4a1472fec06ec349037cb7e1ee8ad8c7": {
+    "ts": 1760887683.252119,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "02e6b42ac41c07a229219f1663004e444b7d0f8e479071b08f850a4aefb7175b": {
+    "ts": 1760888283.2840369,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c585fab00041907b073923be7622cae234b0e2a0f1aeae4e9f177b8d0e41010e": {
+    "ts": 1760889780.1792119,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "97b02145fc17026d6f68a9435f08a507dc3578fc1f81886dd4450a621ae91c22": {
+    "ts": 1761032726.816699,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8ecf8da2bb9107f31c2b6320c10aeef8ab56cf61bb551840e4278c0938a2637d": {
+    "ts": 1761032843.9157584,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "81f9fb1c06f7eec3a801db38ffad2eafc654f519ae3f58a49a1e2d4dc4d01202": {
+    "ts": 1761032963.2337105,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f84c5a9f4939fa41d1090421f87b4f11566e52c4d2972805180fe7f5aad9d445": {
+    "ts": 1761033085.0868955,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9777a661fc9e6fe6a1f3b38131136f10df6dfc00ed325c0a223e36da750a33a6": {
+    "ts": 1761033205.4482057,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "af0cf6e8ed59fd24e31f5525044d428a31d156ce66f7415e07abfea8d902a4df": {
+    "ts": 1761033324.8407116,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2e7c4fcc5f463135630105fd6fa77adea35f29ea3ac9541ef97325b7eeb04215": {
+    "ts": 1761033443.9497874,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ca322e490dd4ee5c6300108ddebef72adc1d0bae4d9183be804bfb8ec25e3fa7": {
+    "ts": 1761033565.265991,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ae541bb5e1290fb6309d2eabda298b39e2041d0eb92aeaf9aa512b83e87cf890": {
+    "ts": 1761033683.4928217,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "aa417f121776ca109ae010706de8174bb6cf9df859f757ccc74796f185f304d8": {
+    "ts": 1761033804.5180895,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "247e2292d082741f30d7773c19dcc2ccf129f4ec83f8e24123f91fac497f80fa": {
+    "ts": 1761033923.7305963,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "fdac66e514eb423d1972500ed1f34f818652c8a451284fbbef0c924b2427c9d3": {
+    "ts": 1761034044.1237438,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f4bb24d142f6ac1933a25dc91ea0e9899e18bc48753a41edbd83a409783eccbb": {
+    "ts": 1761034162.8883784,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6f6e079b2605d724d9973cd8e8c882729ede49f8ae31ba9ba33ef559ecb464a0": {
+    "ts": 1761034285.7388275,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9390e3cdb01d61f8d5015e679797d9baff931c39849a4664252003624bbe64e1": {
+    "ts": 1761034404.5492728,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "324df1f576749f5c722f4138d16b99373a165a1ba48f3c2cc143364c1d45263d": {
+    "ts": 1761034524.0544052,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ba319f29e72b0eb32803c4619943226bd26cfd54d6a15283486345c8599d5715": {
+    "ts": 1761034645.5706575,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c7c7adc57418976e4cafe9e9db2ccce4f8a7a82284eac1dc1999c79c470a6078": {
+    "ts": 1761034762.7691567,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4aae048c50844043048f43c00e26edf5c05532c90c6aed9cd0485f4bb6db3bd7": {
+    "ts": 1761034884.0451024,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cd38e36ca1f13446c6fb0ed5ab35475f60d9a4e47697639dd014c58fd9dc78cf": {
+    "ts": 1761035005.0880325,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2fee6bf6988296490cfc397c68912057c9c88b15af7f8f635e90110bb4375388": {
+    "ts": 1761035123.906233,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ac0827ae0e81b1dbd64411b6e3f647cb77343223e46351098f24f99ed0111a9b": {
+    "ts": 1761035244.689184,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5c2a55f77581c499c33db8174d6b98d775d6a9ea56b3149ade1ec1d08e78220e": {
+    "ts": 1761035363.9918673,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b278c0d7ee81fbbd642422a255083773a9f6cd20e034f58cd82fa3fcf9137a33": {
+    "ts": 1761035425.1470165,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7d3c74b5791d4b6cb7b6eac3aeaa68a5622dde9e907ad3c023ca1ac062945f02": {
+    "ts": 1761035544.0117316,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "af67ee2e4f6766c57bae0416057a5d5f98966255d936a3bbe3874bf3ad9179bb": {
+    "ts": 1761035664.9149017,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "828327043c1af02737414e6d777827ca60e8d5c3f478b143800269d6b27525fa": {
+    "ts": 1761035786.7952583,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "af52c43d539a9dad0e7e99d35b137d61ad9b275b069cee70f10e400327b67c7b": {
+    "ts": 1761035903.7627082,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d4c1b7ae070163944d28e3d65af8df311dd370a50371899079e1b0cea115105b": {
+    "ts": 1761036024.9324768,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "bf13814f97dabad05acbac792a01509a7334a705d5c7db533b797f98c1248df6": {
+    "ts": 1761036143.688393,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "88e332356d0d363c2cd828ae3e1402c62302867e379e1f897e0e6c8535ee6da9": {
+    "ts": 1761036263.667556,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8172e1d5d207ee1733a250be5df4cc2dc8583b7696856763e0098786f5f12264": {
+    "ts": 1761036383.8280911,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "263ebb0fba182b5820d09504472a5e2198e21c974a12cb81c53e6b41c1498fe3": {
+    "ts": 1761036504.0358915,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "311557db362210b308d8e60ef54df4d849313a32fdc4e842fcdae41053fbf411": {
+    "ts": 1761036624.3862019,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "81088496945710891defda7fb724e936715ffc52803a1a051e7928c1d75015fd": {
+    "ts": 1761036743.6735094,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c226b3c4b35eb3d97c795b1771c7ea8e84765fc4d4bff94e8054e7da0c0527b4": {
+    "ts": 1761036863.3393118,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6e09d844ddd697cd01bd3abf57ca19ed120965be8b419d2c0d0b635eda5e6125": {
+    "ts": 1761036969.70516,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "67a14d64e3b491ac123acaf17a1a83ee94bc90ecdd5d20815ce9905e2247876b": {
+    "ts": 1761037029.8312929,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2c50184f4150dab5e75e8c4578588d88864ef977d7678d3c417780c54d3d7af0": {
+    "ts": 1761037148.995021,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "135202ec580c84dd77d48f190ff22557b8d18e41eb868388357a7075c658d1c6": {
+    "ts": 1761037268.5426018,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3aac5fa1d23791ef428e5c2dac96a53bad05169411520ebd7515856ef4ecf64b": {
+    "ts": 1761037388.2321298,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "38b9f4c125accfc7de6df211d944fa68b579aaee9fdd490c6d33e5f4e7a1971d": {
+    "ts": 1761037508.2267675,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f62013bd227ef8ae5e1bf84ead9f2a339d81999b0674a2a58308de85a0cedf26": {
+    "ts": 1761037628.3725333,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "73f755f226277202011cdd91c3b48bb0af65d6bfa5ea3553776f87cc9a0cf71c": {
+    "ts": 1761037748.5650742,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b06ed9ecdeda9b6de0c83fef3c1737050245f7f475b0a63dbab481c25aa8840c": {
+    "ts": 1761037868.4679077,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f9254bf72bf8daf5068897d3b4a3b292c24705da52d90f9efec24c1bc6a7822a": {
+    "ts": 1761037990.6518528,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "639f01588b2b1554d9f7e10e7ac2edfab6ae48ca14556c8b324925ac21c35e05": {
+    "ts": 1761038109.1590474,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e1c2242d01ac46c7a1cf2fb378a7da49ceed080e8dcb663e390469d842bff4ab": {
+    "ts": 1761038230.039034,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9e1f438709987506778107acac85ab6004a783a29789e7a899cc8fdec8e38fa2": {
+    "ts": 1761038374.867963,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "602e963328a4758ec1abb1017052479033dc7ca2c19ffc06a2df9ec7fcf52e3f": {
+    "ts": 1761038469.6763833,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f455c3ff0d5fd0731e27e415fef5b9a1ee3d9933b5c73f9687ecca8a991dd782": {
+    "ts": 1761038589.0798018,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d1ab4e6eebc924c6cd9489cb93b2aba7bfbd7d1708c1daa89987d3b4d2891cce": {
+    "ts": 1761038710.5383863,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b16c3f197fe76c1a527ca5c5319869a45a61da239d4ee7bbc526f06ee7327538": {
+    "ts": 1761038829.2764378,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6c115e7e0ab7cc3aa43e1c06ccb184c34080d7cf7189a8de782621b25dd74334": {
+    "ts": 1761038951.4741297,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4e3475b0e4e160eb0fcf9e8d14d55972db2e60cc2e00c15d2e9ee06e66418a91": {
+    "ts": 1761039070.2656028,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "74bcf9a7c93db46210c26f0708909162d031f0d112dc3afb81790f73835ef39f": {
+    "ts": 1761039189.1920292,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "395b1f660c3ead364a614c072ed62352a3280015bad64582e74ca6b65f18bc26": {
+    "ts": 1761039308.7023118,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "185531ce169e7405eb1c03407a1a84e761695d10ac51eda418f763569e1c420c": {
+    "ts": 1761039429.354867,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c1748181abe9df011140f1ac0218447181f97e75864dc97b9e220445cca1378c": {
+    "ts": 1761039549.951595,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "76f787cdf5896858075f732e212ce152b683a843983f179f131e83b6c4b9fd09": {
+    "ts": 1761039669.2318552,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0f671c0167431da48b13f51d28b892055cc5ac42d50423cbf0395478b433750a": {
+    "ts": 1761039792.2069314,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ec56e4d0c0d62507ce6dc3f2b0ce1f5b02291ec28e54b200027b7fa4ba9a0380": {
+    "ts": 1761039852.286353,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "317cc441e453ea2b1b7ee6f08e26665f343c7e9e869825f69c947a45ddb71c0a": {
+    "ts": 1761039968.9059925,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ee58de651bc3eb398a26715c121148bef01bfbb18b3cbf6585f31aad324ccb48": {
+    "ts": 1761040029.3187811,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "70ea57d86109cb0897d4a59d34253ed2afa2dfaf8db2e2022417720f7b826b8c": {
+    "ts": 1761040211.338111,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f1fa68cee41055144d9c8988d9df4892275e745cb5edc277f02758eeef83bbb6": {
+    "ts": 1761040331.0574036,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2e4bfd9961c82d2fc6a033f71e429e03be13898cdc4947ecf510d253d12cf16a": {
+    "ts": 1761040392.1373165,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4e4c0aaa8a4a03506021e871e2f1d32b3b4adef9ea832a496710be555edc514d": {
+    "ts": 1761040511.4807456,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d84471c8cd3f692cc9eba29be1c050be21947cdfb946edc94f3968a9a5b3c6aa": {
+    "ts": 1761040630.296351,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ab5e8612701add7bd9373d7fc3f7f2ef641e589a51c0409d5dcdeba1410701ed": {
+    "ts": 1761040749.2287807,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c8897fe8589e852ef70c537f151d4431784f1674a567a960e65b2e4d853dd87e": {
+    "ts": 1761040870.1598258,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b583350f54d190982fda7bd13047763fce27cd982ec2dd0d9089d670cf8b38c1": {
+    "ts": 1761040989.3026018,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "61ae350aeb5ae206d7597c12b69828bd931f5d7ddeddce228f789f0705c9e8a0": {
+    "ts": 1761041109.4699447,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3ce26f71d71786fe1374175bce30dd286394ce29f7c04d5497b6c11c45e580d3": {
+    "ts": 1761041229.4309442,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "72326f8074219de52ad930a497a50cf25d388c6afa1e70f6a7a620938f3cedef": {
+    "ts": 1761041349.3677585,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6a143dfba23799fd61b9865fc6d189aa1fb9a9d2edf5f3aeed7aca5c6eb57472": {
+    "ts": 1761041469.676322,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8a4ff22e7d40d6b7bf2f4d62e660a1558c73bdf10a31e00ba4b42fd533d1e7dc": {
+    "ts": 1761041589.4568644,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5a0a29027742cb4b04e0bb263270182094b689e9059a1967a2c0eca73eda3487": {
+    "ts": 1761041709.376229,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "066b2f85d59ba43883ff9c70e8524d89b8d2fb38c6514e9f50dffeb20ae81d84": {
+    "ts": 1761041829.5181465,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "77da075dd18189b7553b91f9063f6fd2849b66951976bd8fc0b8460fdb7550b3": {
+    "ts": 1761041949.5442646,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "576bdcf2d041fb85a9278f228ac18ad8f6eab3fe6f4e0233ec87b56f43f587ba": {
+    "ts": 1761042069.6504788,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "900e251ff68c6a03ddbb9d1da1cc8c39f500ef291a293589b064ee29cd2f8446": {
+    "ts": 1761042189.4135141,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d6313622144279bbbae65df61ac71c67e505cef21c8c98ad10e2181585a6be67": {
+    "ts": 1761042309.5541503,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6a3fc75c69303596a85f6e721bae03df2edec5e9332b7fc6d9cd1737598f2f67": {
+    "ts": 1761042429.7582753,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d787dad93242905f1b96a0412ab31e6a2e049f05c9fb859f68f9e5b4f14cd3ef": {
+    "ts": 1761042489.8535898,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "71671702fb94babb5bf8554150d2f605c6cc970b8565786a2d9d09af8abba1f7": {
+    "ts": 1761042609.5555236,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2a54be7054ea91ecf19b5adde82d60a260e8cb8a130b0383b1c1a2d7ff58f8e4": {
+    "ts": 1761042729.8721583,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1f0d330d5dd592e65472bd5a598f2f6f3da7f982e5ec59feb6f86b8ac848908d": {
+    "ts": 1761042849.6397612,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "90295f008da7ee4f0289651e07cf88221ab1ed29771dfb66dcbcb9e14e82cb6f": {
+    "ts": 1761042969.6656725,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a32f04a21b311f27da494352e4060a7842b35eb1c7956ae862e143a61a435bca": {
+    "ts": 1761043089.6133864,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6d4560c0637494642b51cee121d60045d44a1b023b2ae1d77403e52b9ffbfc02": {
+    "ts": 1761043209.728692,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e1af949d1a5bd456fcddb00fece5947c0db6058ed01a817bd67b927c39e88a30": {
+    "ts": 1761043329.867382,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a03952fa17039a9b8f1b5dc3947ed79ac6a2ab53b82959bfc343a0ad8dbe932a": {
+    "ts": 1761043449.8181696,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7a4b820eadb3b2d4f951d1755adec3fd876d393ea9b9bf1bde8dbf02cf103b80": {
+    "ts": 1761043576.762672,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c5a00275fe16a47c0fb0f08ab501ba084d3ff54740ce98340f960d017df497d5": {
+    "ts": 1761043695.0193086,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8d164899ea4bfb5ef57e3c256a05f68e31ddfce9dc3db8a7e28ae5e74f78b1ac": {
+    "ts": 1761043810.697409,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d3d398e6bdafc6cb18ed86e7260229bade0a34aa30c077b376599f900a0a5fae": {
+    "ts": 1761043930.8830042,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "27b797698d0927a0b874557f8db40a0bcd1b201201923fbf8c044f9c7c583cb7": {
+    "ts": 1761044050.6206415,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "297dc42fcc14f0d0fcce7dd0000249f5c7f71ba123717f8cecc7e2ff76d300a3": {
+    "ts": 1761044172.0457382,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "37dbeaa3a42c9c8ab6f5711c49581da40f62ebddc4e49d84b32b1663e3e7ea81": {
+    "ts": 1761044292.779195,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "004a9b431974aa05caa6008dc34819962afa74618fc089dd360a4436f3882111": {
+    "ts": 1761044353.953435,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b071eb3c32d44b7e808cf89c8758a329b5f03a0df4219a21e5e2c6d0f2391c03": {
+    "ts": 1761044474.0181627,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d2e4523509207811dc12b1b8deeeafe7c6c345dadc1fbaaed6250b78084d52a4": {
+    "ts": 1761044593.2896383,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "84c7fb284157f0d2c1115f4b89969e797f1bc82093730139137bef7a8e45ef2c": {
+    "ts": 1761044653.61475,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b39aff0561b1de75f43d647f7bab8f8b81a2b8d47dcbc360d799fc3f4deff07a": {
+    "ts": 1761044772.9607027,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "b93850c4c3303df0673f2346592b3237123cd2204b809aee3731fd265fff3c56": {
+    "ts": 1761044833.0521874,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "84215b68caaf7bb9788ce9dc544e5e2ec66914ec38d4a13fbb2c09ad8c63288d": {
+    "ts": 1761044952.8957753,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7a5f2de7a1a80398a7d6ca8112cfdffc838cda021e931a05bd9451ce5d6ef97d": {
+    "ts": 1761045073.2069511,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9caf81a2ee9b170a3909be75624c460b09e2c57510519d8637593c4203a0dbff": {
+    "ts": 1761045133.3365335,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "6a2cf03f6c75170f4d7107b0a8800f7ca3c78e0b5480fe8ece08553c9bde65a2": {
+    "ts": 1761045253.0448701,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c18a30c1c79f9b83ba212decf2a896872da6d1112219a86bbeee4dea14b3e813": {
+    "ts": 1761045313.3549573,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "854729defcdb5693733e6e68dfd556156930155e88904c00db8c619af54e346b": {
+    "ts": 1761045373.440664,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "dff2f86fc16f0d43b02ffa29e75620d39b4c525c2f1a339f3ca08864b9f3adec": {
+    "ts": 1761045493.4041538,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "291cc6c2bcf87966704c448f165b0f76d217a2ed179f50d5cfdb0fc3c6de6849": {
+    "ts": 1761045611.947268,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c7c8fdb0fab6b16ae49f3171e91f91f0a69a8358c3d9bcdac7ab2b7c421473c5": {
+    "ts": 1761045731.4992738,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "76fa20d9f4a3cf1918159138856a5177738d6331277838f78fe0d3fff8072050": {
+    "ts": 1761045851.514873,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9c5081108391b6627c0c15554d7174d84615c72921aa1065eac21f147aaeb85c": {
+    "ts": 1761045971.5353138,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1071979185be1357b9b35641d15efe7dc010b5c97cfb2ab38adbaca63637a055": {
+    "ts": 1761046091.5613544,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e48119eaf42801cdf9ee494115a658574fd8c117e70ac15f4e2c1a096f8860f0": {
+    "ts": 1761046211.4776096,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "e5c9510e3d163721245354781999ae11aa3d8f5382468c89b2906ba05efb8358": {
+    "ts": 1761046331.521512,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "eb5f6d3d3feced0d2574edac95b57f016bcb18e1030da3a01f306ce1d9db2bfb": {
+    "ts": 1761046451.6137614,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "bb5412d9fdf175277fa5e51e80fef2d61fb3175e85015752b51bc9b0abc6d4d5": {
+    "ts": 1761098811.9601543,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a414b444550b49189810d4fd473f80581c90ca4649440ea7f087b4c31ee1fc5b": {
+    "ts": 1761099047.5705395,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d2b550c1dc1c0b93edef0c4f3ea63506e7c1b049935ca45869d2334e1b353ab3": {
+    "ts": 1761099168.270125,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "0fa10b61785946d47c42d866d033cca6f1f7e87981fca9d69fda43e65e70cc04": {
+    "ts": 1761099287.7194667,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "fe97662cd34326e78386f87198fae3d6372757119d78068252aa3c3d68492890": {
+    "ts": 1761099408.1471987,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8d4c105a9c2f38091929488a4a2011b3dad7bcba54ba760edfe5546114b4c549": {
+    "ts": 1761099527.1863477,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "cf7b05494453ec08ccd1d123e81fb647f1858dec30f80dbd898fb2fad22d1f92": {
+    "ts": 1761099648.9836867,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a1c6941e722191fff6d485caebc60bb9458d74bf65492a88e3ee5841068a4a36": {
+    "ts": 1761099767.5863564,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "767c04a3f13368cb9bed7b87301c66b6d1392d8f18bf040a57da52082eaa74be": {
+    "ts": 1761099890.2821789,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "88a498b9eb46dd7923c2d01bfe0a90a7394c34d1b5d588cb73da277db21486be": {
+    "ts": 1761100007.134253,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "287bfcb335b038982d1f0f093a8e1a172147db574236a7959bca06e9e08f65b6": {
+    "ts": 1761100127.8218646,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "54241a96ed3497e3d2e6f02c86c0547f89435590c9694a4cdb05e713176587dc": {
+    "ts": 1761100246.4969466,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "936b669323e7ddef5f7543f82970d3034963f4516ec7827d8a63528a9014ec36": {
+    "ts": 1761100367.8571415,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "c1f360825d09551f83ceed26b5e1977f62033827b92e9111dba1b2cc67bd7869": {
+    "ts": 1761100488.085086,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "9ffa006f05746df32407e5c04ac0bf09840564300bb77802b20696d8e68d415e": {
+    "ts": 1761100607.8693004,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "03e58ca78f174d8ec4cdc19d929e67bb16bcfbf03eed470d690b8eda1c4d6075": {
+    "ts": 1761100727.8069966,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "4d91452d11490c315034c384becc53ce3c49a917962e2cf9ac547221427bdc5b": {
+    "ts": 1761100848.2553873,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "361e213f4802edd6d273d71ebdd27765221cf7e63ac4c803b04e23e016ba43bd": {
+    "ts": 1761100968.518689,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "58ef5db718c24d331980f7273af3e77f7c254ccbfea72ce70c6ec202c1662be9": {
+    "ts": 1761101088.3209612,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "3852fb72274401be85498c86688d64597916965092ce21899120cfb863f74822": {
+    "ts": 1761101208.1748257,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "92502a5072fde0c4edbb2f94becc420d612046598c7e283a9fd1e24c18165a46": {
+    "ts": 1761101808.230468,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "6aa232da3b2ec9a99086c033de13b47201a846c9db07cb7c11b7fd5a087a7ec9": {
+    "ts": 1761102408.2918034,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8a2576857e9bcd3716a2d2c8f392dd296b2d441557c1dc4649590247a5f2e0be": {
+    "ts": 1761131531.3431137,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "df1af99da7f6ff805ba9bb6b3fb336718f7bb1b3f0094d52efa6a3e20b420f74": {
+    "ts": 1761131648.2543318,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "015c87ed7f884a370f432bbe290d9fa81cf8bbca5af16bb37e2bd98025ff244a": {
+    "ts": 1761131769.991922,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7bbe41d66dcd8865f9a10ebdbebb9727df649e665cb8d2a585de3a72a7129f19": {
+    "ts": 1761131889.5619211,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "388d1712e124f62a61e0b5b31bda3c6812b4c738320cc095cff641932ccb916e": {
+    "ts": 1761132009.1329975,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "2ffa4e1b9da5e2755c4106fa6fea80014bf4c2ce8c20faf679a08ab526be73ef": {
+    "ts": 1761132609.178418,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": [],
+      "cached": false,
+      "enabled": true
+    }
+  },
+  "39464b9098d2ae0f9c3d2cb78fdfdc2cc2fc901f11510d4c0b77c2987f05d264": {
+    "ts": 1761133209.213011,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d1317de7749f97c5ea3bcec4bc527938788c7ef33c509feaa5614a751a753beb": {
+    "ts": 1761186669.947793,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "f41e103988e2277f43f4a2ea44050383c37a5f6984d6ba5bea4275d4ebd30613": {
+    "ts": 1761186906.19731,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "7cb25118bfd5ffdd7dc7c83eabb0ccc4de31527bcb1d9bab69d3badc0b3e8b12": {
+    "ts": 1761187026.5956619,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ea24c05d9e53bd3d35e1f171c9879492930647b9ff9c303fb45b48b842fc6b84": {
+    "ts": 1761187145.3943477,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5939352f2496fa332908d0f66e9c733152a61585f3dee0f7283b5fcb19215222": {
+    "ts": 1761187267.2213547,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a0b968ebe79240a6da080fddc3ed22b5f12cc7fb1ffaccc956f8e7e1df654ec3": {
+    "ts": 1761187385.646699,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8e1d96930c1e744cc751f300186128da25654d94543a8d5e0a48fd5753a450e3": {
+    "ts": 1761187504.9459975,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "136b0e863a2cb5b91a66b0e7fe2cd0ef72b8172af61b55f71b913e12adca91f1": {
+    "ts": 1761187625.155331,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "dead8f1abb1411452b08fe16db01d70fe8a1291486dbfb324393adcf478d3423": {
+    "ts": 1761187747.2833343,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "bb36035963e826c442e26d59f52d8f3f20a9cabeea73748f1f8c4f146f072218": {
+    "ts": 1761187866.6112022,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "5a180f8cb1dc637e57284ee219796bbefd352032586904655fd02e6dd9672332": {
+    "ts": 1761187986.0563323,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "1662deca885b256e7ccdfc69c8df7510a4c403f531b098873fd48eadf6ef0792": {
+    "ts": 1761188106.037107,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "652efbfb0268c01a4c6fd8a3acce1eade0e407ee9fdbaf2af8e2fb02000aa645": {
+    "ts": 1761188225.4218435,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a7bfb3cf43b260372f80afbfa5997b48045064c251221cbb77d21afc66e4dbef": {
+    "ts": 1761188345.375912,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "8619a65b55fd226d1be12b4f0a39eefc84c0e30d2770280e2b51e0b8c53c8914": {
+    "ts": 1761188464.8371701,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "54dae26a755e2d31226f905241ee91d688e805a57f2f6285edd2e9a2b9e3950d": {
+    "ts": 1761188586.600103,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "fb4cf554e162b93a38c1d4399ab8673be3d6e154487ba8fdf84c71aac1b2a4e5": {
+    "ts": 1761188706.6831331,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "2b45dcededaf01fd168465f5c43e4ab4ae20016a24859c96f0e3d9c9135752f1": {
+    "ts": 1761188826.204308,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d77850af84bfdeb15910a746485472f09815f01aa195f9ad06c3e6a6ed1517a8": {
+    "ts": 1761188946.2435517,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "ae943e46be8a69570749f6d78c408853d532e6a46f6a664769eec75c7d76c3c0": {
+    "ts": 1761189064.6688018,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "47e8de8cdd7aaba3f2406b06a73fbccac3a4f72980b2f67d153db4fe08dcd686": {
+    "ts": 1761189185.7063165,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "a34f5cb4bf9bef16eaaccb16733e49d1ff232fc6aeb51f89d35c414190bcfcef": {
+    "ts": 1761189306.4748023,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "d2901b1edc5682678add540b254896f90d92491af8f2f1b60ef3982c7c39e409": {
+    "ts": 1761189426.2813265,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  },
+  "edd1d70c1ab38c204a89ae0627dd2245bbbe9ecb6b39d0d436f46b51c662ae76": {
+    "ts": 1761332274.6818576,
+    "data": {
+      "summary": "未配置/未安装网络检索依赖（SERPAPI/BING 或 requests），改用本地简要摘要。",
+      "sources": []
+    }
+  }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>玄机AI 运维仪表盘</title>
+  <link rel="stylesheet" href="/static/report.css" />
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 16px; }
+    h1 { margin-bottom: 16px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+    .links a { display: block; margin: 8px 0; color: #2563eb; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+    .note { color: #6b7280; font-size: 14px; }
+    .kv { display:flex; gap:8px; align-items:center; margin:6px 0; }
+    .kv label { width: 210px; color:#374151; }
+  </style>
+  <script>
+    async function ping(url, id){
+      const el = document.getElementById(id);
+      try {
+        const res = await fetch(url, { method: 'GET' });
+        el.textContent = res.ok ? 'UP' : ('DOWN ('+res.status+')');
+        el.style.color = res.ok ? '#16a34a' : '#dc2626';
+      } catch(e){
+        el.textContent = 'DOWN'; el.style.color = '#dc2626';
+      }
+    }
+    async function loadPublicUrls(){
+      try {
+        const res = await fetch('/static/public_urls.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        const box = document.getElementById('publicUrls');
+        if (!box) return;
+        const urls = data.urls || {};
+        let html = '';
+        if (urls.report_frontend_8080) html += `<div><a target="_blank" href="${urls.report_frontend_8080}">公网-动态报告 (8080)</a></div>`;
+  if (urls.static_8088) html += `<div><a target="_blank" href="${urls.static_8088}/status_report.html">公网-静态报告 (8088)</a></div>`;
+  if (urls.static_8088) html += `<div><a target="_blank" href="${urls.static_8088}/operation_report_latest.html">公网-运营周期报告（最新）</a></div>`;
+  if (urls.static_8088) html += `<div><a target="_blank" href="${urls.static_8088}/operation_report_latest.md">公网-运营周期报告（最新·Markdown）</a></div>`;
+        if (urls.api_8000) html += `<div><a target="_blank" href="${urls.api_8000}/status">公网-API /status (8000)</a></div>`;
+        if (!html) html = '<div class="note">未找到公网链接（请配置 NGROK_AUTH_TOKEN 并等待隧道建立）。</div>';
+        box.innerHTML = html + `<div class="note">更新时间：${data.timestamp || ''}</div>`;
+      } catch(e) {}
+    }
+    async function loadTimes(){
+      const utcEl = document.getElementById('utcTime');
+      const localEl = document.getElementById('localTime');
+      const tzEl = document.getElementById('tzName');
+      const loadedEl = document.getElementById('timesLoadedAt');
+      try {
+        const res = await fetch('/static/status.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('status.json not available');
+        const data = await res.json();
+        utcEl.textContent = data.timestamp || '不可用';
+        localEl.textContent = data.local_time || '不可用';
+        tzEl.textContent = data.timezone ? `（${data.timezone}）` : '';
+        const now = new Date();
+        const pad = (n)=> String(n).padStart(2,'0');
+        loadedEl.textContent = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      } catch(e) {
+        utcEl.textContent = '不可用';
+        localEl.textContent = '不可用';
+        tzEl.textContent = '';
+        loadedEl.textContent = '';
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      ping('http://127.0.0.1:8000/health', 'apiStatus');
+      ping('http://127.0.0.1:8080/status_report', 'dynamicStatus');
+      ping('http://127.0.0.1:8088/status_report.html', 'staticStatus');
+      loadPublicUrls();
+      loadTimes();
+      setInterval(loadTimes, 30000);
+    });
+    async function loadInternetSelfTest(){
+      try {
+        const res = await fetch('/static/internet_self_test.json', { cache: 'no-store' });
+        const box = document.getElementById('internetSelfTestBox');
+        if (!box) return;
+        if (!res.ok) { box.innerHTML = '<div class="note">尚未执行过自检</div>'; return; }
+        const data = await res.json();
+        const ts = data.timestamp || '-';
+        const urlOk = data.url_test && data.url_test.ok === true;
+        const searchOk = data.search_test && data.search_test.ok === true;
+        const badge = (ok)=> `<span style="padding:2px 6px; border-radius:6px; color:#fff; background:${ok?'#16a34a':'#dc2626'};">${ok?'通过':'失败'}</span>`;
+        box.innerHTML = `
+          <div class='kv'><label>最近自检时间：</label> <b>${ts}</b></div>
+          <div class='kv'><label>URL 直连：</label> ${badge(urlOk)}</div>
+          <div class='kv'><label>搜索聚合：</label> ${badge(searchOk)} <span class='note' style='margin-left:8px;'>(未配置 Key 时将降级为本地摘要)</span></div>
+        `;
+      } catch(e) {}
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      loadInternetSelfTest();
+      setInterval(loadInternetSelfTest, 60000);
+    });
+  </script>
+  </head>
+<body>
+  <div class="container">
+    <h1>🔭 玄机AI 运维仪表盘</h1>
+    <div class="card">
+      <h2>即时调优摘要</h2>
+      <div id="tuneBox" class="note">加载中...</div>
+      <script>
+        async function loadTuneSummary(){
+          const box = document.getElementById('tuneBox');
+          try{
+            const res = await fetch('/static/tuning_summary.json', { cache: 'no-store' });
+            if(!res.ok){ box.textContent = '暂无调优摘要'; return; }
+            const s = await res.json();
+            const w = s.weights || {}; const m = s.metrics || {};
+            const fmtW = Object.keys(w).length ? Object.entries(w).map(([k,v])=>`${k}: ${v}`).join(', ') : '-';
+            box.innerHTML = `
+              <div class='note'>快照：${s.generated_local || s.generated_utc || '-'}</div>
+              <div class='kv'><label>窗口期：</label> <b>${s.window ?? '-'}</b></div>
+              <div class='kv'><label>EMA：</label> <b>${s.ema_alpha ?? '-'}</b></div>
+              <div class='kv'><label>融合权重：</label> <b>${fmtW}</b></div>
+            `;
+          }catch(e){ box.textContent = '加载失败'; }
+        }
+        window.addEventListener('DOMContentLoaded', ()=>{ loadTuneSummary(); setInterval(loadTuneSummary, 60000); });
+      </script>
+    </div>
+      <h2>服务状态</h2>
+      <ul>
+        <li>API (8000): <b id="apiStatus">检查中...</b></li>
+        <li>动态状态报告 (8080): <b id="dynamicStatus">检查中...</b></li>
+        <li>静态状态报告 (8088): <b id="staticStatus">检查中...</b></li>
+      </ul>
+      <p class="note">注：动态页面依赖 uvicorn/fastapi，静态页面不依赖。</p>
+    </div>
+    <div class="card links">
+      <h2>快捷入口</h2>
+      <a href="http://127.0.0.1:8000/status" target="_blank">API /status</a>
+      <a href="http://127.0.0.1:8000/health" target="_blank">API /health</a>
+      <a href="http://127.0.0.1:8080/report" target="_blank">运营报告前端 /report</a>
+      <a href="http://127.0.0.1:8080/operation_report" target="_blank">运营周期报告（动态）</a>
+      <a href="http://127.0.0.1:8080/status_report" target="_blank">动态“运行状态报告”</a>
+  <a href="http://127.0.0.1:8088/status_report.html" target="_blank">静态“运行状态报告”</a>
+  <a href="http://127.0.0.1:8088/operation_report_latest.html" target="_blank">静态“运营周期报告（最新）”</a>
+  <a href="http://127.0.0.1:8088/operation_report_latest.md" target="_blank">静态“运营周期报告（最新·Markdown）”</a>
+      <div style="margin-top:8px;">
+        <span class="note">静态报告分段直达：</span>
+        <div class="links">
+          <a href="http://127.0.0.1:8088/status_report.html#sec-status" target="_blank">进程状态</a>
+          <a href="http://127.0.0.1:8088/status_report.html#sec-autonomous" target="_blank">学习/复盘日志</a>
+          <a href="http://127.0.0.1:8088/status_report.html#sec-predict" target="_blank">双色球预测日志</a>
+          <a href="http://127.0.0.1:8088/status_report.html#sec-optimize" target="_blank">优化循环日志</a>
+          <a href="http://127.0.0.1:8088/status_report.html#sec-person" target="_blank">历史人物任务日志</a>
+          <a href="http://127.0.0.1:8088/status_report.html#sec-api" target="_blank">API 日志</a>
+        </div>
+        <div class="links" style="margin-top:6px;">
+          <a href="http://127.0.0.1:8088/operation_report.html" target="_blank">静态“运营周期报告”</a>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>时间/时区</h2>
+      <div class="kv"><label>系统时间（UTC）：</label> <b id="utcTime">加载中...</b></div>
+      <div class="kv"><label>北京时间<span id="tzName">（Asia/Shanghai）</span>：</label> <b id="localTime">加载中...</b></div>
+      <div class="kv"><label>最近加载：</label> <span id="timesLoadedAt" class="note">-</span></div>
+      <div style="margin-top:8px;">
+        <button onclick="loadTimes()" style="padding:6px 10px; border:1px solid #e5e7eb; border-radius:6px; background:#fafafa; cursor:pointer;">手动刷新</button>
+      </div>
+      <p class="note">上述时间来自 <code>/static/status.json</code> 快照（每 ~10s 更新一次）。</p>
+    </div>
+    <div class="card">
+      <h2>后台任务心跳与最近摘要</h2>
+      <div id="hbBox" class="note">加载中...</div>
+      <script>
+        async function loadHeartbeats(){
+          const box = document.getElementById('hbBox');
+          try{
+            const res = await fetch('/static/status.json', { cache: 'no-store' });
+            if(!res.ok){ box.textContent = '暂无心跳快照'; return; }
+            const data = await res.json();
+            const hb = data.heartbeats || {};
+            const fmtTail = (t)=> t ? `<pre style='margin-top:8px;'>${t.replace(/[&<>]/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))}</pre>` : '';
+            const row = (name, h) => {
+              if(!h) h = {};
+              const ok = (h.status||'').toUpperCase()==='RUNNING';
+              const badge = `<span style="padding:2px 6px; border-radius:6px; color:#fff; background:${ok?'#16a34a':'#dc2626'};">${h.status||'UNKNOWN'}</span>`;
+              return `
+                <div style='border:1px solid #e5e7eb; border-radius:8px; padding:10px; margin:10px 0;'>
+                  <div class='kv'><label>${name}：</label> ${badge} <span class='note' style='margin-left:6px;'>pid=${h.pid??'-'} uptime=${h.uptime??'-'}</span></div>
+                  <div class='kv'><label>最近日志时间：</label> <b>${h.last_log_time||'-'}</b></div>
+                  ${fmtTail(h.last_tail||'')}
+                </div>`
+            };
+            box.innerHTML = row('xuanji_predict', hb['xuanji_predict']) + row('xuanji_person', hb['xuanji_person']);
+          }catch(e){ box.textContent = '加载失败'; }
+        }
+        window.addEventListener('DOMContentLoaded', ()=>{ loadHeartbeats(); setInterval(loadHeartbeats, 30000); });
+      </script>
+    </div>
+    <div class="card">
+      <h2>公网访问（可选）</h2>
+      <div id="publicUrls" class="links"></div>
+      <p class="note">如需自动生成公网链接，请在 <code>.env</code> 设置 <code>NGROK_AUTH_TOKEN</code> 并等待约10秒；也可参考 <code>PUBLIC_ACCESS_CONFIGURATION.md</code> 采用 FRP/Nginx。</p>
+    </div>
+    <div class="card">
+      <h2>互联网自检</h2>
+      <div class="links">
+        <a href="http://127.0.0.1:8080/internet_self_test" target="_blank">查看最近一次自检结果（动态）</a>
+        <a href="/static/internet_self_test.json" target="_blank">查看最近一次自检 JSON（静态）</a>
+      </div>
+      <div id="internetSelfTestBox"></div>
+      <p class="note">若尚未执行自检，请运行 <code>tools/self_test_internet.py</code>。自检将直接抓取官网并尝试检索聚合。</p>
+    </div>
+    <div class="card">
+      <h2>运营周期报告摘要</h2>
+      <div id="opSummaryBox" class="note">加载中...</div>
+      <div class="links" style="margin-top:8px;">
+        <a href="http://127.0.0.1:8080/operation_report" target="_blank">查看动态报告</a>
+        <a href="http://127.0.0.1:8088/operation_report.html" target="_blank">查看静态报告</a>
+      </div>
+      <script>
+        async function loadOpSummary(){
+          const box = document.getElementById('opSummaryBox');
+          try{
+            const res = await fetch('/static/operation_summary.json', { cache: 'no-store' });
+            if(!res.ok){ box.textContent = '暂无运营报告摘要'; return; }
+            const s = await res.json();
+            const core = s.core || {}; const ssq = s.ssq || {};
+            const row = (k,v)=> `<div class='kv'><label>${k}：</label> <b>${(v??'-')}</b></div>`;
+            box.innerHTML = `
+              <div class='note'>文件：${s.file||'-'}｜报告时间：${s.report_time||'-'}｜快照：${s.generated_local||s.generated_utc||'-'}</div>
+              <h3 style='margin:10px 0 6px;'>核心指标</h3>
+              ${row('累计学习周期', core['累计学习周期'])}
+              ${row('系统优化进度', core['系统优化进度'])}
+              ${row('系统自主升级', core['系统自主升级'])}
+              ${row('性能提升倍数', core['性能提升倍数'])}
+              <h3 style='margin:14px 0 6px;'>双色球指标</h3>
+              ${row('学习周期', ssq['双色球学习周期'])}
+              ${row('完全匹配次数', ssq['完全匹配次数'])}
+              ${row('模型权重分布', ssq['模型权重分布'])}
+            `;
+          }catch(e){ box.textContent = '加载失败'; }
+        }
+        window.addEventListener('DOMContentLoaded', ()=>{ loadOpSummary(); setInterval(loadOpSummary, 60000); });
+      </script>
+      </div>
+
+      <div class="card" id="self-heal-alert">
+        <h2>自愈策略告警</h2>
+        <pre id="self-heal-log">加载中...</pre>
+        <script>
+          async function loadSelfHealLog(){
+            const box = document.getElementById('self-heal-log');
+            try{
+              const res = await fetch('/static/self_heal_log.txt', { cache: 'no-store' });
+              if(!res.ok){ box.textContent = '暂无自愈日志'; return; }
+              const t = await res.text();
+              box.textContent = t.split('\n').slice(-10).join('\n');
+            }catch(e){ box.textContent = '加载失败'; }
+          }
+          window.addEventListener('DOMContentLoaded', ()=>{ loadSelfHealLog(); setInterval(loadSelfHealLog, 60000); });
+        </script>
+    </div>
+    <div class="card">
+      <h2>联网检索（实验性）</h2>
+      <div class="kv"><label>查询：</label> <input id="webQuery" placeholder="例如：联网查询: 量子计算 最新进展 或 url:https://www.python.org/" style="flex:1; width:100%; padding:6px; border:1px solid #e5e7eb; border-radius:6px;" /></div>
+      <div style="margin-top:8px;"><button id="runWebSearch" style="padding:6px 10px; border:1px solid #e5e7eb; border-radius:6px; background:#fafafa; cursor:pointer;">执行检索</button></div>
+      <pre id="webSearchResult" style="margin-top:10px; white-space:pre-wrap; word-break:break-word;"></pre>
+      <script>
+        document.getElementById('runWebSearch').addEventListener('click', async () => {
+          const q = document.getElementById('webQuery').value || '';
+          const box = document.getElementById('webSearchResult');
+          if (!q.trim()) { box.textContent = '请输入查询内容'; return; }
+          box.textContent = '检索中...';
+          try {
+            const resp = await fetch('http://127.0.0.1:8080/web_research', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ query: q, max_results: 3 })
+            });
+            const data = await resp.json();
+            if (!resp.ok) { box.textContent = '错误：' + (data.error || resp.status); return; }
+            const sources = (data.sources || []).map(u => `- ${u}`).join('\n');
+            box.textContent = `摘要:\n${data.summary || ''}\n\n来源:\n${sources || '(无)'}`;
+          } catch (e) {
+            box.textContent = '调用失败：' + e;
+          }
+        });
+      </script>
+      <p class="note">提示：未配置 SERPAPI/Bing Key 时，聚合搜索会降级为本地摘要；可用 <code>url:https://</code> 直接抓取。</p>
+    </div>
+    <p class="note">本页面由系统自动生成，可用于本地运维与快速跳转。</p>
+  </div>
+ </body>
+</html>
