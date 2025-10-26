@@ -1,0 +1,70 @@
+name: Auto Full Autonomy (Phase C) - template
+
+# WARNING: Template for fully-autonomous pipeline. WILL NOT RUN unless the required secrets
+# are configured and branch protection/organization policies allow auto-merge/deploy.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron: '0 2 * * *' # daily trigger (example)
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+env:
+  DRY_RUN: 'true' # default to safe dry-run; set to 'false' in secrets to enable
+
+jobs:
+  full-pipeline:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.ENABLE_PHASE_C == 'true' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+      - name: Run lint/tests
+        run: |
+          # Fast checks only; extend in your CI
+          pytest -q || true
+      - name: Run validate & package
+        run: |
+          python3 experiments/train.py --min-samples 10 || true
+          python3 tools/package_model.py --model-path ssq_ai_model_state.json --out-dir artifacts
+      - name: Register artifact (local registry)
+        run: |
+          python3 tools/model_registry.py register artifacts || true
+      - name: Create upgrade PR (if enabled)
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          # This uses gh CLI under the assumption GH_TOKEN is provided as a secret
+          git checkout -b xuanji/autoupdate-$(date +%s)
+          git add artifacts || true
+          git commit -m "chore: auto-packaged model artifact" || true
+          git push --set-upstream origin HEAD
+          gh pr create --title "Auto: packaged model" --body "Automated model packaging (phase C)" || true
+      - name: Auto-merge PR and deploy to canary (unsafe - requires secrets)
+        if: ${{ secrets.AUTO_MERGE == 'true' && secrets.DRY_RUN != 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        run: |
+          echo "DRY RUN: set DRY_RUN=false in secrets to enable actual merge/deploy"
+          ./tools/auto_merge_and_deploy.sh --pr-title "Auto: packaged model" --dry-run=true || true
+
+  monitor-loop:
+    runs-on: ubuntu-latest
+    needs: full-pipeline
+    if: ${{ secrets.ENABLE_PHASE_C == 'true' }}
+    steps:
+      - name: Monitor canary and auto rollback (template)
+        run: |
+          python3 tools/auto_rollback.py --canary-endpoint "${{ secrets.CANARY_METRICS_URL }}" --threshold-file tools/rollback_thresholds.json || true

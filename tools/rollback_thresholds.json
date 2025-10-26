@@ -1,0 +1,4 @@
+{
+  "error_rate": { "max": 0.05 },
+  "latency_p95": { "max": 1000 }
+}

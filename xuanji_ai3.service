@@ -1,0 +1,15 @@
+[Unit]
+Description=Xuanji AI 3.0 Autonomous Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+ExecStart=/usr/bin/python3 /workspaces/-AI-2.0/xuanji_ai_main.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/workspaces/-AI-2.0/xuanji_ai3.log
+StandardError=append:/workspaces/-AI-2.0/xuanji_ai3.err
+
+[Install]
+WantedBy=multi-user.target

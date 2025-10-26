@@ -1,0 +1,18 @@
+[Unit]
+Description=Celestial Nexus - Autonomous Run Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/workspaces/-AI-2.0
+ExecStart=/usr/bin/python3 /workspaces/-AI-2.0/autonomous_run.py
+Restart=on-failure
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+# 可通过环境变量控制自动升级/Deepseek等
+Environment=DEEPSEEK_API_KEY=
+Environment=XUANJI_UPGRADE_MODE=dry-run
+
+[Install]
+WantedBy=multi-user.target

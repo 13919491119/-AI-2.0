@@ -1,0 +1,6 @@
+[2025-10-14 23:47:06.469469] 自愈触发: 异常任务=[{'name': 'xuanji_fetch_ssq', 'status': 'STOPPED', 'pid': None, 'uptime': None, 'raw': 'xuanji_fetch_ssq                 STOPPED   Not started'}], 健康评分=None
+[2025-10-14 23:47:08.141176] 权重自动回退到历史版本
+[2025-10-15 01:05:58.377523] 自愈触发: 异常任务=[{'name': 'xuanji_fetch_ssq', 'status': 'STOPPED', 'pid': None, 'uptime': None, 'raw': 'xuanji_fetch_ssq                 STOPPED   Not started'}], 健康评分=None
+[2025-10-15 01:06:00.484442] 权重自动回退到历史版本
+[2025-10-15 15:27:09.765126] 自愈触发: 异常任务=[{'name': 'xuanji_fetch_ssq', 'status': 'STOPPED', 'pid': None, 'uptime': None, 'raw': 'xuanji_fetch_ssq                 STOPPED   Not started'}], 健康评分=None
+[2025-10-15 15:27:12.051899] 权重自动回退到历史版本

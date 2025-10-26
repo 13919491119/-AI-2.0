@@ -1,0 +1,21 @@
+[Unit]
+Description=Celestial Nexus WeChat Integration Service (Gunicorn)
+After=network.target
+Wants=celestial_api.service
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+# 可根据实际虚拟环境调整
+Environment=WECHAT_TOKEN=celestial_nexus_ai_token
+Environment=STRICT_WECHAT_VERIFY=1
+Environment=USE_NGROK=false
+ExecStart=/usr/bin/env bash -c '/workspaces/-AI-2.0/start_wechat_gunicorn.sh'
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+StandardOutput=append:/workspaces/-AI-2.0/wechat_server.out.log
+StandardError=append:/workspaces/-AI-2.0/wechat_server.err.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+bind = '0.0.0.0:9090'
+workers = 2
+worker_class = 'gevent'
+timeout = 30
+graceful_timeout = 30
+accesslog = '-'  # stdout
+errorlog = '-'   # stderr
+loglevel = 'info'
+preload_app = False

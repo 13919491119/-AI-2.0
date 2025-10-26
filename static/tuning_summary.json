@@ -1,0 +1,34 @@
+{
+  "generated_utc": "2025-10-15 16:00:28 UTC +0000",
+  "generated_local": "2025-10-16 00:00:28 CST +0800",
+  "window": 2000,
+  "ema_alpha": 0.6,
+  "weights": {
+    "qimen": 0.250047,
+    "ai": 0.256298,
+    "liuyao": 0.239608,
+    "liuren": 0.254047
+  },
+  "metrics": {
+    "liuyao": {
+      "reds_rate": 0.170667,
+      "blue_rate": 0.0575,
+      "samples": 2000
+    },
+    "liuren": {
+      "reds_rate": 0.185417,
+      "blue_rate": 0.058,
+      "samples": 2000
+    },
+    "qimen": {
+      "reds_rate": 0.1765,
+      "blue_rate": 0.0595,
+      "samples": 2000
+    },
+    "ai": {
+      "reds_rate": 0.185833,
+      "blue_rate": 0.069,
+      "samples": 2000
+    }
+  }
+}

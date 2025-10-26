@@ -1,0 +1,33 @@
+{
+  "metrics": {
+    "liuyao": {
+      "reds_rate": 0.173133,
+      "blue_rate": 0.0608,
+      "samples": 5000
+    },
+    "liuren": {
+      "reds_rate": 0.1828,
+      "blue_rate": 0.0604,
+      "samples": 5000
+    },
+    "qimen": {
+      "reds_rate": 0.1867,
+      "blue_rate": 0.0624,
+      "samples": 5000
+    },
+    "ai": {
+      "reds_rate": 0.180867,
+      "blue_rate": 0.0574,
+      "samples": 5000
+    }
+  },
+  "weights": {
+    "qimen": 0.257485,
+    "ai": 0.249467,
+    "liuren": 0.252418,
+    "liuyao": 0.24063
+  },
+  "generated_at": 1760627651.0447075,
+  "ema_alpha": 0.6,
+  "window": 0
+}

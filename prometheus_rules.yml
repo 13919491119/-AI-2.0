@@ -1,0 +1,31 @@
+groups:
+  - name: celestial_wechat_api
+    rules:
+      - alert: WeChatSignatureFailuresHigh
+        expr: increase(wechat_signature_fail_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "近期微信签名失败过高"
+      - alert: WeChatLatencyP95High
+        expr: histogram_quantile(0.95, sum(rate(wechat_request_latency_seconds_bucket[5m])) by (le)) > 1.5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "WeChat接口P95延迟 >1.5s"
+      - alert: APILatencyP95High
+        expr: histogram_quantile(0.95, sum(rate(celestial_api_request_latency_seconds_bucket[5m])) by (le)) > 1.5
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+            summary: "API服务P95延迟 >1.5s"
+      - alert: WeChatDedupSurge
+        expr: increase(wechat_dedup_hits_total[10m]) > 100
+        for: 5m
+        labels:
+          severity: info
+        annotations:
+          summary: "去重命中激增，可能存在重放/批量重试"

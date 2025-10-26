@@ -1,0 +1,45 @@
+From c48a0548a05b05d16d510c5588bb0df75fa9e023 Mon Sep 17 00:00:00 2001
+From: xuanji-bot <devnull@example.com>
+Date: Sat, 25 Oct 2025 09:07:42 +0000
+Subject: [PATCH] =?UTF-8?q?chore:=20package=20safe=20updates=20(autonomous?=
+ =?UTF-8?q?=20branch)=20=E2=80=94=20user=20authorized=20local=20commit?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ api/server.py           | 4 ++--
+ tools/monitor_xuanji.py | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/api/server.py b/api/server.py
+index 505cdd7..af1898a 100644
+--- a/api/server.py
++++ b/api/server.py
+@@ -5,8 +5,8 @@ This file is intentionally minimal for smoke testing; model loading is done
+ asynchronously on startup to avoid blocking the server.
+ """
+ # pyright: ignore[reportMissingImports]
+-from fastapi import FastAPI, HTTPException
+-from pydantic import BaseModel
++from fastapi import FastAPI, HTTPException # pyright: ignore[reportMissingImports]
++from pydantic import BaseModel # pyright: ignore[reportMissingImports]
+ import threading
+ 
+ 
+diff --git a/tools/monitor_xuanji.py b/tools/monitor_xuanji.py
+index a49eb8c..5905f5f 100755
+--- a/tools/monitor_xuanji.py
++++ b/tools/monitor_xuanji.py
+@@ -114,7 +114,7 @@ def main():
+             write_monlog('发现 upgrade_plan_rejected.json')
+         # 简要资源统计
+         try:
+-            import psutil
++            import psutil # pyright: ignore[reportMissingModuleSource]
+             mem = psutil.virtual_memory()
+             write_monlog(f"mem_used={mem.percent}%")
+         except Exception:
+-- 
+2.50.1
+

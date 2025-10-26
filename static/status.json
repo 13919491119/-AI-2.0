@@ -1,0 +1,193 @@
+{
+  "timestamp": "2025-10-15 16:00:28 UTC +0000",
+  "local_time": "2025-10-16 00:00:28 CST +0800",
+  "timezone": "Asia/Shanghai",
+  "supervisor": [
+    {
+      "name": "xuanji_api",
+      "status": "RUNNING",
+      "pid": 10927,
+      "uptime": "0:33:29",
+      "raw": "xuanji_api                       RUNNING   pid 10927, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_autonomous",
+      "status": "RUNNING",
+      "pid": 10928,
+      "uptime": "0:33:29",
+      "raw": "xuanji_autonomous                RUNNING   pid 10928, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_culturaldl_trainer",
+      "status": "RUNNING",
+      "pid": 10929,
+      "uptime": "0:33:29",
+      "raw": "xuanji_culturaldl_trainer        RUNNING   pid 10929, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_evaluator",
+      "status": "RUNNING",
+      "pid": 10932,
+      "uptime": "0:33:29",
+      "raw": "xuanji_evaluator                 RUNNING   pid 10932, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_fetch_ssq",
+      "status": "RUNNING",
+      "pid": 12409,
+      "uptime": "0:33:19",
+      "raw": "xuanji_fetch_ssq                 RUNNING   pid 12409, uptime 0:33:19"
+    },
+    {
+      "name": "xuanji_import_tsv",
+      "status": "RUNNING",
+      "pid": 10933,
+      "uptime": "0:33:29",
+      "raw": "xuanji_import_tsv                RUNNING   pid 10933, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_internet_selftest",
+      "status": "RUNNING",
+      "pid": 10936,
+      "uptime": "0:33:29",
+      "raw": "xuanji_internet_selftest         RUNNING   pid 10936, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_logrotate",
+      "status": "RUNNING",
+      "pid": 10939,
+      "uptime": "0:33:29",
+      "raw": "xuanji_logrotate                 RUNNING   pid 10939, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_optimize",
+      "status": "RUNNING",
+      "pid": 29193,
+      "uptime": "0:01:20",
+      "raw": "xuanji_optimize                  RUNNING   pid 29193, uptime 0:01:20"
+    },
+    {
+      "name": "xuanji_person",
+      "status": "RUNNING",
+      "pid": 10943,
+      "uptime": "0:33:29",
+      "raw": "xuanji_person                    RUNNING   pid 10943, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_predict",
+      "status": "RUNNING",
+      "pid": 10946,
+      "uptime": "0:33:29",
+      "raw": "xuanji_predict                   RUNNING   pid 10946, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_public_tunnels",
+      "status": "RUNNING",
+      "pid": 10952,
+      "uptime": "0:33:29",
+      "raw": "xuanji_public_tunnels            RUNNING   pid 10952, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_report",
+      "status": "RUNNING",
+      "pid": 10955,
+      "uptime": "0:33:29",
+      "raw": "xuanji_report                    RUNNING   pid 10955, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_static",
+      "status": "RUNNING",
+      "pid": 10961,
+      "uptime": "0:33:29",
+      "raw": "xuanji_static                    RUNNING   pid 10961, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_status_updater",
+      "status": "RUNNING",
+      "pid": 10963,
+      "uptime": "0:33:29",
+      "raw": "xuanji_status_updater            RUNNING   pid 10963, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_tune_on_change",
+      "status": "RUNNING",
+      "pid": 10969,
+      "uptime": "0:33:29",
+      "raw": "xuanji_tune_on_change            RUNNING   pid 10969, uptime 0:33:29"
+    },
+    {
+      "name": "xuanji_tuner",
+      "status": "RUNNING",
+      "pid": 10970,
+      "uptime": "0:33:29",
+      "raw": "xuanji_tuner                     RUNNING   pid 10970, uptime 0:33:29"
+    }
+  ],
+  "heartbeats": {
+    "xuanji_predict": {
+      "status": "RUNNING",
+      "pid": 10946,
+      "uptime": "0:33:29",
+      "last_log_time": "2025-10-11 11:09:17",
+      "last_tail": ""
+    },
+    "xuanji_person": {
+      "status": "RUNNING",
+      "pid": 10943,
+      "uptime": "0:33:29",
+      "last_log_time": "2025-10-15 16:00:23",
+      "last_tail": "2025-10-15 16:00:13,929 [INFO] 复盘周期1591：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False\n2025-10-15 16:00:18,934 [INFO] 复盘周期1592：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False\n2025-10-15 16:00:18,934 [INFO] 复盘周期1593：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False\n2025-10-15 16:00:18,934 [INFO] 复盘周期1594：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False\n2025-10-15 16:00:18,935 [INFO] 复盘周期1595：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False\n2025-10-15 16:00:23,937 [INFO] 复盘周期1596：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False\n2025-10-15 16:00:23,938 [INFO] 复盘周期1597：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False\n2025-10-15 16:00:23,938 [INFO] 复盘周期1598：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False\n2025-10-15 16:00:23,939 [INFO] 复盘周期1599：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False\n2025-10-15 16:00:23,939 [INFO] 系统自主升级，发现新模式：第1600周期发现新模式：八字与成就相关性增强"
+    }
+  },
+  "metrics": {
+    "timestamp": "2025-10-15T15:01:46.796028",
+    "total_predictions": 25000,
+    "total_matches": 0,
+    "by_model": {
+      "liuyao": {
+        "count": 5000,
+        "matches": 0
+      },
+      "liuren": {
+        "count": 5000,
+        "matches": 0
+      },
+      "qimen": {
+        "count": 5000,
+        "matches": 0
+      },
+      "ai": {
+        "count": 5000,
+        "matches": 0
+      },
+      "cultural_dl": {
+        "count": 5000,
+        "matches": 0
+      }
+    },
+    "mode": "batch"
+  },
+  "person": {
+    "log_mtime": "2025-10-15 16:00:23",
+    "size": 24759345,
+    "total_records": 113334,
+    "per_person": {
+      "诸葛亮": {
+        "count": 28361,
+        "matches_true": 0
+      },
+      "李白": {
+        "count": 28325,
+        "matches_true": 0
+      },
+      "爱因斯坦": {
+        "count": 28324,
+        "matches_true": 0
+      },
+      "系统自知": {
+        "count": 28324,
+        "matches_true": 0
+      }
+    }
+  }
+}

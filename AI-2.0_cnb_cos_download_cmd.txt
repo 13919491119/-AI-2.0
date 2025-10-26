@@ -1,0 +1,23 @@
+【腾讯云 cnb 专属 COS 下载命令】
+
+bucket: backup-1383156418
+地域: ap-beijing
+cnb账号: david_h_liu/8862
+
+1. 配置 coscmd（如未配置请先执行 coscmd config）
+
+coscmd config -a <SecretId> -s <SecretKey> -b backup-1383156418 -r ap-beijing
+
+2. 下载 AI-2.0 全部文件到本地 /workspaces/-AI-2.0/
+
+coscmd download -r cos://backup-1383156418/AI-2.0/ /workspaces/-AI-2.0/
+
+3. 示例命令（请替换 SecretId/SecretKey 为你的密钥）：
+
+coscmd config -a AKIDxxxxxxxxxxxxxxxxxxxx -s xxxxxxxxxxxxxxxxxxxxxxxx -b backup-1383156418 -r ap-beijing
+coscmd download -r cos://backup-1383156418/AI-2.0/ /workspaces/-AI-2.0/
+
+如需批量上传/同步，可用：
+coscmd upload -r /workspaces/-AI-2.0/ cos://backup-1383156418/AI-2.0/
+
+账号 david_h_liu/8862 可直接在 cnb 终端执行以上命令。

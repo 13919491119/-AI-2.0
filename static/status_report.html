@@ -1,0 +1,838 @@
+
+    <!DOCTYPE html>
+    <html lang='zh-CN'>
+    <head>
+        <meta charset='utf-8'>
+        <title>最新运行状态报告</title>
+        <link rel='stylesheet' href='/static/report.css'>
+        <style>
+            body { font-family: system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; }
+            pre { white-space: pre-wrap; word-break: break-word; background:#0b1020; color:#e6edf3; padding:12px; border-radius:8px; }
+            .container { max-width: 980px; margin: 32px auto; padding: 0 16px; }
+            .nav { display:flex; flex-wrap:wrap; gap:12px; margin: 12px 0 20px; }
+            .nav a { text-decoration:none; background:#eef2ff; color:#1d4ed8; padding:6px 10px; border-radius:6px; font-size:14px; }
+            h2 { margin-top: 28px; }
+            .meta { color:#6b7280; font-size: 14px; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>🛰️ 最新运行状态报告</h1>
+            <div class='meta'>文件：ssq_status_20251015.md｜生成时间（UTC）：2025-10-15 16:00:28 UTC +0000｜北京时间（Asia/Shanghai）：2025-10-16 00:00:28 CST +0800</div>
+            <div class='nav'>
+                <a href="#sec-status">进程状态</a>
+                <a href="#sec-autonomous">学习/复盘日志</a>
+                <a href="#sec-predict">双色球预测日志</a>
+                <a href="#sec-optimize">优化循环日志</a>
+                <a href="#sec-person">历史人物任务日志</a>
+                <a href="#sec-api">API 日志</a>
+                <a href="#sec-person-metrics">人物任务指标</a>
+                <a href="#sec-full">原始全文</a>
+            </div>
+
+            <h2 id='sec-status'>1）进程状态</h2>
+            <pre>xuanji_api                       RUNNING   pid 10927, uptime 0:33:29
+xuanji_autonomous                RUNNING   pid 10928, uptime 0:33:29
+xuanji_culturaldl_trainer        RUNNING   pid 10929, uptime 0:33:29
+xuanji_evaluator                 RUNNING   pid 10932, uptime 0:33:29
+xuanji_fetch_ssq                 RUNNING   pid 12409, uptime 0:33:19
+xuanji_import_tsv                RUNNING   pid 10933, uptime 0:33:29
+xuanji_internet_selftest         RUNNING   pid 10936, uptime 0:33:29
+xuanji_logrotate                 RUNNING   pid 10939, uptime 0:33:29
+xuanji_optimize                  RUNNING   pid 29193, uptime 0:01:20
+xuanji_person                    RUNNING   pid 10943, uptime 0:33:29
+xuanji_predict                   RUNNING   pid 10946, uptime 0:33:29
+xuanji_public_tunnels            RUNNING   pid 10952, uptime 0:33:29
+xuanji_report                    RUNNING   pid 10955, uptime 0:33:29
+xuanji_static                    RUNNING   pid 10961, uptime 0:33:29
+xuanji_status_updater            RUNNING   pid 10963, uptime 0:33:29
+xuanji_tune_on_change            RUNNING   pid 10969, uptime 0:33:29
+xuanji_tuner                     RUNNING   pid 10970, uptime 0:33:29</pre>
+
+            <h2 id='sec-autonomous'>2）学习/复盘日志</h2>
+            <pre>### xuanji_autonomous OUT
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+
+### xuanji_autonomous ERR
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。</pre>
+
+            <h2 id='sec-predict'>3）双色球预测日志</h2>
+            <pre>### xuanji_predict OUT
+(空)
+
+### xuanji_predict ERR
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(</pre>
+
+            <h2 id='sec-optimize'>4）优化循环日志</h2>
+            <pre>### xuanji_optimize OUT
+⚙️ 正在执行algorithm优化循环: 权重重校准，预计耗时104分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+✅ algorithm类型的自主循环已完成
+
+🔄 正在触发data类型的自主优化循环...
+⚙️ 正在执行data优化循环: 数据爬取，预计耗时52分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 数据清洗，预计耗时36分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 知识整合，预计耗时35分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: API连接建立，预计耗时38分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 数据验证，预计耗时99分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 交叉分析，预计耗时85分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+✅ data类型的自主循环已完成
+
+🔄 正在触发architecture类型的自主优化循环...
+⚙️ 正在执行architecture优化循环: 架构分析，预计耗时81分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 组件重构，预计耗时97分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 性能测试，预计耗时82分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 资源监控，预计耗时77分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 内存优化，预计耗时33分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+
+### xuanji_optimize ERR
+(空)</pre>
+
+            <h2 id='sec-person'>5）历史人物任务日志</h2>
+            <pre>### xuanji_person OUT
+2025-10-15 15:59:53,903 [INFO] 复盘周期1573：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 15:59:53,903 [INFO] 复盘周期1574：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 15:59:53,903 [INFO] 复盘周期1575：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 15:59:58,909 [INFO] 复盘周期1576：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 15:59:58,909 [INFO] 复盘周期1577：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 15:59:58,910 [INFO] 复盘周期1578：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 15:59:58,910 [INFO] 复盘周期1579：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 15:59:58,911 [INFO] 系统自主升级，发现新模式：第1580周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:03,916 [INFO] 复盘周期1580：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:03,917 [INFO] 复盘周期1581：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:03,917 [INFO] 复盘周期1582：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:03,918 [INFO] 复盘周期1583：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1584：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1585：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1586：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1587：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1588：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1589：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:13,928 [INFO] 系统自主升级，发现新模式：第1590周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:13,929 [INFO] 复盘周期1590：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:13,929 [INFO] 复盘周期1591：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1592：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1593：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1594：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:18,935 [INFO] 复盘周期1595：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,937 [INFO] 复盘周期1596：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1597：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1598：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:23,939 [INFO] 复盘周期1599：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,939 [INFO] 系统自主升级，发现新模式：第1600周期发现新模式：八字与成就相关性增强
+
+### xuanji_person ERR
+(空)</pre>
+
+            <h2 id='sec-api'>6）API 日志</h2>
+            <pre>### xuanji_api OUT
+INFO:     127.0.0.1:53180 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49070 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37636 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37646 - "POST /discover?n=180 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40040 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55974 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57120 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57132 - "POST /discover?n=87 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49680 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56990 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37560 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37562 - "POST /discover?n=160 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36664 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59668 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55294 - "POST /discover?n=65 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32870 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52648 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58434 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58440 - "POST /discover?n=54 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37784 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59066 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37818 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37820 - "POST /discover?n=127 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53230 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60882 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47510 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47526 - "POST /discover?n=110 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53524 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42858 - "GET /status HTTP/1.1" 200 OK
+
+### xuanji_api ERR
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     Started server process [9289]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [24421]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [22191]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [38857]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4503]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4735]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [10927]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)</pre>
+
+            <h2 id='sec-person-metrics'>7）人物任务指标</h2>
+            <pre>最近更新时间：2025-10-15 16:00:23
+日志大小：24759345 字节
+总复盘记录：113334
+人物统计：
+  - 李白：28325（吻合=True 0）
+  - 爱因斯坦：28324（吻合=True 0）
+  - 系统自知：28324（吻合=True 0）
+  - 诸葛亮：28361（吻合=True 0）
+
+最近片段：
+2025-10-15 16:00:03,917 [INFO] 复盘周期1582：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:03,918 [INFO] 复盘周期1583：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1584：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1585：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1586：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1587：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1588：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1589：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:13,928 [INFO] 系统自主升级，发现新模式：第1590周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:13,929 [INFO] 复盘周期1590：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:13,929 [INFO] 复盘周期1591：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1592：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1593：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1594：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:18,935 [INFO] 复盘周期1595：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,937 [INFO] 复盘周期1596：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1597：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1598：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:23,939 [INFO] 复盘周期1599：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,939 [INFO] 系统自主升级，发现新模式：第1600周期发现新模式：八字与成就相关性增强</pre>
+
+            <h2>8）人物任务图表（Top10）</h2>
+            <div style='border:1px solid #e5e7eb; border-radius:8px; padding:12px;'>
+                
+            <div style='display:flex; align-items:center; gap:8px; margin:6px 0;'>
+                <div style='width:140px;'>诸葛亮</div>
+                <div style='flex:1; background:#e5e7eb; border-radius:6px; overflow:hidden;'>
+                    <div style='width:100%; background:#60a5fa; height:16px;'></div>
+                </div>
+                <div style='width:120px; text-align:right;'><code>28361</code> / <span title='吻合=True 次数'><code>0</code></span></div>
+            </div>
+            
+
+            <div style='display:flex; align-items:center; gap:8px; margin:6px 0;'>
+                <div style='width:140px;'>李白</div>
+                <div style='flex:1; background:#e5e7eb; border-radius:6px; overflow:hidden;'>
+                    <div style='width:99%; background:#60a5fa; height:16px;'></div>
+                </div>
+                <div style='width:120px; text-align:right;'><code>28325</code> / <span title='吻合=True 次数'><code>0</code></span></div>
+            </div>
+            
+
+            <div style='display:flex; align-items:center; gap:8px; margin:6px 0;'>
+                <div style='width:140px;'>爱因斯坦</div>
+                <div style='flex:1; background:#e5e7eb; border-radius:6px; overflow:hidden;'>
+                    <div style='width:99%; background:#60a5fa; height:16px;'></div>
+                </div>
+                <div style='width:120px; text-align:right;'><code>28324</code> / <span title='吻合=True 次数'><code>0</code></span></div>
+            </div>
+            
+
+            <div style='display:flex; align-items:center; gap:8px; margin:6px 0;'>
+                <div style='width:140px;'>系统自知</div>
+                <div style='flex:1; background:#e5e7eb; border-radius:6px; overflow:hidden;'>
+                    <div style='width:99%; background:#60a5fa; height:16px;'></div>
+                </div>
+                <div style='width:120px; text-align:right;'><code>28324</code> / <span title='吻合=True 次数'><code>0</code></span></div>
+            </div>
+            
+            </div>
+
+            <h2 id='sec-full'>附录：原始 Markdown 全文</h2>
+            <pre># 双色球学习/复盘/预测/升级 自循环状态报告（实时）
+
+**生成时间（UTC）**：2025-10-15 16:00:28 UTC +0000
+
+**北京时间（Asia/Shanghai）**：2025-10-16 00:00:28 CST +0800
+
+## 1. 后台进程状态（supervisor 托管）
+
+````
+xuanji_api                       RUNNING   pid 10927, uptime 0:33:29
+xuanji_autonomous                RUNNING   pid 10928, uptime 0:33:29
+xuanji_culturaldl_trainer        RUNNING   pid 10929, uptime 0:33:29
+xuanji_evaluator                 RUNNING   pid 10932, uptime 0:33:29
+xuanji_fetch_ssq                 RUNNING   pid 12409, uptime 0:33:19
+xuanji_import_tsv                RUNNING   pid 10933, uptime 0:33:29
+xuanji_internet_selftest         RUNNING   pid 10936, uptime 0:33:29
+xuanji_logrotate                 RUNNING   pid 10939, uptime 0:33:29
+xuanji_optimize                  RUNNING   pid 29193, uptime 0:01:20
+xuanji_person                    RUNNING   pid 10943, uptime 0:33:29
+xuanji_predict                   RUNNING   pid 10946, uptime 0:33:29
+xuanji_public_tunnels            RUNNING   pid 10952, uptime 0:33:29
+xuanji_report                    RUNNING   pid 10955, uptime 0:33:29
+xuanji_static                    RUNNING   pid 10961, uptime 0:33:29
+xuanji_status_updater            RUNNING   pid 10963, uptime 0:33:29
+xuanji_tune_on_change            RUNNING   pid 10969, uptime 0:33:29
+xuanji_tuner                     RUNNING   pid 10970, uptime 0:33:29
+````
+
+## 2. 关键日志快照（最近）
+### xuanji_autonomous OUT
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+[周期预测完成] 匹配日志已生成。
+
+### xuanji_autonomous ERR
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+[autonomous_run] 已有实例在运行 (PID=38173)，本次启动取消。
+
+### xuanji_predict OUT
+(空)
+
+### xuanji_predict ERR
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MLPRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/workspaces/-AI-2.0/.venv/lib/python3.12/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator MultiOutputRegressor from version 1.7.0 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+
+### xuanji_optimize OUT
+⚙️ 正在执行algorithm优化循环: 权重重校准，预计耗时104分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+✅ algorithm类型的自主循环已完成
+
+🔄 正在触发data类型的自主优化循环...
+⚙️ 正在执行data优化循环: 数据爬取，预计耗时52分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 数据清洗，预计耗时36分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 知识整合，预计耗时35分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: API连接建立，预计耗时38分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 数据验证，预计耗时99分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行data优化循环: 交叉分析，预计耗时85分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+✅ data类型的自主循环已完成
+
+🔄 正在触发architecture类型的自主优化循环...
+⚙️ 正在执行architecture优化循环: 架构分析，预计耗时81分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 组件重构，预计耗时97分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 性能测试，预计耗时82分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 资源监控，预计耗时77分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+进度: [####      ] 40%
+进度: [#####     ] 50%
+进度: [######    ] 60%
+进度: [#######   ] 70%
+进度: [########  ] 80%
+进度: [######### ] 90%
+进度: [##########] 100%
+⚙️ 正在执行architecture优化循环: 内存优化，预计耗时33分钟...
+
+进度: [          ] 0%
+进度: [#         ] 10%
+进度: [##        ] 20%
+进度: [###       ] 30%
+
+### xuanji_optimize ERR
+(空)
+
+### xuanji_person OUT
+2025-10-15 15:59:53,903 [INFO] 复盘周期1573：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 15:59:53,903 [INFO] 复盘周期1574：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 15:59:53,903 [INFO] 复盘周期1575：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 15:59:58,909 [INFO] 复盘周期1576：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 15:59:58,909 [INFO] 复盘周期1577：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 15:59:58,910 [INFO] 复盘周期1578：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 15:59:58,910 [INFO] 复盘周期1579：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 15:59:58,911 [INFO] 系统自主升级，发现新模式：第1580周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:03,916 [INFO] 复盘周期1580：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:03,917 [INFO] 复盘周期1581：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:03,917 [INFO] 复盘周期1582：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:03,918 [INFO] 复盘周期1583：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1584：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1585：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1586：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1587：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1588：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1589：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:13,928 [INFO] 系统自主升级，发现新模式：第1590周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:13,929 [INFO] 复盘周期1590：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:13,929 [INFO] 复盘周期1591：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1592：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1593：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1594：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:18,935 [INFO] 复盘周期1595：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,937 [INFO] 复盘周期1596：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1597：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1598：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:23,939 [INFO] 复盘周期1599：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,939 [INFO] 系统自主升级，发现新模式：第1600周期发现新模式：八字与成就相关性增强
+
+### xuanji_person ERR
+(空)
+
+### xuanji_api OUT
+INFO:     127.0.0.1:53180 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49070 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37636 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37646 - "POST /discover?n=180 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:40040 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55974 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57120 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57132 - "POST /discover?n=87 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49680 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56990 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37560 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37562 - "POST /discover?n=160 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36664 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59668 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55294 - "POST /discover?n=65 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:32870 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52648 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58434 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58440 - "POST /discover?n=54 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:37784 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59066 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37818 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37820 - "POST /discover?n=127 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53230 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60882 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47510 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:47526 - "POST /discover?n=110 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:53524 - "GET /status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42858 - "GET /status HTTP/1.1" 200 OK
+
+### xuanji_api ERR
+WARNING:  Invalid HTTP request received.
+WARNING:  Invalid HTTP request received.
+INFO:     Started server process [9289]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [24421]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [22191]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [38857]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4503]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [4735]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started server process [10927]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+## 3. 累积评估指标（reports/ssq_cycle_summary.json）
+
+- 统计时间：2025-10-15T15:01:46.796028
+- 总预测次数：25000
+- 命中次数：0
+
+- 模型分布：
+  - liuyao：5000（命中 0）
+  - liuren：5000（命中 0）
+  - qimen：5000（命中 0）
+  - ai：5000（命中 0）
+
+## 4. 历史人物任务指标（xuanji_person_predict.log）
+
+- 最近更新时间：2025-10-15 16:00:23
+- 日志大小：24759345 字节
+- 总复盘记录：113334
+
+- 人物统计：
+  - 李白：28325（吻合=True 0）
+  - 爱因斯坦：28324（吻合=True 0）
+  - 系统自知：28324（吻合=True 0）
+  - 诸葛亮：28361（吻合=True 0）
+
+- 最近片段：
+
+````
+2025-10-15 16:00:03,917 [INFO] 复盘周期1582：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:03,918 [INFO] 复盘周期1583：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1584：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:08,924 [INFO] 复盘周期1585：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1586：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:08,925 [INFO] 复盘周期1587：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1588：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:13,928 [INFO] 复盘周期1589：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:13,928 [INFO] 系统自主升级，发现新模式：第1590周期发现新模式：八字与成就相关性增强
+2025-10-15 16:00:13,929 [INFO] 复盘周期1590：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:13,929 [INFO] 复盘周期1591：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1592：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1593：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:18,934 [INFO] 复盘周期1594：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:18,935 [INFO] 复盘周期1595：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,937 [INFO] 复盘周期1596：诸葛亮，预测：预测：诸葛亮在其领域有重大成就。八字显示智慧与创新。，事实：三国时期著名军事家、政治家，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1597：李白，预测：预测：李白在其领域有重大成就。八字显示智慧与创新。，事实：唐代著名诗人，吻合：False
+2025-10-15 16:00:23,938 [INFO] 复盘周期1598：爱因斯坦，预测：预测：爱因斯坦在其领域有重大成就。八字显示智慧与创新。，事实：现代物理学奠基人，吻合：False
+2025-10-15 16:00:23,939 [INFO] 复盘周期1599：系统自知，预测：预测：系统自知在其领域有重大成就。八字显示智慧与创新。，事实：AI系统自我认知，吻合：False
+2025-10-15 16:00:23,939 [INFO] 系统自主升级，发现新模式：第1600周期发现新模式：八字与成就相关性增强
+````
+
+
+- Top3 人物（按复盘记录数）：
+  - 诸葛亮: 28361（吻合=True 0）
+  - 李白: 28325（吻合=True 0）
+  - 爱因斯坦: 28324（吻合=True 0）
+
+## 5. 结论与建议
+
+- 结论：服务 RUNNING；学习/预测/优化循环无致命报错。如日志存在阶段性 404（/discover），为非公开接口。
+- 建议：如需对外公开，请配置 ngrok/FRP 或 Nginx + 证书；建议启用日志轮转或接入 Prometheus/Grafana。
+
+— 本报告由系统自动生成并覆盖更新</pre>
+        </div>
+    </body>
+    </html>
+    

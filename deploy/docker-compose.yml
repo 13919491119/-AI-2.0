@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  xuanji-autonomous:
+    image: python:3.11-slim
+    container_name: xuanji_autonomous
+    working_dir: /app
+    volumes:
+      - ..:/app:rw
+    command: python3 /app/autonomous_run.py
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - XUANJI_UPGRADE_MODE=dry-run
+      - DEEPSEEK_API_KEY=
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
