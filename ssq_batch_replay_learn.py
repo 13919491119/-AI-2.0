@@ -9,8 +9,14 @@ import csv
 import datetime
 from ssq_predict_cycle import SSQPredictCycle
 
+import json
+import time
+import os
+
 HISTORY_FILE = 'ssq_history.csv'
 REPORT_FILE = 'reports/ssq_batch_replay_report.txt'
+SUMMARY_JSON = 'reports/ssq_batch_replay_summary.json'
+
 
 models = ['liuyao', 'liuren', 'qimen', 'ziwei', 'ai_fusion']
 
@@ -21,12 +27,13 @@ cycle = SSQPredictCycle(data_path=HISTORY_FILE)
 with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
     reader = csv.DictReader(f)
     for idx, row in enumerate(reader):
-        date = row.get('date') or row.get('开奖日期')
-        time = row.get('time') or row.get('开奖时间')
-        period = row.get('period') or row.get('期次')
+        # 更宽松的字段兼容：尝试多种常见字段名
+        period = row.get('period') or row.get('期次') or row.get('issue') or row.get('期号') or row.get('id')
+        date = row.get('date') or row.get('开奖日期') or row.get('draw_date')
+        draw_time = row.get('time') or row.get('开奖时间') or row.get('draw_time')
         reds = []
         for i in range(6):
-            val = row.get(f'red{i+1}') or row.get(f'红球{i+1}') or row.get(f'红{i+1}')
+            val = row.get(f'red{i+1}') or row.get(f'红球{i+1}') or row.get(f'红{i+1}') or row.get(f'r{i+1}')
             if val is not None and val != '':
                 reds.append(int(val))
         blue = row.get('blue') or row.get('蓝球') or row.get('蓝')
@@ -56,6 +63,7 @@ with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             results[m]['details'].append({
                 'period': period,
                 'date': date,
+                'draw_time': draw_time,
                 'model': m,
                 'pred_reds': pr,
                 'pred_blue': pb,
@@ -67,6 +75,8 @@ with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             })
 
 # 生成报告
+# 输出文本报告和 JSON 汇总
+os.makedirs(os.path.dirname(REPORT_FILE), exist_ok=True)
 with open(REPORT_FILE, 'w', encoding='utf-8') as f:
     f.write('双色球历史批量复盘与模型学习升级报告\n')
     for m in models:
@@ -77,5 +87,54 @@ with open(REPORT_FILE, 'w', encoding='utf-8') as f:
         f.write(f'全中（红+蓝）期数：{results[m]["full_hit"]}\n')
         f.write('部分复盘详情（前10期）：\n')
         for d in results[m]['details'][:10]:
-            f.write(f'期次:{d["period"]} 日期:{d["date"]} 预测红球:{d["pred_reds"]} 预测蓝球:{d["pred_blue"]} 实际红球:{d["actual_reds"]} 实际蓝球:{d["actual_blue"]} 命中红球:{d["red_hit"]} 命中蓝球:{d["blue_hit"]} 全中:{d["full_hit"]}\n')
+            f.write(f'期次:{d["period"]} 日期:{d["date"]} 时间:{d.get("draw_time","")} 预测红球:{d["pred_reds"]} 预测蓝球:{d["pred_blue"]} 实际红球:{d["actual_reds"]} 实际蓝球:{d["actual_blue"]} 命中红球:{d["red_hit"]} 命中蓝球:{d["blue_hit"]} 全中:{d["full_hit"]}\n')
     f.write('\n模型学习升级闭环已完成。')
+
+# JSON 汇总（机器可读）
+summary = {
+    'schema_v': 1,
+    'generated_at': time.strftime('%Y-%m-%d %H:%M:%S'),
+    'total_issues_sampled': next(iter(results.values()))['total'] if results else 0,
+    'models': {}
+}
+for m in models:
+    summary['models'][m] = {
+        'total': results[m]['total'],
+        'red_hit': results[m]['red_hit'],
+        'blue_hit': results[m]['blue_hit'],
+        'full_hit': results[m]['full_hit'],
+        'sample_details': results[m]['details'][:10]
+    }
+
+with open(SUMMARY_JSON, 'w', encoding='utf-8') as jf:
+    json.dump(summary, jf, ensure_ascii=False, indent=2)
+
+# 也保存时间戳版本，便于历史追踪
+ts = int(time.time())
+history_path = f'reports/ssq_batch_replay_summary_{ts}.json'
+with open(history_path, 'w', encoding='utf-8') as hf:
+    json.dump(summary, hf, ensure_ascii=False, indent=2)
+
+# 生成窗口化（rolling window）汇总：近 100、500、1000 期
+try:
+    windows = [100, 500, 1000]
+    for w in windows:
+        win_summary = {'schema_v': 1, 'window': w, 'generated_at': time.strftime('%Y-%m-%d %H:%M:%S'), 'models': {}}
+        for m in models:
+            details = results[m]['details'][-w:] if len(results[m]['details']) >= 1 else []
+            total = sum(1 for _ in details)
+            red_hit = sum(d.get('red_hit', 0) for d in details)
+            blue_hit = sum(d.get('blue_hit', 0) for d in details)
+            full_hit = sum(d.get('full_hit', 0) for d in details)
+            win_summary['models'][m] = {
+                'total': total,
+                'red_hit': red_hit,
+                'blue_hit': blue_hit,
+                'full_hit': full_hit,
+                'sample_details': details[-10:]
+            }
+        path = f'reports/ssq_batch_replay_summary_window_{w}.json'
+        with open(path, 'w', encoding='utf-8') as wf:
+            json.dump(win_summary, wf, ensure_ascii=False, indent=2)
+except Exception:
+    pass
