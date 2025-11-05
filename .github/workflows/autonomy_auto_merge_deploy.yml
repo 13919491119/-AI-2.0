@@ -11,6 +11,11 @@ on:
         description: 'Canary namespace'
         required: false
         default: 'canary'
+  push:
+    branches:
+      - main
+    paths:
+      - 'autonomy_trigger.txt'
 
 jobs:
   verify-secrets:
