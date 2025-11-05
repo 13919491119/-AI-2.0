@@ -95,3 +95,17 @@
 ---
 
 *本报告由玄机AI系统自动生成*
+
+## 附录：自动化运行摘要（2025-11-05）
+
+- 复盘生成时间: 2025-11-04T03:48:37.958323Z
+
+- 模型 `liuyao`: total=7400, red_hit=7670, blue_hit=465, full_hit=0
+- 模型 `liuren`: total=7400, red_hit=8034, blue_hit=445, full_hit=0
+- 模型 `qimen`: total=7400, red_hit=8243, blue_hit=473, full_hit=0
+- 模型 `ziwei`: total=7400, red_hit=8051, blue_hit=450, full_hit=0
+- 模型 `ai_fusion`: total=7400, red_hit=8137, blue_hit=481, full_hit=0
+
+- 最新权重快照: weights_snapshot_20251104_023957.json
+
+- 可视化目录： `reports/visualization/`（已生成 index.html）
