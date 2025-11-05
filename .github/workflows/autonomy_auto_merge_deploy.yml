@@ -1,0 +1,100 @@
+name: Autonomy - Merge PR and Canary Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request number to merge and deploy'
+        required: true
+        default: '6'
+      canary_namespace:
+        description: 'Canary namespace'
+        required: false
+        default: 'canary'
+
+jobs:
+  verify-secrets:
+    runs-on: ubuntu-latest
+    outputs:
+      has_secrets: ${{ steps.check.outputs.has_secrets }}
+    steps:
+      - name: Check secrets accessible
+        id: check
+        run: |
+          echo "Checking secrets..."
+          if [ -z "${{ secrets.GH_MERGE_TOKEN }}" ]; then
+            echo "has_secrets=false" >> $GITHUB_OUTPUT
+            echo "GH_MERGE_TOKEN missing" >&2
+            exit 1
+          fi
+          if [ -z "${{ secrets.KUBE_CONFIG_DATA }}" ]; then
+            echo "has_secrets=false" >> $GITHUB_OUTPUT
+            echo "KUBE_CONFIG_DATA missing" >&2
+            exit 1
+          fi
+          echo "has_secrets=true" >> $GITHUB_OUTPUT
+
+  merge-pr:
+    needs: verify-secrets
+    if: needs.verify-secrets.outputs.has_secrets == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge PR using token
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_MERGE_TOKEN }}
+          script: |
+            const pr = parseInt(core.getInput('pr_number') || process.env.INPUT_PR_NUMBER || '6')
+            const prNumber = pr || parseInt(inputs.pr_number || '6')
+            console.log('Merging PR', prNumber)
+            await github.rest.pulls.merge({ owner: context.repo.owner, repo: context.repo.repo, pull_number: prNumber, merge_method: 'merge' })
+
+  deploy-canary:
+    needs: merge-pr
+    if: needs.verify-secrets.outputs.has_secrets == 'true'
+    runs-on: ubuntu-latest
+    env:
+      KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      CANARY_NAMESPACE: ${{ github.event.inputs.canary_namespace || 'canary' }}
+      AUTO_ROLLBACK_THRESHOLD: ${{ secrets.AUTO_ROLLBACK_THRESHOLD || '0.05' }}
+    steps:
+      - name: Install kubectl
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
+
+      - name: Decode kubeconfig
+        run: |
+          echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/kubeconfig
+
+      - name: Apply canary manifest (dry-run validate)
+        run: |
+          kubectl --kubeconfig=/tmp/kubeconfig --namespace=$CANARY_NAMESPACE apply -f artifacts/manifests/canary-deployment.yaml --dry-run=client
+
+      - name: Apply canary manifest (live)
+        run: |
+          kubectl --kubeconfig=/tmp/kubeconfig --namespace=$CANARY_NAMESPACE apply -f artifacts/manifests/canary-deployment.yaml
+
+      - name: Wait and check rollout
+        run: |
+          set -e
+          DEPLOY_NAME=$(kubectl --kubeconfig=/tmp/kubeconfig -n $CANARY_NAMESPACE get deployments -o jsonpath='{.items[0].metadata.name}')
+          echo "Monitoring deployment: $DEPLOY_NAME"
+          kubectl --kubeconfig=/tmp/kubeconfig -n $CANARY_NAMESPACE rollout status deployment/$DEPLOY_NAME --timeout=120s || true
+          # check pod readiness
+          NOT_READY=$(kubectl --kubeconfig=/tmp/kubeconfig -n $CANARY_NAMESPACE get pods -o json | jq '[.items[] | select(.status.phase != "Running" or (.status.conditions[]? | select(.type=="Ready" and .status=="False")) )] | length')
+          echo "not_ready_count=$NOT_READY"
+          if [ "$NOT_READY" -gt 0 ]; then
+            echo "Detected unhealthy pods, performing rollback"
+            kubectl --kubeconfig=/tmp/kubeconfig -n $CANARY_NAMESPACE rollout undo deployment/$DEPLOY_NAME
+            exit 1
+          fi
+
+      - name: Post success comment
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GH_MERGE_TOKEN }}
+          script: |
+            const prNum = parseInt(core.getInput('pr_number') || process.env.INPUT_PR_NUMBER || '6')
+            await github.request('POST /repos/{owner}/{repo}/issues/' + prNum + '/comments', { owner: context.repo.owner, repo: context.repo.repo, body: 'Autonomy: PR merged and canary deployed (or rolled back on failure).' })

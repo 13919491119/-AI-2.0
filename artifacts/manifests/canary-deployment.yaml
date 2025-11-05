@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xuanji-canary
+  labels:
+    app: xuanji
+    track: canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xuanji
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: xuanji
+        track: canary
+    spec:
+      containers:
+        - name: xuanji
+          image: ghcr.io/your-org/xuanji:canary
+          ports:
+            - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
