@@ -19,7 +19,6 @@ env:
 jobs:
   full-pipeline:
     runs-on: ubuntu-latest
-    if: ${{ secrets.ENABLE_PHASE_C == 'true' }}
     steps:
       - uses: actions/checkout@v4
       - name: Setup Python
@@ -42,29 +41,55 @@ jobs:
         run: |
           python3 tools/model_registry.py register artifacts || true
       - name: Create upgrade PR (if enabled)
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           # This uses gh CLI under the assumption GH_TOKEN is provided as a secret
+          if [ "${{ secrets.ENABLE_PHASE_C }}" != "true" ]; then
+            echo "Phase C disabled (ENABLE_PHASE_C != true), skipping PR creation"
+            exit 0
+          fi
+          if [ -z "${{ secrets.GH_TOKEN }}" ]; then
+            echo "GH_TOKEN not set; skipping PR creation"
+            exit 0
+          fi
           git checkout -b xuanji/autoupdate-$(date +%s)
           git add artifacts || true
           git commit -m "chore: auto-packaged model artifact" || true
           git push --set-upstream origin HEAD
           gh pr create --title "Auto: packaged model" --body "Automated model packaging (phase C)" || true
       - name: Auto-merge PR and deploy to canary (unsafe - requires secrets)
-        if: ${{ secrets.AUTO_MERGE == 'true' && secrets.DRY_RUN != 'false' }}
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         run: |
+          # runtime guard: ensure feature enabled and secrets present
+          if [ "${{ secrets.AUTO_MERGE }}" != "true" ]; then
+            echo "AUTO_MERGE != true; skipping auto-merge/deploy"
+            exit 0
+          fi
+          # DRY_RUN secret controls whether the workflow should actually perform merge/deploy.
+          # Convention: set secrets.DRY_RUN=false to allow real actions. Default (unset/true)
+          # keeps the workflow in safe dry-run mode and will skip merge/deploy.
+          if [ "${{ secrets.DRY_RUN }}" != "false" ]; then
+            echo "DRY_RUN != false (safe default); skipping auto-merge/deploy"
+            exit 0
+          fi
+
+          if [ -z "${{ secrets.GH_TOKEN }}" ] || [ -z "${{ secrets.KUBE_CONFIG_DATA }}" ]; then
+            echo "Required secrets (GH_TOKEN or KUBE_CONFIG_DATA) missing; skipping"
+            exit 0
+          fi
           echo "DRY RUN: set DRY_RUN=false in secrets to enable actual merge/deploy"
           ./tools/auto_merge_and_deploy.sh --pr-title "Auto: packaged model" --dry-run=true || true
 
   monitor-loop:
     runs-on: ubuntu-latest
     needs: full-pipeline
-    if: ${{ secrets.ENABLE_PHASE_C == 'true' }}
     steps:
       - name: Monitor canary and auto rollback (template)
         run: |
+          if [ "${{ secrets.ENABLE_PHASE_C }}" != "true" ]; then
+            echo "Phase C disabled; skipping monitor"
+            exit 0
+          fi
+          if [ -z "${{ secrets.CANARY_METRICS_URL }}" ]; then
+            echo "CANARY_METRICS_URL not set; skipping monitor"
+            exit 0
+          fi
           python3 tools/auto_rollback.py --canary-endpoint "${{ secrets.CANARY_METRICS_URL }}" --threshold-file tools/rollback_thresholds.json || true
