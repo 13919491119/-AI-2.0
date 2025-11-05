@@ -10,7 +10,7 @@ import SsqPredict from './components/SsqPredict';
 import BaziChart from './components/BaziChart';
 import Divination from './components/Divination';
 import NameGenerator from './components/NameGenerator';
-import Dashboard from './components/Dashboard';
+import Dashboard, { DashboardControls } from './components/Dashboard';
 
 const { Header, Content, Footer } = Layout;
 
@@ -59,7 +59,10 @@ export default function App() {
               label: (
                 <span>仪表盘</span>
               ),
-              children: <Dashboard />,
+              children: <>
+                <Dashboard />
+                <DashboardControls />
+              </>,
             },
           ]}
         />

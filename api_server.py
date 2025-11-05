@@ -488,6 +488,62 @@ async def ssq_predict(
         return {'status': 'error', 'error': str(e)}
 
 
+@app.post("/api/optimize_models")
+async def api_optimize_models(background_tasks: BackgroundTasks):
+    """触发模型优化（异步执行）"""
+    def run_opt():
+        try:
+            import subprocess
+            subprocess.run(['python3', 'optimize_models.py'], check=False)
+        except Exception as e:
+            logger.error(f"optimize_models failed: {e}")
+    background_tasks.add_task(run_opt)
+    return {'status': 'scheduled', 'task': 'optimize_models'}
+
+
+@app.post('/api/predict_stock')
+async def api_predict_stock(request: Request):
+    """简易股票预测接口（占位实现）"""
+    try:
+        body = await request.json()
+        symbol = body.get('symbol', '000001')
+        # 占位：随机趋势
+        import random
+        trend = random.choice(['up','down','sideways'])
+        score = round(random.random(),3)
+        return {'status':'ok','symbol':symbol,'trend':trend,'confidence':score}
+    except Exception as e:
+        return {'status':'error','error': str(e)}
+
+
+@app.post('/api/predict_weather')
+async def api_predict_weather(request: Request):
+    """简易天气预测接口（占位实现）"""
+    try:
+        body = await request.json()
+        location = body.get('location','unknown')
+        import random
+        forecast = random.choice(['sunny','rain','cloudy','snow'])
+        temp = round(15 + (random.random()-0.5)*15,1)
+        return {'status':'ok','location':location,'forecast':forecast,'temp':temp}
+    except Exception as e:
+        return {'status':'error','error': str(e)}
+
+
+@app.post('/api/predict_person')
+async def api_predict_person(request: Request):
+    """简易历史人物行为预测占位接口"""
+    try:
+        body = await request.json()
+        person = body.get('person')
+        import random
+        verdict = random.choice(['stable','ambitious','declining'])
+        score = round(random.random(),3)
+        return {'status':'ok','person':person,'verdict':verdict,'score':score}
+    except Exception as e:
+        return {'status':'error','error': str(e)}
+
+
 @app.get("/bazi/name")
 async def bazi_name(surname: str, bazi: str, gender: str = 'neutral', count: int = 10, style: str = 'neutral', single: bool = False):
     """根据八字（干支）与姓氏生成候选名字与解释。

@@ -18,3 +18,36 @@ export default function Dashboard() {
     </Card>
   );
 }
+
+// 增加简单操作按钮
+export function DashboardControls() {
+  const triggerOptimize = async () => {
+    try {
+      const res = await fetch('/api/optimize_models', { method: 'POST' });
+      alert('已触发模型优化任务（后台执行）');
+    } catch (e) {
+      alert('触发失败');
+    }
+  };
+  const predictStock = async () => {
+    const sym = prompt('输入股票代码，例如 000001');
+    if (!sym) return;
+    const res = await fetch('/api/predict_stock', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({symbol: sym}) });
+    const j = await res.json();
+    alert(JSON.stringify(j));
+  };
+  const predictWeather = async () => {
+    const loc = prompt('输入地点，例如 Beijing');
+    if (!loc) return;
+    const res = await fetch('/api/predict_weather', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({location: loc}) });
+    const j = await res.json();
+    alert(JSON.stringify(j));
+  };
+  return (
+    <div style={{ marginTop: 24 }}>
+      <button onClick={triggerOptimize} style={{ marginRight: 8 }}>触发模型优化</button>
+      <button onClick={predictStock} style={{ marginRight: 8 }}>股票预测(测试)</button>
+      <button onClick={predictWeather}>天气预测(测试)</button>
+    </div>
+  );
+}

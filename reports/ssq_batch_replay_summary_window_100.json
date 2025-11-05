@@ -1,0 +1,36 @@
+{
+  "generated_at": "2025-11-04T02:39:50.339909+00:00",
+  "window": 100,
+  "models": {
+    "liuyao": {
+      "total": 100,
+      "red_hit": 108,
+      "blue_hit": 4,
+      "full_hit": 0
+    },
+    "liuren": {
+      "total": 100,
+      "red_hit": 110,
+      "blue_hit": 6,
+      "full_hit": 0
+    },
+    "qimen": {
+      "total": 100,
+      "red_hit": 102,
+      "blue_hit": 9,
+      "full_hit": 0
+    },
+    "ziwei": {
+      "total": 100,
+      "red_hit": 109,
+      "blue_hit": 6,
+      "full_hit": 0
+    },
+    "ai_fusion": {
+      "total": 100,
+      "red_hit": 119,
+      "blue_hit": 4,
+      "full_hit": 0
+    }
+  }
+}

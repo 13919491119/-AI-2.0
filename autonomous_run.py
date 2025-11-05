@@ -11,6 +11,7 @@ from ssq_cycle_runner import run_ssq_cycle_and_summarize
 
 
 import subprocess
+import sys
 
 PID_FILE = os.path.join(os.getcwd(), 'autonomous_run.pid')
 
@@ -63,17 +64,27 @@ async def main():
             try:
                 # 在后台线程执行，避免阻塞事件循环
                 await asyncio.to_thread(
-                    run_ssq_cycle_and_summarize,
-                    'ssq_history.csv',
-                    'closed-loop',
-                    {
-                        # 默认取消尝试上限（0 或负数视为不限），改用按时间控制
-                        'max_attempts_per_issue': int(os.getenv('SSQ_MAX_ATTEMPTS_PER_ISSUE', '0')),
-                        'consult_external': os.getenv('SSQ_CONSULT_EXTERNAL', '0') == '1',
-                        # 每期时间上限（秒）：默认5秒，可在 /etc/default/xuanji-ai 调整
-                        'max_seconds_per_issue': float(os.getenv('SSQ_MAX_SECONDS_PER_ISSUE', '5')),
-                    },
-                )
+                        run_ssq_cycle_and_summarize,
+                        'ssq_history.csv',
+                        'closed-loop',
+                        {
+                            # 默认取消尝试上限（0 或负数视为不限），改用按时间控制
+                            'max_attempts_per_issue': int(os.getenv('SSQ_MAX_ATTEMPTS_PER_ISSUE', '0')),
+                            'consult_external': os.getenv('SSQ_CONSULT_EXTERNAL', '0') == '1',
+                            # 每期时间上限（秒）：默认5秒，可在 /etc/default/xuanji-ai 调整
+                            'max_seconds_per_issue': float(os.getenv('SSQ_MAX_SECONDS_PER_ISSUE', '5')),
+                        },
+                    )
+                # 在每轮闭环结束后，触发批量复盘与优化（如果脚本存在）
+                try:
+                    replay_script = 'ssq_batch_replay_learn.py'
+                    optimizer_script = 'optimize_models.py'
+                    if os.path.exists(replay_script):
+                        subprocess.run([sys.executable, replay_script], check=False)
+                    if os.path.exists(optimizer_script):
+                        subprocess.run([sys.executable, optimizer_script], check=False)
+                except Exception:
+                    pass
             except Exception:
                 pass
             # 支持0秒间隔：上一轮结束后立即进入下一轮（请谨慎评估资源占用）

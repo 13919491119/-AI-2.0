@@ -1,0 +1,1393 @@
+{
+  "generated_at": "2025-11-03 10:32:02",
+  "total_issues_sampled": 7400,
+  "models": {
+    "liuyao": {
+      "total": 7400,
+      "red_hit": 7670,
+      "blue_hit": 466,
+      "full_hit": 0,
+      "sample_details": [
+        {
+          "period": "2023001",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            1,
+            6,
+            11,
+            16,
+            21,
+            26
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            2,
+            8,
+            9,
+            24,
+            29,
+            33
+          ],
+          "actual_blue": 5,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023002",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            4,
+            7,
+            13,
+            19,
+            25,
+            31
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            1,
+            2,
+            6,
+            7,
+            14,
+            19
+          ],
+          "actual_blue": 3,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023003",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            1,
+            8,
+            13,
+            15,
+            20,
+            27
+          ],
+          "pred_blue": 7,
+          "actual_reds": [
+            1,
+            14,
+            15,
+            17,
+            18,
+            20
+          ],
+          "actual_blue": 7,
+          "red_hit": 3,
+          "blue_hit": 1,
+          "full_hit": 0
+        },
+        {
+          "period": "2023004",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            2,
+            10,
+            18,
+            19,
+            26,
+            27
+          ],
+          "pred_blue": 10,
+          "actual_reds": [
+            9,
+            15,
+            19,
+            26,
+            27,
+            32
+          ],
+          "actual_blue": 1,
+          "red_hit": 3,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023005",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            1,
+            4,
+            10,
+            19,
+            25,
+            28
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            5,
+            7,
+            9,
+            11,
+            28,
+            33
+          ],
+          "actual_blue": 11,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023006",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            5,
+            8,
+            15,
+            18,
+            28,
+            31
+          ],
+          "pred_blue": 15,
+          "actual_reds": [
+            4,
+            6,
+            7,
+            12,
+            13,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023007",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            4,
+            15,
+            26
+          ],
+          "pred_blue": 4,
+          "actual_reds": [
+            3,
+            4,
+            15,
+            17,
+            18,
+            24
+          ],
+          "actual_blue": 13,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023008",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            1,
+            4,
+            10,
+            13,
+            22,
+            25
+          ],
+          "pred_blue": 3,
+          "actual_reds": [
+            6,
+            19,
+            20,
+            21,
+            27,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023009",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            2,
+            9,
+            15,
+            16,
+            22,
+            29
+          ],
+          "pred_blue": 6,
+          "actual_reds": [
+            2,
+            5,
+            8,
+            13,
+            22,
+            25
+          ],
+          "actual_blue": 10,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023010",
+          "date": null,
+          "draw_time": null,
+          "model": "liuyao",
+          "pred_reds": [
+            3,
+            12,
+            17,
+            22,
+            26,
+            31
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            4,
+            6,
+            9,
+            13,
+            15,
+            28
+          ],
+          "actual_blue": 15,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        }
+      ]
+    },
+    "liuren": {
+      "total": 7400,
+      "red_hit": 8034,
+      "blue_hit": 437,
+      "full_hit": 0,
+      "sample_details": [
+        {
+          "period": "2023001",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            1,
+            2,
+            6,
+            28,
+            29,
+            32
+          ],
+          "pred_blue": 8,
+          "actual_reds": [
+            2,
+            8,
+            9,
+            24,
+            29,
+            33
+          ],
+          "actual_blue": 5,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023002",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            3,
+            9,
+            13,
+            22,
+            24,
+            33
+          ],
+          "pred_blue": 3,
+          "actual_reds": [
+            1,
+            2,
+            6,
+            7,
+            14,
+            19
+          ],
+          "actual_blue": 3,
+          "red_hit": 0,
+          "blue_hit": 1,
+          "full_hit": 0
+        },
+        {
+          "period": "2023003",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            3,
+            8,
+            28,
+            30,
+            31,
+            33
+          ],
+          "pred_blue": 14,
+          "actual_reds": [
+            1,
+            14,
+            15,
+            17,
+            18,
+            20
+          ],
+          "actual_blue": 7,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023004",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            4,
+            6,
+            7,
+            9,
+            16,
+            33
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            9,
+            15,
+            19,
+            26,
+            27,
+            32
+          ],
+          "actual_blue": 1,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023005",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            10,
+            20,
+            21,
+            27,
+            28,
+            31
+          ],
+          "pred_blue": 3,
+          "actual_reds": [
+            5,
+            7,
+            9,
+            11,
+            28,
+            33
+          ],
+          "actual_blue": 11,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023006",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            2,
+            4,
+            5,
+            8,
+            10,
+            11
+          ],
+          "pred_blue": 16,
+          "actual_reds": [
+            4,
+            6,
+            7,
+            12,
+            13,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023007",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            3,
+            8,
+            12,
+            13,
+            18,
+            22
+          ],
+          "pred_blue": 8,
+          "actual_reds": [
+            3,
+            4,
+            15,
+            17,
+            18,
+            24
+          ],
+          "actual_blue": 13,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023008",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            12,
+            14,
+            20,
+            23,
+            26,
+            29
+          ],
+          "pred_blue": 15,
+          "actual_reds": [
+            6,
+            19,
+            20,
+            21,
+            27,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023009",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            3,
+            8,
+            9,
+            11,
+            16,
+            33
+          ],
+          "pred_blue": 14,
+          "actual_reds": [
+            2,
+            5,
+            8,
+            13,
+            22,
+            25
+          ],
+          "actual_blue": 10,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023010",
+          "date": null,
+          "draw_time": null,
+          "model": "liuren",
+          "pred_reds": [
+            9,
+            14,
+            19,
+            25,
+            28,
+            33
+          ],
+          "pred_blue": 1,
+          "actual_reds": [
+            4,
+            6,
+            9,
+            13,
+            15,
+            28
+          ],
+          "actual_blue": 15,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        }
+      ]
+    },
+    "qimen": {
+      "total": 7400,
+      "red_hit": 8243,
+      "blue_hit": 464,
+      "full_hit": 0,
+      "sample_details": [
+        {
+          "period": "2023001",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            4,
+            7,
+            11,
+            20,
+            29,
+            32
+          ],
+          "pred_blue": 12,
+          "actual_reds": [
+            2,
+            8,
+            9,
+            24,
+            29,
+            33
+          ],
+          "actual_blue": 5,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023002",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            3,
+            11,
+            12,
+            15,
+            17,
+            33
+          ],
+          "pred_blue": 6,
+          "actual_reds": [
+            1,
+            2,
+            6,
+            7,
+            14,
+            19
+          ],
+          "actual_blue": 3,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023003",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            4,
+            10,
+            14,
+            17,
+            23,
+            26
+          ],
+          "pred_blue": 15,
+          "actual_reds": [
+            1,
+            14,
+            15,
+            17,
+            18,
+            20
+          ],
+          "actual_blue": 7,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023004",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            2,
+            4,
+            5,
+            8,
+            17,
+            20
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            9,
+            15,
+            19,
+            26,
+            27,
+            32
+          ],
+          "actual_blue": 1,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023005",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            10,
+            14,
+            15,
+            22,
+            24,
+            26
+          ],
+          "pred_blue": 3,
+          "actual_reds": [
+            5,
+            7,
+            9,
+            11,
+            28,
+            33
+          ],
+          "actual_blue": 11,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023006",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            8,
+            9,
+            13,
+            14,
+            22,
+            30
+          ],
+          "pred_blue": 1,
+          "actual_reds": [
+            4,
+            6,
+            7,
+            12,
+            13,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023007",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            2,
+            12,
+            20,
+            21,
+            23,
+            28
+          ],
+          "pred_blue": 8,
+          "actual_reds": [
+            3,
+            4,
+            15,
+            17,
+            18,
+            24
+          ],
+          "actual_blue": 13,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023008",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            1,
+            4,
+            7,
+            16,
+            26,
+            33
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            6,
+            19,
+            20,
+            21,
+            27,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023009",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            11,
+            12,
+            16,
+            18,
+            20,
+            24
+          ],
+          "pred_blue": 15,
+          "actual_reds": [
+            2,
+            5,
+            8,
+            13,
+            22,
+            25
+          ],
+          "actual_blue": 10,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023010",
+          "date": null,
+          "draw_time": null,
+          "model": "qimen",
+          "pred_reds": [
+            5,
+            6,
+            9,
+            12,
+            23,
+            33
+          ],
+          "pred_blue": 6,
+          "actual_reds": [
+            4,
+            6,
+            9,
+            13,
+            15,
+            28
+          ],
+          "actual_blue": 15,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        }
+      ]
+    },
+    "ziwei": {
+      "total": 7400,
+      "red_hit": 8029,
+      "blue_hit": 460,
+      "full_hit": 0,
+      "sample_details": [
+        {
+          "period": "2023001",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            32,
+            16,
+            21,
+            9,
+            14,
+            5
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            2,
+            8,
+            9,
+            24,
+            29,
+            33
+          ],
+          "actual_blue": 5,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023002",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            17,
+            13,
+            8,
+            4,
+            27,
+            2
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            1,
+            2,
+            6,
+            7,
+            14,
+            19
+          ],
+          "actual_blue": 3,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023003",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            2,
+            33,
+            18,
+            11,
+            10,
+            20
+          ],
+          "pred_blue": 8,
+          "actual_reds": [
+            1,
+            14,
+            15,
+            17,
+            18,
+            20
+          ],
+          "actual_blue": 7,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023004",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            31,
+            1,
+            33,
+            21,
+            3,
+            16
+          ],
+          "pred_blue": 10,
+          "actual_reds": [
+            9,
+            15,
+            19,
+            26,
+            27,
+            32
+          ],
+          "actual_blue": 1,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023005",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            12,
+            6,
+            10,
+            11,
+            29,
+            17
+          ],
+          "pred_blue": 14,
+          "actual_reds": [
+            5,
+            7,
+            9,
+            11,
+            28,
+            33
+          ],
+          "actual_blue": 11,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023006",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            33,
+            22,
+            30,
+            1,
+            27,
+            32
+          ],
+          "pred_blue": 16,
+          "actual_reds": [
+            4,
+            6,
+            7,
+            12,
+            13,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023007",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            11,
+            8,
+            4,
+            7,
+            18,
+            27
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            3,
+            4,
+            15,
+            17,
+            18,
+            24
+          ],
+          "actual_blue": 13,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023008",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            25,
+            31,
+            12,
+            7,
+            17,
+            13
+          ],
+          "pred_blue": 13,
+          "actual_reds": [
+            6,
+            19,
+            20,
+            21,
+            27,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023009",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            8,
+            4,
+            30,
+            23,
+            19,
+            27
+          ],
+          "pred_blue": 1,
+          "actual_reds": [
+            2,
+            5,
+            8,
+            13,
+            22,
+            25
+          ],
+          "actual_blue": 10,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023010",
+          "date": null,
+          "draw_time": null,
+          "model": "ziwei",
+          "pred_reds": [
+            29,
+            31,
+            14,
+            30,
+            3,
+            33
+          ],
+          "pred_blue": 11,
+          "actual_reds": [
+            4,
+            6,
+            9,
+            13,
+            15,
+            28
+          ],
+          "actual_blue": 15,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        }
+      ]
+    },
+    "ai_fusion": {
+      "total": 7400,
+      "red_hit": 8081,
+      "blue_hit": 449,
+      "full_hit": 0,
+      "sample_details": [
+        {
+          "period": "2023001",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            3,
+            6,
+            13,
+            20,
+            23,
+            32
+          ],
+          "pred_blue": 8,
+          "actual_reds": [
+            2,
+            8,
+            9,
+            24,
+            29,
+            33
+          ],
+          "actual_blue": 5,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023002",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            3,
+            8,
+            9,
+            20,
+            22,
+            23
+          ],
+          "pred_blue": 5,
+          "actual_reds": [
+            1,
+            2,
+            6,
+            7,
+            14,
+            19
+          ],
+          "actual_blue": 3,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023003",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            11,
+            13,
+            14,
+            16,
+            17,
+            26
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            1,
+            14,
+            15,
+            17,
+            18,
+            20
+          ],
+          "actual_blue": 7,
+          "red_hit": 2,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023004",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            2,
+            10,
+            12,
+            18,
+            23,
+            25
+          ],
+          "pred_blue": 14,
+          "actual_reds": [
+            9,
+            15,
+            19,
+            26,
+            27,
+            32
+          ],
+          "actual_blue": 1,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023005",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            2,
+            22,
+            23,
+            25,
+            30,
+            32
+          ],
+          "pred_blue": 4,
+          "actual_reds": [
+            5,
+            7,
+            9,
+            11,
+            28,
+            33
+          ],
+          "actual_blue": 11,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023006",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            2,
+            10,
+            22,
+            23,
+            24,
+            31
+          ],
+          "pred_blue": 2,
+          "actual_reds": [
+            4,
+            6,
+            7,
+            12,
+            13,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023007",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            5,
+            6,
+            13,
+            25,
+            30,
+            33
+          ],
+          "pred_blue": 6,
+          "actual_reds": [
+            3,
+            4,
+            15,
+            17,
+            18,
+            24
+          ],
+          "actual_blue": 13,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023008",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            7,
+            8,
+            10,
+            13,
+            22,
+            23
+          ],
+          "pred_blue": 12,
+          "actual_reds": [
+            6,
+            19,
+            20,
+            21,
+            27,
+            28
+          ],
+          "actual_blue": 12,
+          "red_hit": 0,
+          "blue_hit": 1,
+          "full_hit": 0
+        },
+        {
+          "period": "2023009",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            1,
+            7,
+            13,
+            15,
+            18,
+            24
+          ],
+          "pred_blue": 9,
+          "actual_reds": [
+            2,
+            5,
+            8,
+            13,
+            22,
+            25
+          ],
+          "actual_blue": 10,
+          "red_hit": 1,
+          "blue_hit": 0,
+          "full_hit": 0
+        },
+        {
+          "period": "2023010",
+          "date": null,
+          "draw_time": null,
+          "model": "ai_fusion",
+          "pred_reds": [
+            7,
+            10,
+            12,
+            18,
+            27,
+            30
+          ],
+          "pred_blue": 11,
+          "actual_reds": [
+            4,
+            6,
+            9,
+            13,
+            15,
+            28
+          ],
+          "actual_blue": 15,
+          "red_hit": 0,
+          "blue_hit": 0,
+          "full_hit": 0
+        }
+      ]
+    }
+  }
+}

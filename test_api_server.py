@@ -1,9 +1,16 @@
 import requests # pyright: ignore[reportMissingModuleSource]
+import pytest # pyright: ignore[reportMissingImports]
+
+# 依赖本地后端服务，标记为 integration 测试
+pytestmark = pytest.mark.integration
 
 API_URL = "http://localhost:8000/run_xuanji_ai"
 
-def test_xuanji_ai2(input_text):
+def test_xuanji_ai2():
+    # 这个测试是集成/烟雾测试，需要后端运行；当作为 integration 跑时将执行
+    input_text = "测试输入"
     resp = requests.post(API_URL, json={"input": input_text}, timeout=30)
+    assert resp.status_code == 200
     print(f"输入: {input_text}\n返回: {resp.json().get('result')}")
 
 if __name__ == "__main__":
