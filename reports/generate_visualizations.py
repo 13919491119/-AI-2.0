@@ -1,3 +1,109 @@
+#!/usr/bin/env python3
+"""Generate simple visualizations and an HTML summary for latest SSQ replay metrics and weight snapshots.
+
+Writes output to `reports/visualization/` (creates directory if needed).
+The script will attempt to use matplotlib if available; otherwise it will produce an HTML table-only summary.
+"""
+import json
+import os
+import glob
+from datetime import datetime
+
+OUT_DIR = os.path.join('reports', 'visualization')
+os.makedirs(OUT_DIR, exist_ok=True)
+
+def find_latest_weights_snapshot():
+    pattern = os.path.join('reports', 'weights_history', '*.json')
+    files = sorted(glob.glob(pattern))
+    return files[-1] if files else None
+
+def load_json(path):
+    with open(path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def try_matplotlib():
+    try:
+        import matplotlib.pyplot as plt
+        return plt
+    except Exception:
+        return None
+
+def render_charts(summary, weights_snapshot):
+    plt = try_matplotlib()
+    charts = []
+    if plt:
+        try:
+            # model rates chart
+            models = list(summary['models'].keys())
+            red_rates = [summary['models'][m].get('red_rate',0) for m in models]
+            blue_rates = [summary['models'][m].get('blue_rate',0) for m in models]
+            fig, ax = plt.subplots(figsize=(8,4))
+            x = range(len(models))
+            ax.bar([i-0.2 for i in x], red_rates, width=0.4, label='red_rate')
+            ax.bar([i+0.2 for i in x], blue_rates, width=0.4, label='blue_rate')
+            ax.set_xticks(list(x))
+            ax.set_xticklabels(models, rotation=45)
+            ax.set_ylabel('rate')
+            ax.set_title('Model red/blue hit rates')
+            ax.legend()
+            img1 = os.path.join(OUT_DIR, 'model_rates.png')
+            fig.tight_layout()
+            fig.savefig(img1)
+            charts.append(img1)
+        except Exception:
+            pass
+        try:
+            # weights chart
+            w = weights_snapshot.get('weights') if weights_snapshot else None
+            if w and isinstance(w, dict):
+                keys = list(w.keys())
+                vals = [float(w[k]) for k in keys]
+                fig, ax = plt.subplots(figsize=(8,4))
+                ax.bar(keys, vals)
+                ax.set_ylabel('weight')
+                ax.set_title('Fusion weights')
+                img2 = os.path.join(OUT_DIR, 'fusion_weights.png')
+                fig.tight_layout()
+                fig.savefig(img2)
+                charts.append(img2)
+        except Exception:
+            pass
+    return charts
+
+def generate_html(summary, weights_snapshot, charts):
+    html = ['<html><head><meta charset="utf-8"><title>SSQ Replay Summary</title></head><body>']
+    html.append(f'<h1>SSQ Replay Summary - generated {datetime.utcnow().isoformat()}Z</h1>')
+    if charts:
+        for c in charts:
+            html.append(f'<div><img src="{os.path.basename(c)}" style="max-width:100%;height:auto"/></div>')
+    html.append('<h2>Summary JSON</h2>')
+    html.append('<pre>')
+    html.append(json.dumps(summary, ensure_ascii=False, indent=2))
+    html.append('</pre>')
+    html.append('<h2>Latest Weights Snapshot</h2>')
+    html.append('<pre>')
+    html.append(json.dumps(weights_snapshot, ensure_ascii=False, indent=2))
+    html.append('</pre>')
+    html.append('</body></html>')
+    out = os.path.join(OUT_DIR, 'index.html')
+    with open(out, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(html))
+    # copy images to out dir already in same dir
+    print('Wrote', out)
+
+def main():
+    summary_path = os.path.join('reports', 'ssq_batch_replay_summary.json')
+    if not os.path.exists(summary_path):
+        print('No summary JSON found at', summary_path)
+        return
+    summary = load_json(summary_path)
+    weights_file = find_latest_weights_snapshot()
+    weights_snapshot = load_json(weights_file) if weights_file else {}
+    charts = render_charts(summary, weights_snapshot)
+    generate_html(summary, weights_snapshot, charts)
+
+if __name__ == '__main__':
+    main()
 """
 生成用于前端/可视化的数据文件：
 - 从 reports/ssq_batch_replay_summary_window_*.json 中读取窗口化统计，生成一个合并 JSON 方便前端读取。
