@@ -8,7 +8,7 @@ User confirmation received: "强制合并并继续（高风险）" — user acce
 
 Details:
 
-- PR: https://github.com/13919491119/-AI-2.0/pull/2
+- PR: <https://github.com/13919491119/-AI-2.0/pull/2>
 - Branch merged: xuanji/safe-updates-auto-8e050d3a -> main
 - Merge strategy: direct PR merge (user-authorized, CI failures ignored)
 

@@ -6,13 +6,11 @@
 import time
 import json
 import random
-import os
 
 WEIGHTS_FILE = 'ssq_strategy_weights.json'
 STATUS_FILE = 'model_status.json'
 LOG_FILE = 'autonomous_optimization.log'
 REPORT_FILE = 'reports/ssq_batch_replay_report.txt'
-SUMMARY_JSON = 'reports/ssq_batch_replay_summary.json'
 WEIGHTS_HISTORY_DIR = 'reports/weights_history'
 
 def load_weights():
@@ -25,6 +23,16 @@ def load_weights():
 def save_weights(w):
     with open(WEIGHTS_FILE, 'w', encoding='utf-8') as f:
         json.dump(w, f, ensure_ascii=False, indent=2)
+    # 同时写入历史快照以便审计
+    try:
+        import os, time
+        os.makedirs(WEIGHTS_HISTORY_DIR, exist_ok=True)
+        ts = time.strftime('%Y%m%d_%H%M%S')
+        snapshot_path = os.path.join(WEIGHTS_HISTORY_DIR, f'weights_{ts}.json')
+        with open(snapshot_path, 'w', encoding='utf-8') as sf:
+            json.dump({'snapshot_at': ts, 'weights': w}, sf, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
 
 def update_status(delta_perf=0.1):
     try:
@@ -42,39 +50,8 @@ def update_status(delta_perf=0.1):
     except Exception as e:
         return {'error': str(e)}
 
-def parse_replay_report(path=REPORT_FILE, window=None):
-    """优先尝试读取 JSON 汇总（更稳健）。
-    若指定 window（整数），则基于 JSON 中的 sample_details 计算最近 window 条的统计。
-    否则返回全量统计（JSON total 字段或文本解析回退）。
-    """
-    # 优先使用 JSON 汇总
-    try:
-        if os.path.exists(SUMMARY_JSON):
-            with open(SUMMARY_JSON,'r',encoding='utf-8') as jf:
-                j = json.load(jf)
-                stats = {}
-                for m,v in j.get('models', {}).items():
-                    if window and isinstance(window, int) and window > 0:
-                        details = v.get('sample_details', [])
-                        # 如果 sample_details 长度小于 window，则尝试读取 timestamped history file (best-effort)
-                        recent = details[-window:]
-                        total = len(recent)
-                        red_hit = sum(d.get('red_hit',0) for d in recent)
-                        blue_hit = sum(d.get('blue_hit',0) for d in recent)
-                        full_hit = sum(d.get('full_hit',0) for d in recent)
-                        stats[m] = {'total': total, 'red_hit': red_hit, 'blue_hit': blue_hit, 'full_hit': full_hit}
-                    else:
-                        stats[m] = {
-                            'total': int(v.get('total',0)),
-                            'red_hit': int(v.get('red_hit',0)),
-                            'blue_hit': int(v.get('blue_hit',0)),
-                            'full_hit': int(v.get('full_hit',0))
-                        }
-                return stats
-    except Exception:
-        pass
-
-    # 回退到文本解析（兼容之前的报告格式）
+def parse_replay_report(path=REPORT_FILE):
+    """解析 ssq_batch_replay_report.txt，提取每个模型的 total/red/blue/full 统计值。"""
     stats = {}
     try:
         with open(path, 'r', encoding='utf-8') as f:
@@ -145,13 +122,7 @@ if __name__ == '__main__':
     start = time.time()
     w = load_weights()
     # 尝试从 replay 报告读取指标，若存在则基于指标计算新权重
-    # 支持通过环境变量 OPTIMIZE_SUMMARY_WINDOW 指定使用最近 N 条样本（窗口化）
-    try:
-        window_env = os.getenv('OPTIMIZE_SUMMARY_WINDOW')
-        window = int(window_env) if window_env and window_env.isdigit() else None
-    except Exception:
-        window = None
-    metrics = parse_replay_report(REPORT_FILE, window=window)
+    metrics = parse_replay_report(REPORT_FILE)
     new_weights = metrics_to_weights(metrics) if metrics else None
     if new_weights:
         print('发现复盘报告，使用指标驱动权重更新')
@@ -172,28 +143,6 @@ if __name__ == '__main__':
         status = update_status(delta_perf=delta)
         with open(LOG_FILE,'a',encoding='utf-8') as f:
             f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] metrics-driven optimize, avg_full_rate={avg_full_rate:.4f}, delta={delta}\n")
-        # 将权重快照写入历史目录，便于回溯
-        try:
-            os.makedirs(WEIGHTS_HISTORY_DIR, exist_ok=True)
-            snap = {
-                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-                'weights': w.get('weights'),
-                'fusion': w.get('fusion'),
-                'metrics_summary': metrics
-            }
-            snap_path = os.path.join(WEIGHTS_HISTORY_DIR, f'ssq_weights_{int(time.time())}.json')
-            # 在写入前计算快照的 sha256 签名并写入文件
-            try:
-                snap_content = json.dumps(snap, ensure_ascii=False, indent=2)
-                import hashlib
-                sha = hashlib.sha256(snap_content.encode('utf-8')).hexdigest()
-                snap['sha256'] = sha
-            except Exception:
-                pass
-            with open(snap_path, 'w', encoding='utf-8') as sf:
-                json.dump(snap, sf, ensure_ascii=False, indent=2)
-        except Exception:
-            pass
         print('优化完成（基于指标），权重已更新。')
     else:
         # 回退到原有的模拟微调逻辑（报告缺失或解析失败）
@@ -213,24 +162,4 @@ if __name__ == '__main__':
         status = update_status(delta_perf=0.05)
         with open(LOG_FILE,'a',encoding='utf-8') as f:
             f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] fallback optimize_models, new_perf={status.get('perf_improve')}\n")
-        try:
-            os.makedirs(WEIGHTS_HISTORY_DIR, exist_ok=True)
-            snap = {
-                'timestamp': time.strftime('%Y-%m-%d %H:%M:%S'),
-                'weights': w.get('weights'),
-                'fusion': w.get('fusion'),
-                'metrics_summary': None
-            }
-            snap_path = os.path.join(WEIGHTS_HISTORY_DIR, f'ssq_weights_{int(time.time())}.json')
-            try:
-                snap_content = json.dumps(snap, ensure_ascii=False, indent=2)
-                import hashlib
-                sha = hashlib.sha256(snap_content.encode('utf-8')).hexdigest()
-                snap['sha256'] = sha
-            except Exception:
-                pass
-            with open(snap_path, 'w', encoding='utf-8') as sf:
-                json.dump(snap, sf, ensure_ascii=False, indent=2)
-        except Exception:
-            pass
         print('优化完成，权重已更新（随机微调）。')

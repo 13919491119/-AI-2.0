@@ -1,0 +1,41 @@
+{
+  "snapshot_at": "20251104_035446",
+  "weights": {
+    "metrics": {
+      "liuyao": {
+        "reds_rate": 0.173133,
+        "blue_rate": 0.0608,
+        "samples": 5000
+      },
+      "liuren": {
+        "reds_rate": 0.1828,
+        "blue_rate": 0.0604,
+        "samples": 5000
+      },
+      "qimen": {
+        "reds_rate": 0.1867,
+        "blue_rate": 0.0624,
+        "samples": 5000
+      },
+      "ai": {
+        "reds_rate": 0.180867,
+        "blue_rate": 0.0574,
+        "samples": 5000
+      }
+    },
+    "weights": {
+      "liuyao": 0.192,
+      "liuren": 0.2,
+      "qimen": 0.205,
+      "ziwei": 0.2,
+      "ai_fusion": 0.203
+    },
+    "generated_at": 1760627651.0447075,
+    "ema_alpha": 0.6,
+    "window": 0,
+    "fusion": {
+      "last_updated": "2025-11-04 03:54:46",
+      "note": "metrics-driven"
+    }
+  }
+}

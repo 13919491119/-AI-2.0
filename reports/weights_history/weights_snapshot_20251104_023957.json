@@ -1,0 +1,46 @@
+{
+  "generated_at": "2025-11-04T02:39:57.560416+00:00",
+  "weights": {
+    "liuyao": 0.192,
+    "liuren": 0.2,
+    "qimen": 0.205,
+    "ziwei": 0.2,
+    "ai_fusion": 0.203
+  },
+  "fusion": {
+    "last_updated": "2025-11-04 02:39:57",
+    "note": "metrics-driven"
+  },
+  "metrics": {
+    "liuyao": {
+      "total": 7400,
+      "red_hit": 7670,
+      "blue_hit": 479,
+      "full_hit": 0
+    },
+    "liuren": {
+      "total": 7400,
+      "red_hit": 8034,
+      "blue_hit": 466,
+      "full_hit": 0
+    },
+    "qimen": {
+      "total": 7400,
+      "red_hit": 8243,
+      "blue_hit": 448,
+      "full_hit": 0
+    },
+    "ziwei": {
+      "total": 7400,
+      "red_hit": 8016,
+      "blue_hit": 460,
+      "full_hit": 0
+    },
+    "ai_fusion": {
+      "total": 7400,
+      "red_hit": 8193,
+      "blue_hit": 437,
+      "full_hit": 0
+    }
+  }
+}

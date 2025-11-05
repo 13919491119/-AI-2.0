@@ -9,14 +9,10 @@ import csv
 import datetime
 from ssq_predict_cycle import SSQPredictCycle
 
-import json
-import time
-import os
-
 HISTORY_FILE = 'ssq_history.csv'
 REPORT_FILE = 'reports/ssq_batch_replay_report.txt'
-SUMMARY_JSON = 'reports/ssq_batch_replay_summary.json'
-
+JSON_SUMMARY_FILE = 'reports/ssq_batch_replay_summary.json'
+METRICS_HISTORY_DIR = 'reports/metrics_history'
 
 models = ['liuyao', 'liuren', 'qimen', 'ziwei', 'ai_fusion']
 
@@ -24,20 +20,45 @@ results = {m: {'total': 0, 'red_hit': 0, 'blue_hit': 0, 'full_hit': 0, 'details'
 
 cycle = SSQPredictCycle(data_path=HISTORY_FILE)
 
+def _try_get(row, candidates):
+    for k in candidates:
+        if k in row and row.get(k) not in (None, ''):
+            return row.get(k)
+    return ''
+
 with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
     reader = csv.DictReader(f)
     for idx, row in enumerate(reader):
-        # 更宽松的字段兼容：尝试多种常见字段名
-        period = row.get('period') or row.get('期次') or row.get('issue') or row.get('期号') or row.get('id')
-        date = row.get('date') or row.get('开奖日期') or row.get('draw_date')
-        draw_time = row.get('time') or row.get('开奖时间') or row.get('draw_time')
+        # 更鲁棒的字段匹配
+        date = _try_get(row, ['date', '开奖日期', '开奖时间', 'date_str'])
+        time = _try_get(row, ['time', '开奖时间', 'time_str'])
+        period = _try_get(row, ['period', '期次', 'issue', '期号'])
         reds = []
+        # 支持多种红球列名或逗号分隔字段
         for i in range(6):
-            val = row.get(f'red{i+1}') or row.get(f'红球{i+1}') or row.get(f'红{i+1}') or row.get(f'r{i+1}')
-            if val is not None and val != '':
+            val = _try_get(row, [f'red{i+1}', f'红球{i+1}', f'红{i+1}'])
+            if val is None or val == '':
+                continue
+            try:
                 reds.append(int(val))
-        blue = row.get('blue') or row.get('蓝球') or row.get('蓝')
-        blue = int(blue) if blue is not None and blue != '' else 0
+            except Exception:
+                # 处理逗号分隔的单列情况（如 'red_all'）
+                try:
+                    parts = str(val).split(',')
+                    for p in parts:
+                        p = p.strip()
+                        if p:
+                            v = int(p)
+                            if v not in reds and len(reds) < 6:
+                                reds.append(v)
+                except Exception:
+                    pass
+        # 兼容单列 blue 名称
+        blue_val = _try_get(row, ['blue', '蓝球', '蓝', 'blue_ball'])
+        try:
+            blue = int(blue_val) if blue_val not in (None, '') else 0
+        except Exception:
+            blue = 0
         # 起卦信息：开奖日期+时间
         for m in models:
             if m == 'liuyao': pr, pb = cycle.predict_liuyao(idx)
@@ -61,9 +82,8 @@ with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             results[m]['blue_hit'] += blue_hit
             results[m]['full_hit'] += full_hit
             results[m]['details'].append({
-                'period': period,
-                'date': date,
-                'draw_time': draw_time,
+                'period': period or '',
+                'date': date or '',
                 'model': m,
                 'pred_reds': pr,
                 'pred_blue': pb,
@@ -75,8 +95,11 @@ with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
             })
 
 # 生成报告
-# 输出文本报告和 JSON 汇总
-os.makedirs(os.path.dirname(REPORT_FILE), exist_ok=True)
+import json
+import os
+
+os.makedirs(os.path.dirname(REPORT_FILE), exist_ok=True) if os.path.dirname(REPORT_FILE) else None
+
 with open(REPORT_FILE, 'w', encoding='utf-8') as f:
     f.write('双色球历史批量复盘与模型学习升级报告\n')
     for m in models:
@@ -87,54 +110,42 @@ with open(REPORT_FILE, 'w', encoding='utf-8') as f:
         f.write(f'全中（红+蓝）期数：{results[m]["full_hit"]}\n')
         f.write('部分复盘详情（前10期）：\n')
         for d in results[m]['details'][:10]:
-            f.write(f'期次:{d["period"]} 日期:{d["date"]} 时间:{d.get("draw_time","")} 预测红球:{d["pred_reds"]} 预测蓝球:{d["pred_blue"]} 实际红球:{d["actual_reds"]} 实际蓝球:{d["actual_blue"]} 命中红球:{d["red_hit"]} 命中蓝球:{d["blue_hit"]} 全中:{d["full_hit"]}\n')
+            f.write(f'期次:{d["period"]} 日期:{d["date"]} 预测红球:{d["pred_reds"]} 预测蓝球:{d["pred_blue"]} 实际红球:{d["actual_reds"]} 实际蓝球:{d["actual_blue"]} 命中红球:{d["red_hit"]} 命中蓝球:{d["blue_hit"]} 全中:{d["full_hit"]}\n')
     f.write('\n模型学习升级闭环已完成。')
 
-# JSON 汇总（机器可读）
-summary = {
-    'schema_v': 1,
-    'generated_at': time.strftime('%Y-%m-%d %H:%M:%S'),
-    'total_issues_sampled': next(iter(results.values()))['total'] if results else 0,
-    'models': {}
-}
+# 生成机器可解析的 JSON 汇总
+summary = {'generated_at': datetime.datetime.utcnow().isoformat() + 'Z', 'models': {}}
 for m in models:
+    total = results[m]['total']
+    red_hit = results[m]['red_hit']
+    blue_hit = results[m]['blue_hit']
+    full_hit = results[m]['full_hit']
+    red_rate = round((red_hit / (6 * total)) if total > 0 else 0.0, 6)
+    blue_rate = round((blue_hit / total) if total > 0 else 0.0, 6)
+    full_rate = round((full_hit / total) if total > 0 else 0.0, 6)
     summary['models'][m] = {
-        'total': results[m]['total'],
-        'red_hit': results[m]['red_hit'],
-        'blue_hit': results[m]['blue_hit'],
-        'full_hit': results[m]['full_hit'],
-        'sample_details': results[m]['details'][:10]
+        'total': total,
+        'red_hit': red_hit,
+        'blue_hit': blue_hit,
+        'full_hit': full_hit,
+        'red_rate': red_rate,
+        'blue_rate': blue_rate,
+        'full_rate': full_rate,
+        'sample_details': results[m]['details'][:30]
     }
 
-with open(SUMMARY_JSON, 'w', encoding='utf-8') as jf:
-    json.dump(summary, jf, ensure_ascii=False, indent=2)
-
-# 也保存时间戳版本，便于历史追踪
-ts = int(time.time())
-history_path = f'reports/ssq_batch_replay_summary_{ts}.json'
-with open(history_path, 'w', encoding='utf-8') as hf:
-    json.dump(summary, hf, ensure_ascii=False, indent=2)
-
-# 生成窗口化（rolling window）汇总：近 100、500、1000 期
 try:
-    windows = [100, 500, 1000]
-    for w in windows:
-        win_summary = {'schema_v': 1, 'window': w, 'generated_at': time.strftime('%Y-%m-%d %H:%M:%S'), 'models': {}}
-        for m in models:
-            details = results[m]['details'][-w:] if len(results[m]['details']) >= 1 else []
-            total = sum(1 for _ in details)
-            red_hit = sum(d.get('red_hit', 0) for d in details)
-            blue_hit = sum(d.get('blue_hit', 0) for d in details)
-            full_hit = sum(d.get('full_hit', 0) for d in details)
-            win_summary['models'][m] = {
-                'total': total,
-                'red_hit': red_hit,
-                'blue_hit': blue_hit,
-                'full_hit': full_hit,
-                'sample_details': details[-10:]
-            }
-        path = f'reports/ssq_batch_replay_summary_window_{w}.json'
-        with open(path, 'w', encoding='utf-8') as wf:
-            json.dump(win_summary, wf, ensure_ascii=False, indent=2)
+    with open(JSON_SUMMARY_FILE, 'w', encoding='utf-8') as jf:
+        json.dump(summary, jf, ensure_ascii=False, indent=2)
+except Exception:
+    pass
+# 也写入 metrics history 快照，便于长期存档
+try:
+    import os, time
+    os.makedirs(METRICS_HISTORY_DIR, exist_ok=True)
+    ts = time.strftime('%Y%m%d_%H%M%S')
+    metrics_path = os.path.join(METRICS_HISTORY_DIR, f'metrics_{ts}.json')
+    with open(metrics_path, 'w', encoding='utf-8') as mf:
+        json.dump({'snapshot_at': ts, 'summary': summary}, mf, ensure_ascii=False, indent=2)
 except Exception:
     pass

@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ssq_batch_replay_summary_v1",
+  "type": "object",
+  "required": ["schema_v","generated_at","models"],
+  "properties": {
+    "schema_v": {"type": "string"},
+    "generated_at": {"type": "string","format":"date-time"},
+    "models": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "required": ["total","red_hit","blue_hit","full_hit","sample_details"],
+          "properties": {
+            "total": {"type":"integer"},
+            "red_hit": {"type":"integer"},
+            "blue_hit": {"type":"integer"},
+            "full_hit": {"type":"integer"},
+            "sample_details": {"type":"array"}
+          }
+        }
+      }
+    }
+  }
+}

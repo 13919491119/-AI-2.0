@@ -2,6 +2,10 @@ import os
 import time
 import hashlib
 import requests
+import pytest # pyright: ignore[reportMissingImports]
+
+# 标记为 integration 测试（需要运行本地微信 webhook 服务），默认 CI/本地不运行
+pytestmark = pytest.mark.integration
 
 BASE = os.environ.get('WECHAT_BASE', 'http://127.0.0.1:9090')
 TOKEN = os.environ.get('WECHAT_TOKEN', 'celestial_nexus_ai_token')

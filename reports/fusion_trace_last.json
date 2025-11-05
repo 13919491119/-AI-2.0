@@ -1,18 +1,18 @@
 {
   "fused_reds": [
+    6,
     8,
-    13,
-    17,
-    19,
-    24,
-    28
+    15,
+    18,
+    27,
+    31
   ],
-  "fused_blue": 13,
+  "fused_blue": 1,
   "fusion": {
     "weights": {
       "liuyao": 0.192,
       "liuren": 0.2,
-      "qimen": 0.206,
+      "qimen": 0.205,
       "ai": 1.0
     },
     "priors": {

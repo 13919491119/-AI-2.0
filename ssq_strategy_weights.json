@@ -24,15 +24,15 @@
   "weights": {
     "liuyao": 0.192,
     "liuren": 0.2,
-    "qimen": 0.206,
-    "ziwei": 0.201,
-    "ai_fusion": 0.201
+    "qimen": 0.205,
+    "ziwei": 0.2,
+    "ai_fusion": 0.203
   },
   "generated_at": 1760627651.0447075,
   "ema_alpha": 0.6,
   "window": 0,
   "fusion": {
-    "last_updated": "2025-11-03 10:32:07",
+    "last_updated": "2025-11-04 03:54:46",
     "note": "metrics-driven"
   }
 }
