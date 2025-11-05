@@ -15,12 +15,20 @@ jobs:
   xuanji_ai2:
     runs-on: ubuntu-latest
     steps:
+      - name: 安装步骤依赖（确保 github-script 中可 require axios）
+        run: |
+          # 在 runner 工作目录创建简易 package.json 并安装 axios
+          if [ ! -f package.json ]; then
+            npm init -y >/dev/null 2>&1 || true
+          fi
+          npm install axios --no-audit --no-fund
+
       - name: 检查评论内容
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          # 安装 axios 以便在脚本中使用
-          packages: '["axios"]'
+          # 原先使用 packages 输入安装 axios，但部分 runner/linter 可能不支持该输入
+          # 我们改为提前在 runner 上通过 npm 安装 axios（见前置步骤），以避免 MODULE_NOT_FOUND
           script: |
             const axios = require('axios');
             const comment = context.payload.comment.body;
