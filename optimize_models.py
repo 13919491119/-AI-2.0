@@ -6,6 +6,8 @@
 import time
 import json
 import random
+import os
+import subprocess
 
 WEIGHTS_FILE = 'ssq_strategy_weights.json'
 STATUS_FILE = 'model_status.json'
@@ -20,17 +22,25 @@ def load_weights():
     except Exception:
         return {'weights': {'liuyao':0.25,'liuren':0.2,'qimen':0.15,'ai':0.4}, 'fusion': None}
 
-def save_weights(w):
+def save_weights(w, eval_score=None):
+    """保存主权重文件，并在历史目录写入带 eval_score 的快照，随后尝试对快照签名。"""
     with open(WEIGHTS_FILE, 'w', encoding='utf-8') as f:
         json.dump(w, f, ensure_ascii=False, indent=2)
     # 同时写入历史快照以便审计
     try:
-        import os, time
         os.makedirs(WEIGHTS_HISTORY_DIR, exist_ok=True)
         ts = time.strftime('%Y%m%d_%H%M%S')
-        snapshot_path = os.path.join(WEIGHTS_HISTORY_DIR, f'weights_{ts}.json')
+        snapshot_path = os.path.join(WEIGHTS_HISTORY_DIR, f'weights_snapshot_{ts}.json')
+        payload = {'snapshot_at': ts, 'weights': w}
+        if eval_score is not None:
+            payload['eval_score'] = float(eval_score)
         with open(snapshot_path, 'w', encoding='utf-8') as sf:
-            json.dump({'snapshot_at': ts, 'weights': w}, sf, ensure_ascii=False, indent=2)
+            json.dump(payload, sf, ensure_ascii=False, indent=2)
+        # 尝试对快照进行签名（非强制）
+        try:
+            subprocess.run(['python3', 'scripts/sign_weights_history.py', snapshot_path], check=False)
+        except Exception:
+            pass
     except Exception:
         pass
 
@@ -118,6 +128,23 @@ def metrics_to_weights(metrics, min_weight=0.01):
         weights[k] = round(weights[k] / s, 3)
     return weights
 
+def get_latest_snapshot_eval():
+    """从历史快照中找最近带 eval_score 的项并返回 eval_score（float），找不到返回 None。"""
+    try:
+        import glob
+        files = sorted(glob.glob(os.path.join(WEIGHTS_HISTORY_DIR, '*.json')))
+        for p in reversed(files):
+            try:
+                with open(p, 'r', encoding='utf-8') as f:
+                    j = json.load(f)
+                if 'eval_score' in j:
+                    return float(j['eval_score'])
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return None
+
 if __name__ == '__main__':
     start = time.time()
     w = load_weights()
@@ -126,11 +153,7 @@ if __name__ == '__main__':
     new_weights = metrics_to_weights(metrics) if metrics else None
     if new_weights:
         print('发现复盘报告，使用指标驱动权重更新')
-        # 保持原结构
-        w['weights'] = {k: new_weights.get(k, round(1.0/len(new_weights),3)) for k in new_weights}
-        w['fusion'] = {'last_updated': time.strftime('%Y-%m-%d %H:%M:%S'), 'note': 'metrics-driven'}
-        save_weights(w)
-        # 根据 full_hit 平均值模拟性能提升幅度
+        # 先计算评估指标（avg_full_rate）用于回滚门控
         avg_full_rate = 0.0
         cnt = 0
         for m,v in metrics.items():
@@ -139,11 +162,37 @@ if __name__ == '__main__':
                 avg_full_rate += (v.get('full_hit',0)/t)
                 cnt += 1
         avg_full_rate = (avg_full_rate/cnt) if cnt>0 else 0.0
-        delta = round(avg_full_rate * 0.1, 3)
-        status = update_status(delta_perf=delta)
-        with open(LOG_FILE,'a',encoding='utf-8') as f:
-            f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] metrics-driven optimize, avg_full_rate={avg_full_rate:.4f}, delta={delta}\n")
-        print('优化完成（基于指标），权重已更新。')
+
+        # 回滚阈值（允许轻微波动），例如允许下降 1% 以内
+        rollback_threshold = 0.01
+        baseline = get_latest_snapshot_eval()
+        if baseline is not None:
+            try:
+                baseline_f = float(baseline)
+            except Exception:
+                baseline_f = None
+        else:
+            baseline_f = None
+
+        # 判断是否接受新权重：若新 eval 显著低于 baseline（超过阈值），则回退不更新
+        accept = True
+        if (baseline_f is not None) and (avg_full_rate < (baseline_f - rollback_threshold)):
+            accept = False
+
+        if not accept:
+            with open(LOG_FILE,'a',encoding='utf-8') as f:
+                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] optimize rejected: new_eval={avg_full_rate:.6f} < baseline={baseline_f:.6f} - thr={rollback_threshold}\n")
+            print('检测到性能下降，已拒绝权重更新（回滚触发）。')
+        else:
+            # 保持原结构并保存快照（带 eval_score），随后签名
+            w['weights'] = {k: new_weights.get(k, round(1.0/len(new_weights),3)) for k in new_weights}
+            w['fusion'] = {'last_updated': time.strftime('%Y-%m-%d %H:%M:%S'), 'note': 'metrics-driven'}
+            save_weights(w, eval_score=avg_full_rate)
+            delta = round(avg_full_rate * 0.1, 3)
+            status = update_status(delta_perf=delta)
+            with open(LOG_FILE,'a',encoding='utf-8') as f:
+                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] metrics-driven optimize, avg_full_rate={avg_full_rate:.4f}, delta={delta}\n")
+            print('优化完成（基于指标），权重已更新。')
     else:
         # 回退到原有的模拟微调逻辑（报告缺失或解析失败）
         print('未发现复盘报告或解析失败，使用随机微调策略')
