@@ -19,6 +19,8 @@ jobs:
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          # 安装 axios 以便在脚本中使用
+          packages: '["axios"]'
           script: |
             const axios = require('axios');
             const comment = context.payload.comment.body;
