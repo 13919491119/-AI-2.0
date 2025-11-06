@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# 一键启动：AI智能体元学习体系
+# 可通过环境变量调整默认间隔/策略（见下方导出的默认值）。
+set -euo pipefail
+
+export SSQ_CYCLE_INTERVAL_SECONDS=${SSQ_CYCLE_INTERVAL_SECONDS:-0}
+export SSQ_MAX_ATTEMPTS_PER_ISSUE=${SSQ_MAX_ATTEMPTS_PER_ISSUE:-0}
+export SSQ_MAX_SECONDS_PER_ISSUE=${SSQ_MAX_SECONDS_PER_ISSUE:-5}
+
+export AUTORL_MIN_INTERVAL_HOURS=${AUTORL_MIN_INTERVAL_HOURS:-12}
+export VIS_MIN_INTERVAL_HOURS=${VIS_MIN_INTERVAL_HOURS:-6}
+
+# AutoRL→生产融合器的策略配置
+export AUTORL_PROMOTE=${AUTORL_PROMOTE:-1}
+export AUTORL_PROMOTE_STRATEGY=${AUTORL_PROMOTE_STRATEGY:-promote} # blend | promote | replace
+export AUTORL_BLEND_ALPHA=${AUTORL_BLEND_ALPHA:-0.05}
+export AUTORL_PROMOTE_TARGET_WEIGHT=${AUTORL_PROMOTE_TARGET_WEIGHT:-0.6}
+export AUTORL_REPLACE_WEIGHT=${AUTORL_REPLACE_WEIGHT:-0.85}
+export AUTORL_PROMOTE_MIN_DELTA=${AUTORL_PROMOTE_MIN_DELTA:-0.02}
+export AUTORL_PROMOTE_LB_DELTA=${AUTORL_PROMOTE_LB_DELTA:-0.02}
+
+# 输出一次配置以便日志审计
+python -m ai_meta_system.main --print-config || true
+
+# 启动主循环（单实例守护）
+exec python -m ai_meta_system.main

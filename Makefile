@@ -16,6 +16,7 @@ help:
 	@echo '  make observe        启动 Prometheus+Grafana'
 	@echo '  make self-check     运行系统自检'
 	@echo '  make freeze         生成 requirements-lock.txt'
+	@echo '  make start-meta     一键启动AI智能体元学习体系（主任务）'
 
 install: deps freeze
 
@@ -48,3 +49,6 @@ observe:
 
 self-check:
 	bash system_self_check.sh
+
+start-meta:
+	bash ./start_ai_meta_system.sh
