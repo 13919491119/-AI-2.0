@@ -10,19 +10,15 @@ jobs:
   publish:
     name: Publish reports/visualization to Pages
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Upload visualizations as Pages artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy `reports/visualization` to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: reports/visualization
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          publish_dir: ./reports/visualization
+          publish_branch: gh-pages
+          allow_empty_commit: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
