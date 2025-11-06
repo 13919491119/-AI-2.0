@@ -29,6 +29,25 @@ jobs:
         run: |
           PYTHONPATH=. pytest -q
 
+  autorl-smoke:
+    name: AutoRL smoke (fast)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Run lightweight AutoRL
+        run: |
+          python -m autorl.runner --population 4 --generations 2 --train-steps 80 --eval-steps 80 --seed 7 --min-delta 0.0
+      - name: Upload AutoRL artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autorl-runs
+          path: reports/autorl_runs/*.json
+
   integration-tests:
     name: Integration tests (manual)
     runs-on: ubuntu-latest
