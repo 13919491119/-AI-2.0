@@ -89,6 +89,11 @@ async def main():
                         _maybe_run_autorl()
                     except Exception:
                         pass
+                    # 低频刷新可视化（汇总最新复盘/权重/AutoRL best），默认最短间隔6小时
+                    try:
+                        _maybe_generate_visualizations()
+                    except Exception:
+                        pass
                 except Exception:
                     pass
             except Exception:
@@ -128,6 +133,39 @@ def _maybe_run_autorl():
     # 运行轻量 AutoRL：使用较小种群与代数，限制训练步数
     try:
         subprocess.run([sys.executable, '-m', 'autorl.runner', '--population', '8', '--generations', '4', '--train-steps', '250', '--eval-steps', '250'], check=False)
+    except Exception:
+        pass
+
+
+# --------- 附加：Visualization 调度（低频） ---------
+_VIS_STAMP = os.path.join('reports', 'visualization', 'last_gen.txt')
+
+def _maybe_generate_visualizations():
+    """按时间间隔运行 reports/generate_visualizations.py。失败不影响主流程。"""
+    try:
+        min_hours = float(os.getenv('VIS_MIN_INTERVAL_HOURS', '6'))
+    except Exception:
+        min_hours = 6.0
+    now = time.time()
+    last = 0.0
+    try:
+        if os.path.exists(_VIS_STAMP):
+            with open(_VIS_STAMP, 'r', encoding='utf-8') as f:
+                last = float((f.read() or '0').strip() or '0')
+    except Exception:
+        last = 0.0
+    if (now - last) < (min_hours * 3600.0):
+        return
+    script = os.path.join('reports', 'generate_visualizations.py')
+    if os.path.exists(script):
+        try:
+            subprocess.run([sys.executable, script], check=False)
+        except Exception:
+            pass
+    try:
+        os.makedirs(os.path.dirname(_VIS_STAMP), exist_ok=True)
+        with open(_VIS_STAMP, 'w', encoding='utf-8') as f:
+            f.write(str(now))
     except Exception:
         pass
     # 更新时间戳
