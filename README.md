@@ -67,6 +67,54 @@ celestial_nexus/
 
 见 QUICK_START.md
 
+## AI智能体元学习体系（一键启动）
+
+该体系为系统主任务，统一编排端到端闭环与元学习：
+
+- 预测 → 复盘 → 优化 → 权重快照 → 可视化 → 再预测（持续）
+- AutoRL 自进化外环（低频触发、门控评估、最优快照）
+- 强门控晋升/替换策略对接融合权重（可配置、安全回滚）
+
+一键启动（推荐通过 Makefile）：
+
+```bash
+make start-meta
+```
+
+或直接运行脚本：
+
+```bash
+./start_ai_meta_system.sh
+```
+
+关键环境变量（可按需覆盖）：
+
+```bash
+# 闭环与超时
+SSQ_CYCLE_INTERVAL_SECONDS=0
+SSQ_MAX_ATTEMPTS_PER_ISSUE=0
+SSQ_MAX_SECONDS_PER_ISSUE=5
+
+# 低频任务
+AUTORL_MIN_INTERVAL_HOURS=12
+VIS_MIN_INTERVAL_HOURS=6
+
+# AutoRL→生产融合器策略
+AUTORL_PROMOTE=1                          # 0 关闭，1 开启
+AUTORL_PROMOTE_STRATEGY=promote           # blend | promote | replace
+AUTORL_BLEND_ALPHA=0.05                   # blend 强度
+AUTORL_PROMOTE_TARGET_WEIGHT=0.6          # promote 目标占比
+AUTORL_REPLACE_WEIGHT=0.85                # replace 目标占比
+AUTORL_PROMOTE_MIN_DELTA=0.02             # 与基线均值的最小提升
+AUTORL_PROMOTE_LB_DELTA=0.02              # 与基线下置信界的最小提升
+```
+
+查看当前配置而不启动：
+
+```bash
+python -m ai_meta_system.main --print-config
+```
+
 ## API自动生成文档
 
 本系统基于 FastAPI，自动生成并托管 Swagger/OpenAPI 文档。
