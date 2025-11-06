@@ -70,12 +70,38 @@ def render_charts(summary, weights_snapshot):
             pass
     return charts
 
+def _load_autorl_best():
+    p = os.path.join('reports', 'autorl_runs', 'best.json')
+    if os.path.exists(p):
+        try:
+            with open(p, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+
 def generate_html(summary, weights_snapshot, charts):
     html = ['<html><head><meta charset="utf-8"><title>SSQ Replay Summary</title></head><body>']
     html.append(f'<h1>SSQ Replay Summary - generated {datetime.utcnow().isoformat()}Z</h1>')
     if charts:
         for c in charts:
             html.append(f'<div><img src="{os.path.basename(c)}" style="max-width:100%;height:auto"/></div>')
+    # AutoRL best snapshot section
+    autorl_best = _load_autorl_best()
+    if autorl_best:
+        html.append('<h2>AutoRL Best Snapshot</h2>')
+        try:
+            best = autorl_best.get('snapshot') or autorl_best
+            # Try to pick key fields
+            key = autorl_best.get('key', 'avg_mean_reward')
+            cur = autorl_best.get(key)
+            html.append('<p>Key metric: %s = %s</p>' % (key, cur))
+        except Exception:
+            pass
+        html.append('<pre>')
+        html.append(json.dumps(autorl_best, ensure_ascii=False, indent=2))
+        html.append('</pre>')
     html.append('<h2>Summary JSON</h2>')
     html.append('<pre>')
     html.append(json.dumps(summary, ensure_ascii=False, indent=2))
@@ -101,6 +127,15 @@ def main():
     weights_snapshot = load_json(weights_file) if weights_file else {}
     charts = render_charts(summary, weights_snapshot)
     generate_html(summary, weights_snapshot, charts)
+    # also write a copy of AutoRL best snapshot if exists for frontend consumption
+    autorl_best = _load_autorl_best()
+    if autorl_best:
+        out_best = os.path.join(OUT_DIR, 'autorl_best_snapshot.json')
+        try:
+            with open(out_best, 'w', encoding='utf-8') as f:
+                json.dump(autorl_best, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
 
 if __name__ == '__main__':
     main()
