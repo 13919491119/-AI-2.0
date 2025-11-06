@@ -12,6 +12,7 @@ from ssq_cycle_runner import run_ssq_cycle_and_summarize
 
 import subprocess
 import sys
+import time
 
 PID_FILE = os.path.join(os.getcwd(), 'autonomous_run.pid')
 
@@ -83,6 +84,11 @@ async def main():
                         subprocess.run([sys.executable, replay_script], check=False)
                     if os.path.exists(optimizer_script):
                         subprocess.run([sys.executable, optimizer_script], check=False)
+                    # 低频触发 AutoRL（轻量版 PBT + 元指标门控），默认最短间隔12小时
+                    try:
+                        _maybe_run_autorl()
+                    except Exception:
+                        pass
                 except Exception:
                     pass
             except Exception:
@@ -98,3 +104,35 @@ async def main():
 if __name__ == "__main__":
     _ensure_single_instance_or_exit()
     asyncio.run(main())
+
+# --------- 附加：AutoRL 调度（低频） ---------
+_AUTORL_STAMP = os.path.join('reports', 'autorl_runs', 'last_run.txt')
+
+def _maybe_run_autorl():
+    """根据时间间隔触发一次轻量 AutoRL 运行。失败不影响主流程。"""
+    try:
+        min_hours = float(os.getenv('AUTORL_MIN_INTERVAL_HOURS', '12'))
+    except Exception:
+        min_hours = 12.0
+    now = time.time()
+    last = 0.0
+    try:
+        if os.path.exists(_AUTORL_STAMP):
+            with open(_AUTORL_STAMP, 'r', encoding='utf-8') as f:
+                last = float((f.read() or '0').strip() or '0')
+    except Exception:
+        last = 0.0
+    if (now - last) < (min_hours * 3600.0):
+        return  # 未到间隔
+    os.makedirs(os.path.dirname(_AUTORL_STAMP), exist_ok=True)
+    # 运行轻量 AutoRL：使用较小种群与代数，限制训练步数
+    try:
+        subprocess.run([sys.executable, '-m', 'autorl.runner', '--population', '8', '--generations', '4', '--train-steps', '250', '--eval-steps', '250'], check=False)
+    except Exception:
+        pass
+    # 更新时间戳
+    try:
+        with open(_AUTORL_STAMP, 'w', encoding='utf-8') as f:
+            f.write(str(now))
+    except Exception:
+        pass

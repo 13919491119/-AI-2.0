@@ -15,6 +15,28 @@
   - 每次保存权重时生成审计快照到 `reports/weights_history/weights_{timestamp}.json`，便于回溯与回滚。
 - `autonomous_run.py`：
   - 在 SSQ 闭环任务每轮完成后会尝试运行 `ssq_batch_replay_learn.py` 与 `optimize_models.py`（若文件存在），形成自动化闭环（复盘→优化→保存）。
+  - 新增“AutoRL 轻量自进化”低频触发器：每隔 AUTORL_MIN_INTERVAL_HOURS（默认 12 小时）运行一次 `python -m autorl.runner`（人口规模与代数较小，便于在生产环境中低成本探索），并将产物写入 `reports/autorl_runs/`。
+
+## AutoRL/Meta-RL（轻量版）
+
+- 目录：`autorl/`
+  - `specs.py`：定义轻量环境（非平稳 K 臂老虎机）与评估方法。
+  - `pbt.py`：简易 PBT（Population-Based Training）实现，支持突变/利用。
+  - `runner.py`：编排多环境评估、PBT 搜索、聚合指标、门控（基于 `avg_mean_reward` 的最小增益阈值），并把运行产物存到 `reports/autorl_runs/`。
+  - `meta_metrics.py`：门控与最佳快照 `best.json` 维护。
+
+- 产物路径：`reports/autorl_runs/`
+  - `run_YYYYmmdd_HHMMSS.json`：每次运行的详细记录（参数、分环境指标、聚合指标、门控决策）。
+  - `best.json`：当前最优聚合指标的快照（用于对比、门控）。
+
+- 触发方式：
+  - 自动：由 `autonomous_run.py` 低频触发（默认 12 小时一次，可通过环境变量 `AUTORL_MIN_INTERVAL_HOURS` 配置）。
+  - 手动：
+    ```bash
+    python -m autorl.runner --population 8 --generations 6 --train-steps 300 --eval-steps 300
+    ```
+
+- 注意：该实现为“无第三方依赖”的工程骨架，便于后续替换为真实 RL 训练（例如接入 stable-baselines3/RLlib/Optuna/Ray Tune）。当前采用非平稳老虎机作为验证沙箱，重在流程与产物可追溯。
 
 ## 关键输出路径
 
