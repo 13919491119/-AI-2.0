@@ -8,12 +8,14 @@ import json
 import random
 import os
 import subprocess
+from typing import Dict, Optional, Tuple
 
 WEIGHTS_FILE = 'ssq_strategy_weights.json'
 STATUS_FILE = 'model_status.json'
 LOG_FILE = 'autonomous_optimization.log'
 REPORT_FILE = 'reports/ssq_batch_replay_report.txt'
 WEIGHTS_HISTORY_DIR = 'reports/weights_history'
+AUTORL_BEST_FILE = os.path.join('reports', 'autorl_runs', 'best.json')
 
 def load_weights():
     try:
@@ -34,6 +36,16 @@ def save_weights(w, eval_score=None):
         payload = {'snapshot_at': ts, 'weights': w}
         if eval_score is not None:
             payload['eval_score'] = float(eval_score)
+        # 附带 AutoRL 最优快照摘要（若存在）
+        try:
+            ab = load_autorl_best()
+            if ab[0] is not None:
+                payload['autorl_best'] = {
+                    'key': ab[2],
+                    'score': ab[0],
+                }
+        except Exception:
+            pass
         with open(snapshot_path, 'w', encoding='utf-8') as sf:
             json.dump(payload, sf, ensure_ascii=False, indent=2)
         # 尝试对快照进行签名（非强制）
@@ -145,6 +157,61 @@ def get_latest_snapshot_eval():
         pass
     return None
 
+
+def load_autorl_best() -> Tuple[Optional[float], Optional[Dict], str]:
+    """读取 AutoRL 最优快照，返回 (score, snapshot, key)。失败返回 (None, None, 'avg_mean_reward')。
+    由 autorl/meta_metrics.py 写入：{"key": key, key: cur, "snapshot": current}
+    """
+    try:
+        if os.path.exists(AUTORL_BEST_FILE):
+            with open(AUTORL_BEST_FILE, 'r', encoding='utf-8') as f:
+                j = json.load(f)
+            key = str(j.get('key', 'avg_mean_reward'))
+            score = j.get(key, None)
+            return (float(score) if score is not None else None, j.get('snapshot', j), key)
+    except Exception:
+        pass
+    return (None, None, 'avg_mean_reward')
+
+
+def blend_autorl_into_weights(weights: Dict[str, float], *, prefer_keys=("ai_fusion", "ai"), alpha: float = 0.05, min_weight: float = 0.01) -> Dict[str, float]:
+    """将 AutoRL 影响以 alpha 的质量向量形式注入到权重中：
+    - 优先将 alpha 质量加到 prefer_keys（若存在第一个匹配）。
+    - 从其他模型按比例扣减，且不低于 min_weight；若受限则缩放实际 alpha。
+    返回新字典（不原地修改），并保证归一化。
+    """
+    if not weights or alpha <= 0.0:
+        return dict(weights)
+    target_key = None
+    for k in prefer_keys:
+        if k in weights:
+            target_key = k
+            break
+    if target_key is None:
+        return dict(weights)
+    w = dict(weights)
+    total = sum(w.values()) or 1.0
+    # 计算可用扣减空间
+    others = [k for k in w.keys() if k != target_key]
+    if not others:
+        return w
+    # 最大可扣减 = sum(max(0, w_i - min_weight))
+    max_deduct = sum(max(0.0, w[k] - min_weight) for k in others)
+    actual_alpha = min(alpha, max_deduct)
+    if actual_alpha <= 1e-9:
+        return w
+    # 按权重占比分配扣减
+    denom = sum(w[k] for k in others)
+    for k in others:
+        share = (w[k] / denom) if denom > 0 else (1.0 / len(others))
+        w[k] = max(min_weight, w[k] - actual_alpha * share)
+    w[target_key] = w.get(target_key, 0.0) + actual_alpha
+    # 归一化
+    s = sum(w.values())
+    for k in w:
+        w[k] = round(w[k] / s, 3)
+    return w
+
 if __name__ == '__main__':
     start = time.time()
     w = load_weights()
@@ -185,13 +252,26 @@ if __name__ == '__main__':
             print('检测到性能下降，已拒绝权重更新（回滚触发）。')
         else:
             # 保持原结构并保存快照（带 eval_score），随后签名
-            w['weights'] = {k: new_weights.get(k, round(1.0/len(new_weights),3)) for k in new_weights}
-            w['fusion'] = {'last_updated': time.strftime('%Y-%m-%d %H:%M:%S'), 'note': 'metrics-driven'}
+            base_weights = {k: new_weights.get(k, round(1.0/len(new_weights),3)) for k in new_weights}
+            # 若启用 AutoRL 融合，按 alpha 小幅度注入 RL 影响（默认开启，可通过 AUTORL_PROMOTE=0 关闭）
+            autorl_on = os.getenv('AUTORL_PROMOTE', '1') != '0'
+            alpha = float(os.getenv('AUTORL_BLEND_ALPHA', '0.05'))
+            autorl_score, _, autorl_key = load_autorl_best()
+            if autorl_on and (autorl_score is not None):
+                # 仅当 RL 最优分数存在时注入；注入强度可按分数做上限（这里使用固定 alpha，工程上可扩展为函数）
+                mixed = blend_autorl_into_weights(base_weights, alpha=alpha, min_weight=0.01)
+            else:
+                mixed = base_weights
+            w['weights'] = mixed
+            w['fusion'] = {
+                'last_updated': time.strftime('%Y-%m-%d %H:%M:%S'),
+                'note': 'metrics-driven' + ('+autorl' if mixed is not base_weights else ''),
+            }
             save_weights(w, eval_score=avg_full_rate)
             delta = round(avg_full_rate * 0.1, 3)
             status = update_status(delta_perf=delta)
             with open(LOG_FILE,'a',encoding='utf-8') as f:
-                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] metrics-driven optimize, avg_full_rate={avg_full_rate:.4f}, delta={delta}\n")
+                f.write(f"[{time.strftime('%Y-%m-%d %H:%M:%S')}] metrics-driven optimize, avg_full_rate={avg_full_rate:.4f}, delta={delta}, autorl_on={autorl_on}, alpha={alpha}\n")
             print('优化完成（基于指标），权重已更新。')
     else:
         # 回退到原有的模拟微调逻辑（报告缺失或解析失败）
