@@ -1,0 +1,9 @@
+{
+  "key": "avg_mean_reward",
+  "avg_mean_reward": 0.8748563940734876,
+  "snapshot": {
+    "avg_mean_reward": 0.8748563940734876,
+    "avg_std_reward": 1.0096797301557612,
+    "avg_dispersion": 0.8407273484126275
+  }
+}

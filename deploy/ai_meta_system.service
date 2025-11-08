@@ -1,0 +1,56 @@
+[Unit]
+Description=AI Meta System - Celestial Nexus
+After=network.target
+
+[Service]
+Type=simple
+User=celestial
+WorkingDirectory=/opt/celestial-nexus
+ExecStart=/usr/bin/env python -u -m ai_meta_system.main
+Restart=on-failure
+RestartSec=10
+StandardOutput=file:/var/log/celestial/ai_meta_system.out
+StandardError=file:/var/log/celestial/ai_meta_system.err
+
+[Install]
+WantedBy=multi-user.target
+
+# Notes:
+# 1) Copy this file to /etc/systemd/system/ai_meta_system.service and adjust WorkingDirectory and User.
+# 2) Create /var/log/celestial and chown to the service user, then: systemctl daemon-reload && systemctl enable --now ai_meta_system[Unit]
+Description=Celestial Nexus AI - Meta System
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/workspaces/-AI-2.0
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/env python -u -m ai_meta_system.main
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/var/log/ai_meta_system.out
+StandardError=append:/var/log/ai_meta_system.err
+
+[Install]
+WantedBy=multi-user.target
+
+# Notes:
+# - Adjust WorkingDirectory and User for your deployment environment.
+# - Ensure the log paths exist or change them to a location with write permission.[Unit]
+Description=AI Meta System - Celestial Nexus
+After=network.target
+
+[Service]
+Type=simple
+User=%u
+WorkingDirectory=/workspaces/-AI-2.0
+ExecStart=/usr/bin/env python -u -m ai_meta_system.main
+Restart=on-failure
+RestartSec=5
+Environment=SSQ_CYCLE_INTERVAL_SECONDS=0
+Environment=AUTORL_MIN_INTERVAL_HOURS=12
+Environment=VIS_MIN_INTERVAL_HOURS=6
+
+[Install]
+WantedBy=multi-user.target

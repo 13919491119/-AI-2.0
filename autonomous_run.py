@@ -13,8 +13,20 @@ from ssq_cycle_runner import run_ssq_cycle_and_summarize
 import subprocess
 import sys
 import time
+import traceback
+import json
 
-PID_FILE = os.path.join(os.getcwd(), 'autonomous_run.pid')
+# 可选：自适应调度模块
+try:
+    from ai_meta_system import autoadapt as _autoadapt
+except Exception:  # noqa: E722
+    _autoadapt = None
+
+PID_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_run.pid')
+READY_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_run.ready')
+HEARTBEAT_FILE = os.path.join(os.path.dirname(__file__), 'reports', 'autonomy_heartbeat.json')
+ADAPT_FILE = os.path.join(os.path.dirname(__file__), 'ai_meta_autoadapt.json')
+ERR_LOG = os.path.join(os.path.dirname(__file__), 'logs', 'autonomous_run.err.log')
 
 def _pid_is_running(pid: int) -> bool:
     try:
@@ -24,14 +36,27 @@ def _pid_is_running(pid: int) -> bool:
         return False
 
 def _write_pid_file():
-    os.makedirs(os.path.dirname(PID_FILE), exist_ok=True) if os.path.dirname(PID_FILE) else None
+    # ensure the directory for the pid file exists (should be repo root)
+    pid_dir = os.path.dirname(PID_FILE)
+    if pid_dir:
+        os.makedirs(pid_dir, exist_ok=True)
     with open(PID_FILE, 'w', encoding='utf-8') as f:
         f.write(str(os.getpid()))
+    try:
+        # write a short trace to stdout for observability
+        print(f"[autonomous_run] wrote PID {os.getpid()} -> {PID_FILE}", flush=True)
+    except Exception:
+        pass
 
 def _remove_pid_file():
     try:
         if os.path.exists(PID_FILE):
             os.remove(PID_FILE)
+    except Exception:
+        pass
+    try:
+        if os.path.exists(READY_FILE):
+            os.remove(READY_FILE)
     except Exception:
         pass
 
@@ -57,13 +82,58 @@ def _ensure_single_instance_or_exit():
 async def main():
     ai = CelestialNexusAI()
     await ai.start_autonomous_engines()
+    # 标记已就绪（由 autonomous_run 的主循环确认）
+    try:
+        os.makedirs(os.path.dirname(READY_FILE), exist_ok=True)
+        with open(READY_FILE, 'w', encoding='utf-8') as f:
+            f.write(str(time.time()))
+        print(f"[autonomous_run] ready -> {READY_FILE}", flush=True)
+    except Exception:
+        pass
+
+    # 启动心跳写入任务，供外部监控使用（每30秒更新一次 heartbeat 文件）
+    HEARTBEAT_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_heartbeat.json')
+
+    async def _heartbeat_loop():
+        while True:
+            try:
+                hb = {
+                    'timestamp': time.time(),
+                    'pid': os.getpid(),
+                }
+                try:
+                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
+                        import json
+                        json.dump(hb, hf)
+                    # 统一心跳目录写入（供守护进程统一判定）
+                    try:
+                        os.makedirs('heartbeats', exist_ok=True)
+                        with open(os.path.join('heartbeats', 'autonomous_run.json'), 'w', encoding='utf-8') as hf2:
+                            json.dump(hb, hf2)
+                    except Exception:
+                        pass
+                except Exception:
+                    pass
+            except Exception:
+                pass
+            await asyncio.sleep(30)
+
+    asyncio.create_task(_heartbeat_loop())
     # 启动双色球历史循环评估的周期任务（默认每天执行一次）
     async def _ssq_cycle_loop():
         # 最小单位：一轮闭环完成后即可再次启动。将默认间隔设为0（可通过环境变量覆盖）。
-        interval = int(os.getenv('SSQ_CYCLE_INTERVAL_SECONDS', '0'))
+        try:
+            interval = int(os.getenv('SSQ_CYCLE_INTERVAL_SECONDS', '0'))
+        except Exception:
+            interval = 0
+        loop_count = 0
+        last_error = None
+        last_autorl_ts = 0.0
+        last_vis_ts = 0.0
         while True:
             try:
                 # 在后台线程执行，避免阻塞事件循环
+                start_ts = time.time()
                 await asyncio.to_thread(
                         run_ssq_cycle_and_summarize,
                         'ssq_history.csv',
@@ -76,6 +146,30 @@ async def main():
                             'max_seconds_per_issue': float(os.getenv('SSQ_MAX_SECONDS_PER_ISSUE', '5')),
                         },
                     )
+                loop_count += 1
+                # 写入 heartbeat，记录上次完成时间与耗时与轮次
+                try:
+                    os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
+                    dur = max(0.0, time.time() - start_ts)
+                    hb = {
+                        'ts': time.time(),
+                        'pid': os.getpid(),
+                        'last_completed': time.time(),
+                        'duration_seconds': dur,
+                        'loop_count': loop_count,
+                        'last_error': None,
+                        'next_interval_sec': int(max(0, interval)),
+                        'last_autorl_ts': float(last_autorl_ts or 0.0),
+                        'last_visual_ts': float(last_vis_ts or 0.0),
+                        'pid_file': os.path.abspath(PID_FILE),
+                        'ready_file': os.path.abspath(READY_FILE),
+                        'adapt_file': os.path.abspath(ADAPT_FILE),
+                    }
+                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
+                        json.dump(hb, hf)
+                    print(f"[autonomous_run] heartbeat written -> {HEARTBEAT_FILE}", flush=True)
+                except Exception:
+                    pass
                 # 在每轮闭环结束后，触发批量复盘与优化（如果脚本存在）
                 try:
                     replay_script = 'ssq_batch_replay_learn.py'
@@ -87,15 +181,66 @@ async def main():
                     # 低频触发 AutoRL（轻量版 PBT + 元指标门控），默认最短间隔12小时
                     try:
                         _maybe_run_autorl()
+                        # 记录最后一次 AutoRL 时间戳
+                        if os.path.exists(_AUTORL_STAMP):
+                            with open(_AUTORL_STAMP, 'r', encoding='utf-8') as f:
+                                last_autorl_ts = float((f.read() or '0').strip() or '0')
                     except Exception:
                         pass
                     # 低频刷新可视化（汇总最新复盘/权重/AutoRL best），默认最短间隔6小时
                     try:
                         _maybe_generate_visualizations()
+                        if os.path.exists(_VIS_STAMP):
+                            with open(_VIS_STAMP, 'r', encoding='utf-8') as f:
+                                last_vis_ts = float((f.read() or '0').strip() or '0')
                     except Exception:
                         pass
                 except Exception:
+                    # 复盘/优化步骤的异常不应导致主循环退出，记录到错误日志并更新 heartbeat
+                    last_error = traceback.format_exc()[:4096]
+                    try:
+                        os.makedirs(os.path.dirname(ERR_LOG), exist_ok=True)
+                        with open(ERR_LOG, 'a', encoding='utf-8') as ef:
+                            ef.write(f"[{time.ctime()}] Exception in replay/optimize:\n")
+                            ef.write(last_error + "\n\n")
+                    except Exception:
+                        pass
+                    try:
+                        os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
+                        with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
+                            json.dump({'last_completed': time.time(), 'duration_seconds': 0, 'loop_count': loop_count, 'last_error': last_error[:1024]}, hf)
+                    except Exception:
+                        pass
+            except Exception:
+                # 捕获主循环异常，记录并在 heartbeat 中写入 last_error
+                last_error = traceback.format_exc()[:8192]
+                try:
+                    os.makedirs(os.path.dirname(ERR_LOG), exist_ok=True)
+                    with open(ERR_LOG, 'a', encoding='utf-8') as ef:
+                        ef.write(f"[{time.ctime()}] main loop error:\n")
+                        ef.write(last_error + "\n\n")
+                except Exception:
                     pass
+                try:
+                    os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
+                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
+                        json.dump({'last_completed': time.time(), 'duration_seconds': 0, 'loop_count': loop_count, 'last_error': last_error[:1024]}, hf)
+                except Exception:
+                    pass
+            # 可选：根据上一轮耗时与配置进行自适应调整下一轮间隔
+            try:
+                if _autoadapt is not None:
+                    new_interval = _autoadapt.compute_next_interval(
+                        status_path=HEARTBEAT_FILE,
+                        cfg={
+                            'min_seconds': int(os.getenv('SSQ_ADAPT_MIN_SECONDS', '0')),
+                            'max_seconds': int(os.getenv('SSQ_ADAPT_MAX_SECONDS', '3600')),
+                            'default_seconds': int(os.getenv('SSQ_CYCLE_INTERVAL_SECONDS', '0')),
+                        },
+                        out_path=ADAPT_FILE,
+                    )
+                    if isinstance(new_interval, (int, float)):
+                        interval = int(max(0, new_interval))
             except Exception:
                 pass
             # 支持0秒间隔：上一轮结束后立即进入下一轮（请谨慎评估资源占用）

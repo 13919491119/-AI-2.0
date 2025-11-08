@@ -87,6 +87,71 @@ make start-meta
 ./start_ai_meta_system.sh
 ```
 
+### 全自动运行、自适应调度与健康状态
+
+系统自动执行“预测→复盘→优化→权重快照→可视化→再预测”闭环，并周期性低频触发 AutoRL 元学习外环。新增自适应调度与心跳机制：
+
+- 心跳文件：`autonomous_heartbeat.json` 包含最近一轮耗时、循环计数、下一轮间隔、最后一次 AutoRL / 可视化时间戳。
+- 自适应策略：读取上一轮耗时自动调整 `SSQ_CYCLE_INTERVAL_SECONDS`（启发式）并写入 `ai_meta_autoadapt.json`。
+- 状态脚本：`tools/ai_meta_status.py` 输出整合状态（pid、心跳、自适应结果），可用于监控与运维。
+
+启用自适应（默认已加载模块）：可通过环境变量限制区间：
+```bash
+export SSQ_ADAPT_MIN_SECONDS=0      # 最小间隔
+export SSQ_ADAPT_MAX_SECONDS=3600   # 最大间隔
+```
+
+执行状态脚本查看当前运行情况：
+```bash
+python tools/ai_meta_status.py
+python tools/ai_meta_status.py --check  # 失败返回非零码
+```
+
+心跳/适应文件示例字段：
+```json
+{
+  "ts": 1730961234.12,
+  "loop_count": 57,
+  "duration_seconds": 4.83,
+  "next_interval_sec": 7,
+  "last_autorl_ts": 1730957000.55,
+  "last_visual_ts": 1730953600.11
+}
+```
+
+### 状态检查与 systemd 示例
+
+若要快速判断主任务是否在运行，可使用仓库自带的状态脚本：
+
+```bash
+python tools/ai_meta_status.py --check
+# 返回码 0 表示全部运行正常，非0 表示存在异常（便于监控系统使用）
+```
+
+系统还提供一个本地 HTTP 健康检查服务（默认仅监听 localhost:5001），支持两个端点：
+
+- GET /health -> 简单 up/down（HTTP 200 或 503）
+- GET /status -> 返回完整 JSON 状态（同 `ai_meta_status.py` 输出）
+
+可通过环境变量调整监听地址：
+
+```bash
+export AI_HEALTH_HOST=127.0.0.1
+export AI_HEALTH_PORT=5001
+```
+
+
+另外仓库提供了一个 `systemd` 单元示例，位于 `deploy/ai_meta_system.service`，适合在 Linux 服务器上托管：
+
+- 将文件拷贝到 `/etc/systemd/system/ai_meta_system.service`，修改 `WorkingDirectory` 与 `User` 为目标环境后：
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now ai_meta_system.service
+sudo journalctl -u ai_meta_system.service -f
+```
+
+
 关键环境变量（可按需覆盖）：
 
 ```bash

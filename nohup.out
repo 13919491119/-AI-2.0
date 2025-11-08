@@ -11814,3 +11814,16 @@ Traceback (most recent call last):
                                                        ^^^^^^^
   File "<frozen _sitebuiltins>", line 26, in __call__
 SystemExit: 0
+[autonomous_run] wrote PID 7051 -> /workspaces/-AI-2.0/autonomous_run.pid
+[autonomous_run] ready -> /workspaces/-AI-2.0/autonomous_run.ready
+/home/codespace/.python/current/lib/python3.12/site-packages/xgboost/training.py:183: UserWarning: [07:43:49] WARNING: /workspace/src/learner.cc:738: 
+Parameters: { "use_label_encoder" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found
+/bin/sh: 1: venv/bin/python: not found

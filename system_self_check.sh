@@ -60,3 +60,12 @@ fi
 echo "--- SUMMARY ---"
 echo "PASS: $pass_count  FAIL: $fail_count"
 if [ $fail_count -gt 0 ]; then exit 1; fi
+
+# 7. AI Meta System 运行健康（状态脚本与心跳）
+# 注意：将此检查放在最后，避免影响上面的网络类检查结果。
+if python tools/ai_meta_status.py --check >/dev/null 2>&1; then
+  echo "[PASS] AI Meta System 状态"
+else
+  echo "[FAIL] AI Meta System 状态"
+  exit 1
+fi
