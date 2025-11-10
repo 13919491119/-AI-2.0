@@ -1,3 +1,202 @@
+# 全自动化运行与AI智能体元学习系统说明
+
+> 日期：2025-11-08
+
+本项目已进入“自愈 + 全自动化 + 元学习”自治运行模式。本文档详细说明：当前自动化是否已启动、核心组件与任务、心跳与监控机制、自愈策略、数据与结果产物、扩展与运维建议、快速启动与健康检测。
+
+## 1. 自动化运行状态概述 ✅
+
+系统关键任务已由守护进程统一启动并持续运行：
+
+- `autonomous_run.py`：自主主循环 + 双色球闭环评估 + 低频 AutoRL + 可视化生成调度。
+- `deep_learning_cycle.py`：持续元学习/深度训练迭代，结果 JSONL 增量写入与滚动。
+- `yi_books_collect.py`：易学/文化书籍数据定期采集与摘要。
+- `batch_predict_persons.py`：历史/人物批量预测迭代采样与增量输出。
+- `knowledge_ingest_pipeline.py`（定时触发）: 主题与作者知识画像构建与汇总。
+
+运行状态由 `ai_guard_supervisor.py` 统一监控与自愈，守护状态文件：`reports/ai_guard_status.json`。
+
+附加支持：
+
+- 心跳文件目录：`heartbeats/`（每个任务一个 JSON）。
+- 统一健康检测脚本：`check_autonomy.py`（JSON 输出 + 退出码）。
+- 一键启动脚本：`start_autonomy.py`（启动 + 自愈 + 快速状态摘要）。
+
+## 2. 组件与任务说明
+
+### 2.1 守护监控层 (`ai_guard_supervisor.py`)
+职责：
+
+- 进程存活检查 + 心跳超时判定（各任务独立阈值）。
+- 异常退出自动重启 + 指数退避（避免频繁抖动）。
+- 自愈动作：清理遗留 `git index.lock`、孤立 PID、确保 `logs/ reports/ heartbeats/` 目录存在。
+- 定时调度知识摄取管线（默认每 6 小时，可用环境变量 `KNOWLEDGE_INGEST_INTERVAL_SEC` 覆盖）。
+- 输出统一状态：`reports/ai_guard_status.json`（包含 running / fails / last_check）。
+
+\n### 2.2 自主主循环 (`autonomous_run.py`)
+功能：
+
+- 单实例保障（PID 文件 + 运行时检查）。
+- 启动核心 AI 引擎与闭环评估 `_ssq_cycle_loop`（0 间隔可连续评估）。
+- 心跳：统一写入 `heartbeats/autonomous_run.json`，多模式字段（loop / ssq_cycle / error 状态）。
+- 低频 AutoRL 调度（默认 ≥12 小时间隔，可调节 `AUTORL_MIN_INTERVAL_HOURS`）。
+- 可视化生成调度（≥6 小时间隔，变量 `VIS_MIN_INTERVAL_HOURS`）。
+- 异常捕获与错误日志：`logs/autonomous_run.err.log`。
+
+\n### 2.3 深度学习循环 (`deep_learning_cycle.py`)
+功能：
+
+- 按轮次迭代训练/推理元学习单元，记录起止时间与耗时。
+- 结果文件：`deep_learning_cycle_results.jsonl` 采用增量追加（避免覆盖）。
+- 滚动策略：文件超过阈值（约 2MB）保留最近 500 行，防止无限膨胀。
+- 心跳：`heartbeats/deep_learning_cycle.json` 包含 `round / time_end / records`。
+
+\n### 2.4 书籍采集 (`yi_books_collect.py`)
+功能：
+
+- 周期采集易学与相关书籍信息，进行作者频次统计。
+- 网络依赖优先使用 `requests`，失败自动降级到 `urllib`（增强鲁棒性）。
+- 心跳：启动与采集完成均写入 `heartbeats/yi_books_collect.json`（字段：`books / top_authors`）。
+
+\n### 2.5 人物批量预测 (`batch_predict_persons.py`)
+功能：
+
+- 批量人物特征与推理；当输入数据暂缺时进入等待心跳 -> 延迟 -> 重试（确保不退出）。
+- 心跳：`heartbeats/batch_predict_persons.json` 包含 `round / samples`。
+- 网络同样具备 requests→urllib 降级。
+
+\n### 2.6 知识摄取管线 (`knowledge_ingest_pipeline.py`)
+功能：
+
+- 聚合文本资源主题 / 作者画像，生成知识摘要（结构化 JSON）。
+- 统一由守护调度，心跳文件：`heartbeats/knowledge_ingest.json`（包含调度事件与间隔）。
+
+\n### 2.7 元学习增强 (`meta_learning_enhancer.py`)
+功能：
+
+- 对原始深度学习循环结果进行二次加工：附加 `metric / model_version / quality_tag` 等占位符。
+- 输出：`deep_learning_cycle_results_enriched.jsonl`。
+
+\n### 2.8 心跳管理 (`heartbeat_manager.py`)
+功能：
+
+- 标准化心跳写入（时间戳、PID、扩展字段）到 `heartbeats/<name>.json`。
+- 调用幂等，写入失败自动吞掉异常避免影响主流程。
+
+\n### 2.9 健康检测脚本 (`check_autonomy.py`)
+功能：
+
+- 核查：状态文件、运行标记、心跳时效、关键结果文件是否存在与非空。
+- 输出结构化 JSON + 退出码（0=pass,1=warn,2=fail）便于 CI / 报警整合。
+
+## 3. 心跳与监控机制
+
+| 任务 | 心跳文件 | 主要字段 | 超时阈值（秒） | 自愈策略 |
+|------|----------|----------|---------------|----------|
+| autonomous_run | heartbeats/autonomous_run.json | mode, loop_count, last_error, duration_seconds | 180 | 守护检测超时或进程消失 -> 重启 |
+| deep_learning_cycle | heartbeats/deep_learning_cycle.json | round, time_end, records | 300 | 超时重启并清理失败计数 |
+| yi_books_collect | heartbeats/yi_books_collect.json | books, top_authors | 7200 | 超时或进程退出 -> 重启采集 |
+| batch_predict_persons | heartbeats/batch_predict_persons.json | round, samples | 300 | 任务退出或心跳冻结 -> 重启 |
+| knowledge_ingest | heartbeats/knowledge_ingest.json | event, interval_sec | 默认 6h | 守护定时触发 |
+
+监控循环间隔：约每 15 秒。重启退避：指数退避（首次立即，随后 2^fails 上限 300 秒）。
+
+## 4. 自愈策略与鲁棒性设计
+
+1. 进程存活与心跳双保险：仅心跳更新不足或进程缺失才触发重启。
+2. 指数退避：避免频繁故障场景导致资源震荡。
+3. Git 锁文件自动清理：无活动 git 进程时安全删除 `index.lock`。
+4. 孤立 PID 文件清理：检测到 PID 不存活时移除旧 pid 文件。
+5. 目录确保：`logs / reports / heartbeats` 启动前与巡检周期自动创建。
+6. 网络降级：requests 不可用或失败时降级到 urllib，减少依赖阻塞。
+7. 错误日志隔离：各任务独立日志文件，避免串扰；严重异常不会直接杀死主循环（吞并写入心跳字段）。
+
+## 5. 数据与输出产物
+
+| 文件 | 类型 | 作用 |
+|------|------|------|
+| deep_learning_cycle_results.jsonl | 增量JSONL | 原始元学习 / 深度循环输出（轮次 + 时长 + metrics） |
+| deep_learning_cycle_results_enriched.jsonl | 增量JSONL | 增强后追加质量标记/版本号 |
+| person_predict_results.jsonl | 增量JSONL | 人物批量预测结果（若文件名不同请同步更新 check 脚本） |
+| knowledge_ingest_summary.json | JSON | 知识摄取主题与作者画像汇总 |
+| reports/ai_guard_status.json | JSON | 当前多任务运行状态与失败计数 |
+| heartbeats/*.json | JSON | 各任务活性与核心进度指标 |
+| logs/*.log | 文本 | 运行与错误日志（可用于外部采集） |
+
+文件膨胀控制：深度学习结果自动滚动；其他文件建议由外部归档策略（如按日期拆分，未来可扩展）。
+
+## 6. 快速启动与健康检测
+
+### 6.1 一键启动
+ 
+\n```bash
+```bash
+python3 start_autonomy.py
+```
+行为：执行基本自愈 -> 启动守护 -> 打印状态摘要。若已运行则只显示当前状态。
+
+### 6.2 单独启动（不推荐）
+ 
+\n```bash
+```bash
+nohup python3 ai_guard_supervisor.py &
+```
+守护会检测并启动缺失的核心任务。
+
+### 6.3 健康检测（CI / 报警）
+ 
+\n```bash
+```bash
+python3 check_autonomy.py
+```
+退出码含义：0 正常 / 1 警告（例如某心跳缺失暂时恢复中）/ 2 严重失败。
+
+## 7. 环境变量调优（可选）
+
+| 变量 | 默认 | 说明 |
+|------|------|------|
+| KNOWLEDGE_INGEST_INTERVAL_SEC | 21600 | 知识摄取间隔（秒） |
+| AUTORL_MIN_INTERVAL_HOURS | 12 | AutoRL 最小触发间隔（小时） |
+| VIS_MIN_INTERVAL_HOURS | 6 | 可视化生成最小间隔（小时） |
+| SSQ_CYCLE_INTERVAL_SECONDS | 0 | 闭环评估循环间隔（0=连续） |
+| SSQ_MAX_SECONDS_PER_ISSUE | 5 | 单期评估最大耗时（秒） |
+| SSQ_MAX_ATTEMPTS_PER_ISSUE | 0 | 单期尝试上限（0或负数=不限） |
+
+## 8. 扩展与下一步建议
+
+短期增强：
+\n- 重启频次告警：统计连续 X 分钟内重启次数，写入 `reports/alerts.json`。
+- Web 轻量仪表盘：展示任务状态/心跳时间差/最近错误。
+- 结果归档策略：按日期拆分与压缩，降低主仓库体积。
+- 指标持久化：Prometheus exporter 或 pushgateway 适配。
+
+中期演进：
+\n- 自适应资源控制：依据 CPU/内存占用与心跳速率动态调节循环间隔。
+- 模型版本管理：将 `model_version` 与 artifacts 关联（例如存储到 `models/` + checksum）。
+- 自动数据质量评估：对增量结果进行统计检验并标记异常轮次。
+
+## 9. 故障排查速览
+
+| 症状 | 可能原因 | 排查路径 | 修复 |
+|------|----------|----------|------|
+| 任务频繁重启 | 环境依赖缺失 / 数据空 / 逻辑异常 | 对应日志 / fails计数 | 修复脚本逻辑或补齐依赖 |
+| 心跳未更新 | 死锁 / 异常未捕获 / IO 失败 | heartbeats/对应任务.json 时间戳 | 杀死进程让守护重启；检查日志 |
+| 结果文件无增长 | 数据源断流 / 写入异常 | tail -f 对应结果文件 | 修复数据源/权限 |
+| `index.lock` 常驻 | 外部 git 操作异常中断 | ls .git/index.lock | 停止 git 进程后删除锁 |
+
+## 10. 全自动化达成要点总结
+
+1. 多任务统一守护 + 心跳与进程双监控。
+2. 自愈与指数退避降低人工干预需求。
+3. 增量 + 滚动输出防止数据丢失与体积膨胀失控。
+4. 低频策略（AutoRL / 可视化 / 知识摄取）与主循环并行互不阻塞。
+5. 健康检测标准化（脚本 + 退出码）便于外部编排与告警。
+6. 组件职责分层清晰（采集 / 预测 / 训练 / 摄取 / 增强 / 守护）。
+
+如需进一步扩展或接入外部监控/告警，请参考第 8 节建议进行迭代。
+
+---
+如发现文档与实际代码有偏差，优先参考源码与运行日志，或提交 issue 进行同步更新。
 
 # Celestial Nexus AI 系统
 
@@ -199,6 +398,66 @@ python -m ai_meta_system.main --print-config
 - API服务：`uvicorn celestial_nexus.api:app --reload`
 - Docker：
 - `docker build -t celestial-nexus-ai .`
+
+## 运行与管理（快速参考）
+
+下面是仓库中可用的三种运行/管理方式，按从开发到生产的推荐顺序列出：
+
+1) 开发 / 快速本地运行（脚本）
+
+- 一键安全启动（避免重复启动并写 pid 到 `logs/`）：
+  ```bash
+  ./start_all.sh
+  ```
+
+- 更稳健的示例（会在启动时写 pid 并写入 `logs/`）：
+  ```bash
+  ./scripts/start_all_with_pid.sh
+  ```
+
+- 记录当前运行进程到 `logs/`（只读、不会改动进程）：
+  ```bash
+  ./scripts/record_running_pids.sh
+  cat logs/api.pid
+  cat logs/report_frontend.pid
+  ```
+
+- 优雅停止基于 pid 文件的服务：
+  ```bash
+  ./scripts/stop_all_from_pids.sh
+  ```
+
+日志位置（脚本模式）: `logs/api_server.log`, `logs/report_frontend.log`, 以及 pid 文件在 `logs/*.pid`。
+
+2) 使用 supervisord（长期运行 / 测试环境）
+
+- 我们在仓库中提供了 supervisord 配置：`supervisord_manage_api_frontend.conf`，并已将其包含到主 `supervisord.conf`。
+- 启动/控制（示例，开发环境已在工作区演示过）：
+  ```bash
+  supervisord -c /workspaces/-AI-2.0/supervisord_manage_api_frontend.conf
+  supervisorctl -c /workspaces/-AI-2.0/supervisord_manage_api_frontend.conf status
+  supervisorctl -c /workspaces/-AI-2.0/supervisord_manage_api_frontend.conf restart all
+  ```
+
+- supervisord 日志与程序日志：`logs/supervisor/*.out.log`, `logs/supervisor/*.err.log`。
+
+3) systemd（生产部署推荐）
+
+- 仓库包含 systemd 单元示例：`systemd/xuanji_api.service` 与 `systemd/report_frontend.service`，安装说明见 `INSTALL_SYSTEMD.md`。
+- 在目标主机上复制 unit 文件到 `/etc/systemd/system/`，然后执行：
+  ```bash
+  sudo systemctl daemon-reload
+  sudo systemctl enable --now xuanji_api.service report_frontend.service
+  sudo systemctl status xuanji_api.service
+  sudo journalctl -u xuanji_api.service -f
+  ```
+
+常见注意事项：
+- 若使用虚拟环境（`.venv`），请在 supervisord 或 systemd 的 `ExecStart`/`command` 中使用虚拟环境下的 `python`/`uvicorn` 路径，或在 unit 中使用 `Environment=` 指定必要的变量。
+- 确保 `logs/` 目录对运行服务的用户可写。
+- 若服务由 supervisord 或 systemd 管理，则不需要再用脚本重复启动。
+
+如果你需要我把 `ExecStart` 指向特定的虚拟环境或进一步生成更完整的 systemd unit（如 `User=`、`EnvironmentFile=`、资源限制、依赖单元），告诉我虚拟环境路径或你的偏好，我可以替你修改并提交。
 - `docker run -p 8000:8000 celestial-nexus-ai`
 
 ## 运维与生产组件
