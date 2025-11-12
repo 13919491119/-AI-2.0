@@ -17,6 +17,7 @@ import csv
 import json
 import math
 import os
+from pathlib import Path
 from itertools import product
 from collections import defaultdict
 
@@ -63,6 +64,24 @@ def collect_candidate_pool(outputs_dir, methods, period):
     return pool
 
 
+def load_blue_model_scores(outputs_dir, period):
+    """Load blue_model_topk_<period>.json and return dict blue->score (normalized)."""
+    path = Path(outputs_dir) / f'blue_model_topk_{period}.json'
+    if not path.exists():
+        return {}
+    try:
+        arr = json.loads(path.read_text(encoding='utf-8'))
+        d = {int(item['blue']): float(item.get('score', 0.0)) for item in arr}
+        # normalize to sum=1
+        s = sum(d.values())
+        if s > 0:
+            for k in d:
+                d[k] = d[k] / s
+        return d
+    except Exception:
+        return {}
+
+
 def generate_weight_grid(n_methods, step):
     # generate non-negative weight combinations with given step, then normalize
     vals = [round(i * step, 10) for i in range(int(1/step)+1)]
@@ -78,14 +97,19 @@ def generate_weight_grid(n_methods, step):
     return uniq
 
 
-def score_topk_for_weights(pool, methods, weights, topk, blue_weight=1.0):
+def score_topk_for_weights(pool, methods, weights, topk, blue_weight=1.0, blue_probs=None):
     # pool: dict key-> {method: count}
+    # blue_probs: optional dict mapping blue->probability (0..1) to bias selection towards high-prob blues
     scored = []
     for key, info in pool.items():
+        reds, blue = key
         score = 0.0
         for i, m in enumerate(methods):
             if m in info:
                 score += weights[i]
+        # add predicted blue probability as soft bonus to ranking if available
+        if blue_probs and blue in blue_probs:
+            score += blue_weight * float(blue_probs.get(blue, 0.0))
         scored.append((score, key))
     scored.sort(reverse=True, key=lambda x: x[0])
     top = [k for _, k in scored[:topk]]
