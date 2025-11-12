@@ -9,12 +9,12 @@
 ## 单期回测摘要
 - 真实开奖: 红 [10, 12, 13, 15, 20, 26] 蓝 6
 - 方法表现:
-  - xiaoliuyao: total=1000 blue_hits=35 full_hits=0 red_dist={2: 245, 1: 441, 0: 258, 3: 54, 4: 2}
-  - xiaoliuren: total=1000 blue_hits=32 full_hits=0 red_dist={2: 242, 1: 415, 3: 45, 0: 292, 4: 6}
-  - qimen: total=1000 blue_hits=65 full_hits=0 red_dist={1: 431, 0: 279, 2: 239, 3: 49, 4: 2}
-  - ziwei: total=1000 blue_hits=30 full_hits=0 red_dist={2: 229, 1: 460, 0: 282, 3: 28, 4: 1}
-  - ai_fusion: total=1000 blue_hits=44 full_hits=0 red_dist={1: 436, 0: 291, 2: 216, 3: 52, 4: 5}
-- Top10 命中: red_dist={1: 5, 0: 3, 2: 2} blue_hits=0
+  - xiaoliuyao: total=1000 blue_hits=37 full_hits=0 red_dist={1: 463, 2: 244, 0: 233, 3: 52, 4: 8}
+  - xiaoliuren: total=1000 blue_hits=29 full_hits=0 red_dist={0: 288, 1: 428, 2: 232, 3: 48, 4: 3, 5: 1}
+  - qimen: total=1000 blue_hits=68 full_hits=0 red_dist={1: 465, 3: 55, 2: 226, 0: 251, 4: 3}
+  - ziwei: total=1000 blue_hits=40 full_hits=0 red_dist={2: 211, 0: 302, 1: 448, 3: 39}
+  - ai_fusion: total=1000 blue_hits=42 full_hits=0 red_dist={0: 268, 1: 441, 2: 246, 3: 41, 4: 3, 5: 1}
+- Top10 命中: red_dist={1: 4, 2: 3, 0: 3} blue_hits=0
 
 ## 元学习注记
 - 本轮通过权重调优强化对高覆盖方法的偏好 (若最佳权重集中于某单一方法，说明该方法近期稳定性更高)
