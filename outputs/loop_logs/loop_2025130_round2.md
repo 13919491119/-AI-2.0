@@ -1,4 +1,4 @@
-# 自主循环 Round 1 - 期 2025130
+# 自主循环 Round 2 - 期 2025130
 
 ## 生成与选择
 - 生成样本数/方法: 1000
@@ -9,12 +9,12 @@
 ## 单期回测摘要
 - 真实开奖: 红 [10, 12, 13, 15, 20, 26] 蓝 6
 - 方法表现:
-  - xiaoliuyao: total=1000 blue_hits=35 full_hits=0 red_dist={2: 245, 1: 441, 0: 258, 3: 54, 4: 2}
-  - xiaoliuren: total=1000 blue_hits=32 full_hits=0 red_dist={2: 242, 1: 415, 3: 45, 0: 292, 4: 6}
-  - qimen: total=1000 blue_hits=65 full_hits=0 red_dist={1: 431, 0: 279, 2: 239, 3: 49, 4: 2}
-  - ziwei: total=1000 blue_hits=30 full_hits=0 red_dist={2: 229, 1: 460, 0: 282, 3: 28, 4: 1}
-  - ai_fusion: total=1000 blue_hits=44 full_hits=0 red_dist={1: 436, 0: 291, 2: 216, 3: 52, 4: 5}
-- Top10 命中: red_dist={1: 5, 0: 3, 2: 2} blue_hits=0
+  - xiaoliuyao: total=1000 blue_hits=38 full_hits=0 red_dist={0: 271, 2: 232, 1: 438, 3: 51, 4: 8}
+  - xiaoliuren: total=1000 blue_hits=28 full_hits=0 red_dist={2: 230, 1: 439, 0: 278, 3: 50, 4: 3}
+  - qimen: total=1000 blue_hits=66 full_hits=0 red_dist={2: 254, 1: 419, 0: 271, 3: 49, 4: 7}
+  - ziwei: total=1000 blue_hits=33 full_hits=0 red_dist={0: 291, 1: 461, 2: 208, 3: 36, 4: 4}
+  - ai_fusion: total=1000 blue_hits=38 full_hits=0 red_dist={1: 469, 2: 220, 0: 270, 3: 38, 4: 3}
+- Top10 命中: red_dist={1: 4, 0: 5, 2: 1} blue_hits=0
 
 ## 元学习注记
 - 本轮通过权重调优强化对高覆盖方法的偏好 (若最佳权重集中于某单一方法，说明该方法近期稳定性更高)
