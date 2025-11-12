@@ -255,12 +255,15 @@ def main():
     state = load_state()
 
     period = state.get('last_period', args.start_period)
+    # 使用已持久化的总轮次作为编号起点，避免重复运行导致日志覆盖
+    persisted_rounds = int(state.get('rounds', 0))
     total_rounds = 0
     target_rounds = args.rounds
 
     while True:
         total_rounds += 1
-        print(f"==== 自主循环 Round {total_rounds} / period {period} ====")
+        current_round_no = persisted_rounds + total_rounds
+        print(f"==== 自主循环 Round {current_round_no} / period {period} ====")
         # Step1 生成
         run_cmd(f"python3 {GEN_SCRIPT} --period {period} --n {args.samples}")
 
@@ -319,9 +322,9 @@ def main():
         single_summary = summarize_single_period(period, history, OUTDIR / f'top10_ssq_{period}.json')
 
         # Step6 写日志
-        loop_log = LOG_DIR / f'loop_{period}_round{total_rounds}.md'
+        loop_log = LOG_DIR / f'loop_{period}_round{current_round_no}.md'
         lines = []
-        lines.append(f"# 自主循环 Round {total_rounds} - 期 {period}")
+        lines.append(f"# 自主循环 Round {current_round_no} - 期 {period}")
         lines.append('')
         lines.append('## 生成与选择')
         lines.append(f'- 生成样本数/方法: {args.samples}')
