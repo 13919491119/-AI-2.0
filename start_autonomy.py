@@ -20,6 +20,9 @@ REPORTS = os.path.join(ROOT, 'reports')
 LOGS = os.path.join(ROOT, 'logs')
 HEARTBEATS = os.path.join(ROOT, 'heartbeats')
 STATUS = os.path.join(REPORTS, 'ai_guard_status.json')
+HEALTH_SCRIPT = os.path.join(ROOT, 'check_autonomy.py')
+HEALTH_OUT = os.path.join(REPORTS, 'autonomy_health.json')
+ALERTS_FILE = os.path.join(REPORTS, 'alerts.json')
 
 
 def _mkdirs():
@@ -80,6 +83,42 @@ def main():
     if status:
         print('[start] 守护状态:')
         print(json.dumps(status, ensure_ascii=False, indent=2))
+    # 运行附加健康检测
+    if os.path.exists(HEALTH_SCRIPT):
+        try:
+            proc = subprocess.run([sys.executable, HEALTH_SCRIPT], capture_output=True, text=True)
+            health_raw = proc.stdout.strip()
+            health = None
+            try:
+                health = json.loads(health_raw)
+            except Exception:
+                health = None
+            if health:
+                with open(HEALTH_OUT, 'w', encoding='utf-8') as f:
+                    json.dump(health, f, ensure_ascii=False, indent=2)
+                overall = health.get('overall')
+                wcnt = len(health.get('warnings', []))
+                ecnt = len(health.get('errors', []))
+                print(f"[start] 健康检测: overall={overall} warnings={wcnt} errors={ecnt}")
+                # 生成 alerts（仅在非 pass 时）
+                if overall != 'pass':
+                    alert_doc = {
+                        'ts': time.time(),
+                        'type': 'autonomy_health',
+                        'overall': overall,
+                        'warnings': health.get('warnings', []),
+                        'errors': health.get('errors', []),
+                    }
+                    try:
+                        with open(ALERTS_FILE, 'w', encoding='utf-8') as af:
+                            json.dump(alert_doc, af, ensure_ascii=False, indent=2)
+                        print('[start] 已写入 alerts.json 用于后续告警聚合')
+                    except Exception:
+                        pass
+            else:
+                print('[start] 健康检测输出无法解析为JSON')
+        except Exception as e:
+            print(f'[start] 健康检测执行失败: {e}')
     if ok:
         print('[start] 已进入自治守护模式（后台运行中）')
         sys.exit(0)

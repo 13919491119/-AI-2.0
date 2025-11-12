@@ -348,6 +348,19 @@ export AI_HEALTH_PORT=5001
 sudo systemctl daemon-reload
 sudo systemctl enable --now ai_meta_system.service
 sudo journalctl -u ai_meta_system.service -f
+
+快速安装脚本（示例）:
+
+```bash
+# 以 root 执行：会复制 unit 并启用
+sudo deploy/install_ai_meta_system.sh
+```
+
+在无法直接使用 systemd 的开发环境（例如容器）中，请使用 `setsid` / `nohup` 启动脚本进行仿真：
+
+```bash
+setsid ./start_ai_meta_system.sh > ai_meta_system_run.log 2>&1 &
+```
 ```
 
 

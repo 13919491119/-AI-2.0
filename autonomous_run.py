@@ -1,6 +1,7 @@
 """
 自主模式脚本：持续运行AI系统
 增加单实例守护：通过 PID 文件避免重复启动。
+增强：统一心跳写入到 heartbeats/autonomous_run.json，周期循环与内部自检更新丰富字段。
 """
 import asyncio
 import os
@@ -8,13 +9,26 @@ import atexit
 import signal
 from celestial_nexus import CelestialNexusAI
 from ssq_cycle_runner import run_ssq_cycle_and_summarize
-
-
 import subprocess
 import sys
 import time
 import traceback
 import json
+try:
+    from heartbeat_manager import write_heartbeat
+except Exception:  # 最小降级：若模块不存在，定义简化写入
+    def write_heartbeat(name: str, **kwargs):
+        data = {'ts': time.time(), 'pid': os.getpid()}
+        data.update(kwargs)
+        os.makedirs('heartbeats', exist_ok=True)
+        path = os.path.join('heartbeats', f'{name}.json')
+        try:
+            import json as _json
+            with open(path, 'w', encoding='utf-8') as f:
+                _json.dump(data, f)
+        except Exception:
+            pass
+        return path
 
 # 可选：自适应调度模块
 try:
@@ -22,11 +36,14 @@ try:
 except Exception:  # noqa: E722
     _autoadapt = None
 
-PID_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_run.pid')
-READY_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_run.ready')
-HEARTBEAT_FILE = os.path.join(os.path.dirname(__file__), 'reports', 'autonomy_heartbeat.json')
-ADAPT_FILE = os.path.join(os.path.dirname(__file__), 'ai_meta_autoadapt.json')
-ERR_LOG = os.path.join(os.path.dirname(__file__), 'logs', 'autonomous_run.err.log')
+ROOT = os.path.dirname(__file__)
+PID_FILE = os.path.join(ROOT, 'autonomous_run.pid')
+READY_FILE = os.path.join(ROOT, 'autonomous_run.ready')
+LEGACY_HEARTBEAT_FILE = os.path.join(ROOT, 'reports', 'autonomy_heartbeat.json')  # 保留兼容
+ADAPT_FILE = os.path.join(ROOT, 'ai_meta_autoadapt.json')
+ERR_LOG = os.path.join(ROOT, 'logs', 'autonomous_run.err.log')
+UNIFIED_HB_NAME = 'autonomous_run'
+UNIFIED_HB_PATH = os.path.join(ROOT, 'heartbeats', f'{UNIFIED_HB_NAME}.json')
 
 def _pid_is_running(pid: int) -> bool:
     try:
@@ -91,27 +108,25 @@ async def main():
     except Exception:
         pass
 
-    # 启动心跳写入任务，供外部监控使用（每30秒更新一次 heartbeat 文件）
-    HEARTBEAT_FILE = os.path.join(os.path.dirname(__file__), 'autonomous_heartbeat.json')
+    # 立即写入一次启动心跳（确保健康检测不出现缺失）
+    try:
+        write_heartbeat(UNIFIED_HB_NAME, mode='startup', status='ready', pid=os.getpid())
+        print('[autonomous_run] startup heartbeat written', flush=True)
+    except Exception:
+        pass
+
+    # 启动心跳写入任务，供外部监控使用（每30秒更新一次统一 heartbeats/autonomous_run.json）
+    LEGACY_FILE = os.path.join(ROOT, 'autonomous_heartbeat.json')
 
     async def _heartbeat_loop():
         while True:
             try:
-                hb = {
-                    'timestamp': time.time(),
-                    'pid': os.getpid(),
-                }
+                # 基础心跳（轻量）
+                write_heartbeat(UNIFIED_HB_NAME, mode='loop', loop='steady')
+                # 兼容旧路径写入（不保证字段完全一致）
                 try:
-                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
-                        import json
-                        json.dump(hb, hf)
-                    # 统一心跳目录写入（供守护进程统一判定）
-                    try:
-                        os.makedirs('heartbeats', exist_ok=True)
-                        with open(os.path.join('heartbeats', 'autonomous_run.json'), 'w', encoding='utf-8') as hf2:
-                            json.dump(hb, hf2)
-                    except Exception:
-                        pass
+                    with open(LEGACY_FILE, 'w', encoding='utf-8') as lf:
+                        json.dump({'timestamp': time.time(), 'pid': os.getpid()}, lf)
                 except Exception:
                     pass
             except Exception:
@@ -149,11 +164,9 @@ async def main():
                 loop_count += 1
                 # 写入 heartbeat，记录上次完成时间与耗时与轮次
                 try:
-                    os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
+                    os.makedirs(os.path.dirname(UNIFIED_HB_PATH), exist_ok=True)
                     dur = max(0.0, time.time() - start_ts)
-                    hb = {
-                        'ts': time.time(),
-                        'pid': os.getpid(),
+                    rich_hb = {
                         'last_completed': time.time(),
                         'duration_seconds': dur,
                         'loop_count': loop_count,
@@ -165,9 +178,16 @@ async def main():
                         'ready_file': os.path.abspath(READY_FILE),
                         'adapt_file': os.path.abspath(ADAPT_FILE),
                     }
-                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
-                        json.dump(hb, hf)
-                    print(f"[autonomous_run] heartbeat written -> {HEARTBEAT_FILE}", flush=True)
+                    # 统一心跳（丰富字段）
+                    write_heartbeat(UNIFIED_HB_NAME, mode='ssq_cycle', **rich_hb)
+                    # 兼容旧路径
+                    try:
+                        with open(LEGACY_FILE, 'w', encoding='utf-8') as lf:
+                            legacy = {'timestamp': time.time(), 'pid': os.getpid(), 'loop_count': loop_count}
+                            json.dump(legacy, lf)
+                    except Exception:
+                        pass
+                    print(f"[autonomous_run] unified heartbeat updated", flush=True)
                 except Exception:
                     pass
                 # 在每轮闭环结束后，触发批量复盘与优化（如果脚本存在）
@@ -205,12 +225,7 @@ async def main():
                             ef.write(last_error + "\n\n")
                     except Exception:
                         pass
-                    try:
-                        os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
-                        with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
-                            json.dump({'last_completed': time.time(), 'duration_seconds': 0, 'loop_count': loop_count, 'last_error': last_error[:1024]}, hf)
-                    except Exception:
-                        pass
+                    write_heartbeat(UNIFIED_HB_NAME, mode='ssq_cycle_error', loop_count=loop_count, last_error=last_error[:512])
             except Exception:
                 # 捕获主循环异常，记录并在 heartbeat 中写入 last_error
                 last_error = traceback.format_exc()[:8192]
@@ -221,17 +236,12 @@ async def main():
                         ef.write(last_error + "\n\n")
                 except Exception:
                     pass
-                try:
-                    os.makedirs(os.path.dirname(HEARTBEAT_FILE), exist_ok=True)
-                    with open(HEARTBEAT_FILE, 'w', encoding='utf-8') as hf:
-                        json.dump({'last_completed': time.time(), 'duration_seconds': 0, 'loop_count': loop_count, 'last_error': last_error[:1024]}, hf)
-                except Exception:
-                    pass
+                write_heartbeat(UNIFIED_HB_NAME, mode='main_loop_error', loop_count=loop_count, last_error=last_error[:512])
             # 可选：根据上一轮耗时与配置进行自适应调整下一轮间隔
             try:
                 if _autoadapt is not None:
                     new_interval = _autoadapt.compute_next_interval(
-                        status_path=HEARTBEAT_FILE,
+                        status_path=UNIFIED_HB_PATH,
                         cfg={
                             'min_seconds': int(os.getenv('SSQ_ADAPT_MIN_SECONDS', '0')),
                             'max_seconds': int(os.getenv('SSQ_ADAPT_MAX_SECONDS', '3600')),

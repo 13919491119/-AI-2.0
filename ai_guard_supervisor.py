@@ -4,6 +4,11 @@ import os
 import json
 from datetime import datetime, timezone
 
+# 重启告警阈值（可用环境变量覆盖）
+ALERT_WINDOW_SEC = int(os.getenv('RESTART_ALERT_WINDOW_SEC', '900'))  # 15 分钟
+ALERT_THRESHOLD = int(os.getenv('RESTART_ALERT_THRESHOLD', '3'))      # 15 分钟内 ≥3 次重启
+ALERTS_PATH = os.path.join('reports', 'alerts.json')
+
 def is_task_running(task_name):
     """检查包含 task_name 的进程是否存在。"""
     try:
@@ -106,6 +111,8 @@ def ai_guard_loop():
     ]
 
     backoff = {t['name']: {'fails': 0, 'last': 0.0} for t in tasks}
+    # 记录重启时间戳，用于窗口计数
+    restarts = {t['name']: [] for t in tasks}
     status_path = 'reports/ai_guard_status.json'
     # 知识摄取定时任务配置（默认6小时）
     ingest_interval = int(os.getenv('KNOWLEDGE_INGEST_INTERVAL_SEC', str(6 * 3600)))
@@ -181,6 +188,48 @@ def ai_guard_loop():
                 backoff[name]['last'] = now
                 # 如果刚才是失败后重启，增加失败计数；否则重置
                 backoff[name]['fails'] = min(fails + (1 if not running else 0), 100)
+                # 记录重启事件并触发告警判定
+                try:
+                    # 记录时间戳
+                    restarts[name].append(now)
+                    # 滤除窗口外记录
+                    window_start = now - ALERT_WINDOW_SEC
+                    restarts[name] = [ts for ts in restarts[name] if ts >= window_start]
+                    if len(restarts[name]) >= ALERT_THRESHOLD:
+                        # 写入/追加告警
+                        try:
+                            os.makedirs(os.path.dirname(ALERTS_PATH), exist_ok=True)
+                            alert_entry = {
+                                'ts': now,
+                                'type': 'restart_spike',
+                                'task': name,
+                                'count': len(restarts[name]),
+                                'window_sec': ALERT_WINDOW_SEC,
+                                'threshold': ALERT_THRESHOLD,
+                            }
+                            existing = None
+                            if os.path.exists(ALERTS_PATH):
+                                try:
+                                    with open(ALERTS_PATH, 'r', encoding='utf-8') as af:
+                                        existing = json.load(af)
+                                except Exception:
+                                    existing = None
+                            if isinstance(existing, list):
+                                existing.append(alert_entry)
+                                with open(ALERTS_PATH, 'w', encoding='utf-8') as af:
+                                    json.dump(existing, af, ensure_ascii=False, indent=2)
+                            elif existing:
+                                # 将单对象升级为数组
+                                with open(ALERTS_PATH, 'w', encoding='utf-8') as af:
+                                    json.dump([existing, alert_entry], af, ensure_ascii=False, indent=2)
+                            else:
+                                with open(ALERTS_PATH, 'w', encoding='utf-8') as af:
+                                    json.dump([alert_entry], af, ensure_ascii=False, indent=2)
+                            print(f"[守护] 重启频次告警: {name} {len(restarts[name])}/{ALERT_WINDOW_SEC}s 已写入 {ALERTS_PATH}")
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
             else:
                 # 正常运行则清零失败计数
                 backoff[name]['fails'] = 0

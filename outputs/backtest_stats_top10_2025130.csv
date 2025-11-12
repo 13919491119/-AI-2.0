@@ -1,0 +1,16 @@
+metric,value
+total_predictions,10
+blue_matches,0
+exact_full_matches,0
+red_matches_0,2
+red_matches_1,7
+red_matches_2,1
+red_matches_3,0
+red_matches_4,0
+red_matches_5,0
+red_matches_6,0
+
+red_matches,blue_match,count
+1,0,7
+0,0,2
+2,0,1
