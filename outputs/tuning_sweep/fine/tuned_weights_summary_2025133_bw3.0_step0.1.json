@@ -1,0 +1,16 @@
+{
+  "methods": [
+    "xiaoliuyao",
+    "xiaoliuren",
+    "qimen",
+    "ziwei"
+  ],
+  "best_weights": {
+    "xiaoliuyao": 0.0,
+    "xiaoliuren": 0.0,
+    "qimen": 1.0,
+    "ziwei": 0.0
+  },
+  "best_score": 13.56,
+  "periods_used": 50
+}

@@ -2,15 +2,15 @@ metric,value
 total_predictions,10
 blue_matches,0
 exact_full_matches,0
-red_matches_0,5
-red_matches_1,3
-red_matches_2,2
+red_matches_0,3
+red_matches_1,4
+red_matches_2,3
 red_matches_3,0
 red_matches_4,0
 red_matches_5,0
 red_matches_6,0
 
 red_matches,blue_match,count
-0,0,5
-1,0,3
-2,0,2
+1,0,4
+0,0,3
+2,0,3
