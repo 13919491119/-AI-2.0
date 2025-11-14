@@ -1,0 +1,151 @@
+{
+  "ts": "2025-11-06T06:57:26.346254+00:00",
+  "env_specs": [
+    {
+      "name": "bandit_ns5",
+      "kind": "bandit",
+      "arms": 5,
+      "nonstationary": true
+    },
+    {
+      "name": "bandit_ns7",
+      "kind": "bandit",
+      "arms": 7,
+      "nonstationary": true
+    },
+    {
+      "name": "bandit_s5",
+      "kind": "bandit",
+      "arms": 5,
+      "nonstationary": false
+    }
+  ],
+  "population": 8,
+  "generations": 6,
+  "train_steps": 300,
+  "eval_steps": 300,
+  "seed": 42,
+  "topk": [
+    {
+      "params": {
+        "eps_greedy": 0.016421598924452534,
+        "lr": 0.10487523840271452
+      },
+      "score": 0.7738884210579114,
+      "per_env": {
+        "bandit_ns5": {
+          "mean_reward": 0.40175592639544644,
+          "std_reward": 0.985508783408621,
+          "dispersion": 0.6365938678623386
+        },
+        "bandit_ns7": {
+          "mean_reward": 1.6336761372822495,
+          "std_reward": 0.9838031168346887,
+          "dispersion": 1.6053228920358595
+        },
+        "bandit_s5": {
+          "mean_reward": 0.589137118542767,
+          "std_reward": 1.059727290223974,
+          "dispersion": 0.2802652853396843
+        }
+      },
+      "aggregate": {
+        "avg_mean_reward": 0.8748563940734876,
+        "avg_std_reward": 1.0096797301557612,
+        "avg_dispersion": 0.8407273484126275
+      }
+    },
+    {
+      "params": {
+        "eps_greedy": 0.0,
+        "lr": 0.16431876344529886
+      },
+      "score": 0.7729761136364887,
+      "per_env": {
+        "bandit_ns5": {
+          "mean_reward": 0.374604068744023,
+          "std_reward": 0.9949283740467898,
+          "dispersion": 0.9649132351698506
+        },
+        "bandit_ns7": {
+          "mean_reward": 1.641695112669354,
+          "std_reward": 0.9744448311819527,
+          "dispersion": 1.386909939922318
+        },
+        "bandit_s5": {
+          "mean_reward": 0.6052610483741975,
+          "std_reward": 1.0569456835523403,
+          "dispersion": 0.3205532867215096
+        }
+      },
+      "aggregate": {
+        "avg_mean_reward": 0.8738534099291915,
+        "avg_std_reward": 1.0087729629270277,
+        "avg_dispersion": 0.8907921539378928
+      }
+    },
+    {
+      "params": {
+        "eps_greedy": 0.0,
+        "lr": 0.06521496581312505
+      },
+      "score": 0.7464916695754773,
+      "per_env": {
+        "bandit_ns5": {
+          "mean_reward": 0.2596110074331871,
+          "std_reward": 0.9669962610609164,
+          "dispersion": 0.5569212894858699
+        },
+        "bandit_ns7": {
+          "mean_reward": 1.641695112669354,
+          "std_reward": 0.9744448311819527,
+          "dispersion": 1.627482335887281
+        },
+        "bandit_s5": {
+          "mean_reward": 0.6358886600543306,
+          "std_reward": 1.0357566220615297,
+          "dispersion": 0.25804458523589385
+        }
+      },
+      "aggregate": {
+        "avg_mean_reward": 0.845731593385624,
+        "avg_std_reward": 0.9923992381014664,
+        "avg_dispersion": 0.8141494035363482
+      }
+    }
+  ],
+  "best": {
+    "params": {
+      "eps_greedy": 0.016421598924452534,
+      "lr": 0.10487523840271452
+    },
+    "score": 0.7738884210579114,
+    "per_env": {
+      "bandit_ns5": {
+        "mean_reward": 0.40175592639544644,
+        "std_reward": 0.985508783408621,
+        "dispersion": 0.6365938678623386
+      },
+      "bandit_ns7": {
+        "mean_reward": 1.6336761372822495,
+        "std_reward": 0.9838031168346887,
+        "dispersion": 1.6053228920358595
+      },
+      "bandit_s5": {
+        "mean_reward": 0.589137118542767,
+        "std_reward": 1.059727290223974,
+        "dispersion": 0.2802652853396843
+      }
+    },
+    "aggregate": {
+      "avg_mean_reward": 0.8748563940734876,
+      "avg_std_reward": 1.0096797301557612,
+      "avg_dispersion": 0.8407273484126275
+    }
+  },
+  "gate_decision": {
+    "improved": true,
+    "previous": -Infinity,
+    "current": 0.8748563940734876
+  }
+}

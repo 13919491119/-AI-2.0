@@ -1,0 +1,245 @@
+{
+  "timestamp": 1762589631.9368634,
+  "total_books": 88,
+  "top_authors": [
+    [
+      "Systech-publications",
+      4
+    ],
+    [
+      "魯揚才",
+      4
+    ],
+    [
+      "超媒體出版社",
+      3
+    ],
+    [
+      "李琴",
+      2
+    ],
+    [
+      "吴江",
+      2
+    ],
+    [
+      "陳樹文著",
+      2
+    ],
+    [
+      "张涛",
+      2
+    ],
+    [
+      "邵雍",
+      2
+    ],
+    [
+      "周法大",
+      2
+    ],
+    [
+      "李月木",
+      2
+    ]
+  ],
+  "topics": [
+    {
+      "keyword": "com",
+      "score": 6.56,
+      "raw_freq": 43
+    },
+    {
+      "keyword": "周易",
+      "score": 5.29,
+      "raw_freq": 28
+    },
+    {
+      "keyword": "www",
+      "score": 5.29,
+      "raw_freq": 28
+    },
+    {
+      "keyword": "168k",
+      "score": 5.29,
+      "raw_freq": 28
+    },
+    {
+      "keyword": "易经",
+      "score": 5.0,
+      "raw_freq": 25
+    },
+    {
+      "keyword": "of",
+      "score": 4.58,
+      "raw_freq": 21
+    },
+    {
+      "keyword": "the",
+      "score": 4.36,
+      "raw_freq": 19
+    },
+    {
+      "keyword": "gmail",
+      "score": 3.87,
+      "raw_freq": 15
+    },
+    {
+      "keyword": "and",
+      "score": 3.87,
+      "raw_freq": 15
+    },
+    {
+      "keyword": "中國哲學文化恊進會客户服務中心",
+      "score": 3.74,
+      "raw_freq": 14
+    },
+    {
+      "keyword": "bookbook",
+      "score": 3.74,
+      "raw_freq": 14
+    },
+    {
+      "keyword": "net",
+      "score": 3.74,
+      "raw_freq": 14
+    },
+    {
+      "keyword": "168",
+      "score": 3.74,
+      "raw_freq": 14
+    },
+    {
+      "keyword": "bookbooknet",
+      "score": 3.74,
+      "raw_freq": 14
+    },
+    {
+      "keyword": "六爻占測",
+      "score": 3.16,
+      "raw_freq": 10
+    }
+  ],
+  "top_tokens": [
+    [
+      "com",
+      43
+    ],
+    [
+      "周易",
+      28
+    ],
+    [
+      "www",
+      28
+    ],
+    [
+      "168k",
+      28
+    ],
+    [
+      "易经",
+      25
+    ],
+    [
+      "of",
+      21
+    ],
+    [
+      "the",
+      19
+    ],
+    [
+      "gmail",
+      15
+    ],
+    [
+      "and",
+      15
+    ],
+    [
+      "中國哲學文化恊進會客户服務中心",
+      14
+    ],
+    [
+      "bookbook",
+      14
+    ],
+    [
+      "net",
+      14
+    ],
+    [
+      "168",
+      14
+    ],
+    [
+      "bookbooknet",
+      14
+    ],
+    [
+      "六爻占測",
+      10
+    ],
+    [
+      "推背圖",
+      10
+    ],
+    [
+      "human",
+      9
+    ],
+    [
+      "on",
+      9
+    ],
+    [
+      "confucianism",
+      8
+    ],
+    [
+      "大六壬心鏡",
+      7
+    ],
+    [
+      "易經",
+      6
+    ],
+    [
+      "谢选骏全集第",
+      6
+    ],
+    [
+      "to",
+      6
+    ],
+    [
+      "in",
+      6
+    ],
+    [
+      "confucian",
+      6
+    ],
+    [
+      "this",
+      5
+    ],
+    [
+      "book",
+      5
+    ],
+    [
+      "lim",
+      5
+    ],
+    [
+      "is",
+      5
+    ],
+    [
+      "evolution",
+      4
+    ]
+  ]
+}

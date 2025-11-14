@@ -1,0 +1,10 @@
+{"reds": [1, 12, 13, 20, 22, 32], "blue": 7, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [3, 12, 20, 21, 27, 28], "blue": 15, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [4, 6, 7, 16, 17, 30], "blue": 7, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [4, 9, 10, 13, 19, 31], "blue": 7, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [4, 13, 17, 22, 27, 28], "blue": 4, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [6, 11, 16, 20, 24, 25], "blue": 11, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [4, 5, 9, 16, 24, 27], "blue": 15, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [5, 10, 23, 25, 26, 33], "blue": 3, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [1, 9, 10, 23, 25, 27], "blue": 5, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}
+{"reds": [4, 5, 8, 18, 19, 32], "blue": 10, "tuned_weights": {"xiaoliuyao": 0.0, "xiaoliuren": 0.0, "qimen": 1.0, "ziwei": 0.0}}

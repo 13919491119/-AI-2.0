@@ -1,0 +1,17 @@
+[Unit]
+Description=Xuanji API (uvicorn celestial_nexus.api)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+# ExecStart should use full paths to interpreters if possible. If you run inside a virtualenv,
+# set Environment or use the full venv Python/uvicorn path.
+ExecStart=/bin/bash -lc '/usr/bin/env uvicorn celestial_nexus.api:app --host 0.0.0.0 --port 8000'
+Restart=always
+RestartSec=5
+StandardOutput=append:/workspaces/-AI-2.0/logs/xuanji_api.out.log
+StandardError=append:/workspaces/-AI-2.0/logs/xuanji_api.err.log
+
+[Install]
+WantedBy=multi-user.target

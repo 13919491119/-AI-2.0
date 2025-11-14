@@ -1,6 +1,8 @@
 import time
 import json
 import random
+import os
+from heartbeat_manager import write_heartbeat
 
 # 预测类型：双色球、历史人物、问事情
 PREDICT_TYPES = ['ssq', 'person', 'question']
@@ -41,6 +43,7 @@ def deep_learning_cycle():
     ]
     round_num = 1
     while True:
+        start_ts = time.time()
         results = []
         print(f'\n=== 第{round_num}轮深度学习循环体系 ===')
         # 双色球预测
@@ -51,16 +54,37 @@ def deep_learning_cycle():
         # 问事情预测
         for q in questions:
             results.append(predict_question(q, round_num))
-        # 复盘、学习、升级
+        # 复盘、学习、升级 + 元数据
+        end_ts = time.time()
+        duration = round(end_ts - start_ts, 4)
         for r in results:
+            r['round'] = round_num
+            r['time_start'] = start_ts
+            r['time_end'] = end_ts
+            r['duration_seconds'] = duration
             r['review'] = f'复盘：分析{r.get("type")}预测结果。'
             r['learn'] = f'学习：吸取{r.get("type")}领域经验。'
             r['upgrade'] = f'升级：模型已根据{r.get("type")}优化。'
             r['again'] = f'再预测：第{round_num}轮，预测更精准。'
-        with open('deep_learning_cycle_results.jsonl', 'w', encoding='utf-8') as f:
+        # 追加写入（保留历史）
+        with open('deep_learning_cycle_results.jsonl', 'a', encoding='utf-8') as f:
             for r in results:
                 f.write(json.dumps(r, ensure_ascii=False) + '\n')
-        print(f'第{round_num}轮循环已完成，结果写入 deep_learning_cycle_results.jsonl')
+        # 简单滚动控制：超过 2MB 则截断保留最近 500 条
+        try:
+            if os.path.getsize('deep_learning_cycle_results.jsonl') > 2 * 1024 * 1024:
+                with open('deep_learning_cycle_results.jsonl', 'r', encoding='utf-8') as rf:
+                    lines = rf.readlines()[-500:]
+                with open('deep_learning_cycle_results.jsonl', 'w', encoding='utf-8') as wf:
+                    wf.writelines(lines)
+        except Exception:
+            pass
+        # 写心跳
+        try:
+            write_heartbeat('deep_learning_cycle', round=round_num, time_end=end_ts, duration_seconds=duration, records=len(results))
+        except Exception:
+            pass
+        print(f'第{round_num}轮循环已完成，追加 {len(results)} 条记录 (耗时 {duration}s) -> deep_learning_cycle_results.jsonl')
         round_num += 1
         time.sleep(10)
 

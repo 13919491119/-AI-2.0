@@ -1,6 +1,32 @@
 import json
 import os
-import requests
+import time
+from heartbeat_manager import write_heartbeat
+import importlib
+from urllib import request as _urlreq
+from urllib.error import URLError
+
+def _fetch_json(url: str, timeout: int = 10):
+    try:
+        requests = importlib.import_module('requests')
+        try:
+            resp = requests.get(url, timeout=timeout)
+            if getattr(resp, 'ok', False):
+                return True, resp.json()
+            return False, None
+        except Exception:
+            return False, None
+    except Exception:
+        requests = None
+    try:
+        with _urlreq.urlopen(url, timeout=timeout) as resp:
+            if resp.status == 200:
+                raw = resp.read()
+                import json as _json
+                return True, _json.loads(raw.decode('utf-8', errors='ignore'))
+            return False, None
+    except (URLError, Exception):
+        return False, None
 
 def load_persons(path, limit=100):
     if os.path.exists(path):
@@ -21,25 +47,19 @@ def load_persons(path, limit=100):
         print(f"本地数据文件 {path} 不存在，尝试联网采集真实历史人物数据……")
         # 使用维基百科API获取中国历史人物条目
         url = "https://zh.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:中国历史人物&cmlimit=100&format=json"
-        try:
-            resp = requests.get(url, timeout=10)
-            if resp.ok:
-                data = resp.json()
-                members = data.get('query', {}).get('categorymembers', [])
-                persons = []
-                for m in members:
-                    name = m.get('title')
-                    # 可进一步爬取详细信息
-                    persons.append({"name": name, "fact": "维基百科条目", "bazi": None})
-                    if len(persons) >= limit:
-                        break
-                print(f"已采集到 {len(persons)} 位历史人物。")
-                return persons
-            else:
-                print("采集失败，返回空列表")
-                return []
-        except Exception as e:
-            print(f"采集异常：{e}")
+        ok, data = _fetch_json(url, timeout=10)
+        if ok and isinstance(data, dict):
+            members = data.get('query', {}).get('categorymembers', [])
+            persons = []
+            for m in members:
+                name = m.get('title')
+                persons.append({"name": name, "fact": "维基百科条目", "bazi": None})
+                if len(persons) >= limit:
+                    break
+            print(f"已采集到 {len(persons)} 位历史人物。")
+            return persons
+        else:
+            print("采集失败，返回空列表")
             return []
 
 def predict_person(person, round_num=1):
@@ -60,16 +80,26 @@ def predict_person(person, round_num=1):
         'again': again
     }
 
-import time
 def ai_guard_loop():
     src = 'person_data.json'
     out = 'person_predict_results.jsonl'
     persons = load_persons(src, 100)
     if not persons:
-        print("未获取到有效历史人物数据，任务终止。")
-        return
+        print("未获取到有效历史人物数据，任务等待后重试。")
+        try:
+            write_heartbeat('batch_predict_persons', phase='waiting', reason='no_persons')
+        except Exception:
+            pass
+        # 等待并重试，避免任务直接终止
+        time.sleep(60)
+        return ai_guard_loop()
     round_num = 1
     while True:
+        # 初始心跳，记录轮次
+        try:
+            write_heartbeat('batch_predict_persons', round=round_num, phase='running')
+        except Exception:
+            pass
         results = []
         print(f"\n=== 第{round_num}轮历史人物预测任务 ===")
         for p in persons:
@@ -79,6 +109,11 @@ def ai_guard_loop():
             for r in results:
                 f.write(json.dumps(r, ensure_ascii=False) + '\n')
         print(f"第{round_num}轮预测已完成，结果写入 {out}")
+        # 写心跳：记录轮次与样本数
+        try:
+            write_heartbeat('batch_predict_persons', round=round_num, samples=len(results))
+        except Exception:
+            pass
         # 复盘、学习、升级、再预测均已在结果中体现
         round_num += 1
         time.sleep(10)  # 每轮间隔10秒，可调整

@@ -1,0 +1,21 @@
+[Unit]
+Description=Celestial Nexus AI - AI Meta System
+After=network.target
+
+[Service]
+# 请根据部署机器修改 User/Group 与 EnvironmentFile 路径
+# 如果需要以非 root 用户运行，请取消下方 User/Group 注释并填写目标用户
+# User=celestial_nexus
+# Group=celestial_nexus
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+EnvironmentFile=-/etc/default/xuanji-ai
+ExecStart=/bin/bash -lc '/workspaces/-AI-2.0/start_ai_meta_system.sh'
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=ai_meta_system
+
+[Install]
+WantedBy=multi-user.target

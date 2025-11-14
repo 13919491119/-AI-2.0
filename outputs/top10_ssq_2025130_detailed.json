@@ -1,0 +1,313 @@
+[
+  {
+    "reds": [
+      8,
+      9,
+      10,
+      11,
+      22,
+      32
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 1004.0,
+      "red_pop_contrib": 803.2,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 24,
+      "span_score": 0.8,
+      "span_contrib": 0.72,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1094.12
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      2,
+      3,
+      4,
+      11,
+      18,
+      28
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 994.3333,
+      "red_pop_contrib": 795.4667,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 26,
+      "span_score": 0.7,
+      "span_contrib": 0.63,
+      "decades": 3,
+      "decade_score": 0.5,
+      "decade_contrib": 0.3,
+      "total_score": 1086.1967
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      2,
+      4,
+      8,
+      18,
+      30,
+      31
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 994.5,
+      "red_pop_contrib": 795.6,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.3333,
+      "balance_contrib": 0.4,
+      "span": 29,
+      "span_score": 0.55,
+      "span_contrib": 0.495,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1085.895
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      3,
+      4,
+      5,
+      16,
+      28,
+      33
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 990.6667,
+      "red_pop_contrib": 792.5333,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 1.0,
+      "balance_contrib": 1.2,
+      "span": 30,
+      "span_score": 0.5,
+      "span_contrib": 0.45,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1083.5833
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      3,
+      5,
+      19,
+      22,
+      27,
+      32
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 989.3333,
+      "red_pop_contrib": 791.4667,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 29,
+      "span_score": 0.55,
+      "span_contrib": 0.495,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1082.1617
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      3,
+      4,
+      8,
+      10,
+      28,
+      31
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 2,
+      "coverage_contrib": 5.0,
+      "red_pop": 984.6667,
+      "red_pop_contrib": 787.7333,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 28,
+      "span_score": 0.6,
+      "span_contrib": 0.54,
+      "decades": 3,
+      "decade_score": 0.5,
+      "decade_contrib": 0.3,
+      "total_score": 1080.8733
+    },
+    "covered_by": [
+      "紫微斗数",
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      10,
+      11,
+      15,
+      22,
+      28,
+      32
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 987.0,
+      "red_pop_contrib": 789.6,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 22,
+      "span_score": 0.9,
+      "span_contrib": 0.81,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1080.61
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      5,
+      15,
+      16,
+      27,
+      30,
+      33
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 987.3333,
+      "red_pop_contrib": 789.8667,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 0.6667,
+      "balance_contrib": 0.8,
+      "span": 28,
+      "span_score": 0.6,
+      "span_contrib": 0.54,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1080.6067
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      3,
+      4,
+      8,
+      15,
+      26,
+      31
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 986.0,
+      "red_pop_contrib": 788.8,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 1.0,
+      "balance_contrib": 1.2,
+      "span": 28,
+      "span_score": 0.6,
+      "span_contrib": 0.54,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1079.94
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  },
+  {
+    "reds": [
+      5,
+      9,
+      18,
+      28,
+      30,
+      31
+    ],
+    "blue": 5,
+    "breakdown": {
+      "coverage": 1,
+      "coverage_contrib": 2.5,
+      "red_pop": 985.8333,
+      "red_pop_contrib": 788.6667,
+      "blue_pop": 573,
+      "blue_pop_contrib": 286.5,
+      "balance": 1.0,
+      "balance_contrib": 1.2,
+      "span": 26,
+      "span_score": 0.7,
+      "span_contrib": 0.63,
+      "decades": 4,
+      "decade_score": 0.6667,
+      "decade_contrib": 0.4,
+      "total_score": 1079.8967
+    },
+    "covered_by": [
+      "AI融合"
+    ]
+  }
+]

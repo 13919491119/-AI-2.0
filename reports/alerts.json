@@ -1,0 +1,9 @@
+{
+  "ts": 1762592013.940514,
+  "type": "autonomy_health",
+  "overall": "warn",
+  "warnings": [
+    "HEARTBEAT_MISSING:autonomous_run"
+  ],
+  "errors": []
+}

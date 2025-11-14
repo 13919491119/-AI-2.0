@@ -1,0 +1,66 @@
+{
+  "timestamp": 1762592013.8264556,
+  "status_file_exists": true,
+  "status": {
+    "autonomous_run": {
+      "running": true,
+      "last_check": "2025-11-08T08:53:32.702294+00:00",
+      "fails": 0
+    },
+    "deep_learning_cycle": {
+      "running": true,
+      "last_check": "2025-11-08T08:53:32.714428+00:00",
+      "fails": 0
+    },
+    "yi_books_collect": {
+      "running": true,
+      "last_check": "2025-11-08T08:53:32.722819+00:00",
+      "fails": 0
+    },
+    "batch_predict_persons": {
+      "running": true,
+      "last_check": "2025-11-08T08:53:32.731248+00:00",
+      "fails": 0
+    }
+  },
+  "tasks": {
+    "autonomous_run": {
+      "running": true,
+      "heartbeat_age_sec": null,
+      "heartbeat_ok": null
+    },
+    "deep_learning_cycle": {
+      "running": true,
+      "heartbeat_age_sec": 9.39,
+      "heartbeat_ok": true
+    },
+    "yi_books_collect": {
+      "running": true,
+      "heartbeat_age_sec": 2790.61,
+      "heartbeat_ok": true
+    },
+    "batch_predict_persons": {
+      "running": true,
+      "heartbeat_age_sec": 0.02,
+      "heartbeat_ok": true
+    }
+  },
+  "result_files": {
+    "deep_learning_cycle_results.jsonl": {
+      "exists": true,
+      "non_empty": true,
+      "lines": 2920
+    },
+    "person_predict_results.jsonl": {
+      "exists": true,
+      "non_empty": true,
+      "lines": 4
+    }
+  },
+  "log_dir_exists": true,
+  "overall": "warn",
+  "warnings": [
+    "HEARTBEAT_MISSING:autonomous_run"
+  ],
+  "errors": []
+}

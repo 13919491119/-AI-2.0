@@ -1,0 +1,15 @@
+[Unit]
+Description=Report Frontend (celestial report frontend)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/workspaces/-AI-2.0
+ExecStart=/bin/bash -lc '/usr/bin/env python3 celestial_nexus/report_frontend.py'
+Restart=always
+RestartSec=5
+StandardOutput=append:/workspaces/-AI-2.0/logs/report_frontend.out.log
+StandardError=append:/workspaces/-AI-2.0/logs/report_frontend.err.log
+
+[Install]
+WantedBy=multi-user.target
