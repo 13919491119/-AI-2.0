@@ -1,0 +1,11 @@
+{
+  "dimension_weights": {
+    "iching": 0.25,
+    "statistics": 0.25,
+    "quantum": 0.25,
+    "ai": 0.25
+  },
+  "strategy_performance": {},
+  "total_predictions": 0,
+  "successful_predictions": 0
+}
