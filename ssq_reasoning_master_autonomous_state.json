@@ -1,0 +1,108 @@
+{
+  "training_cycles": 5,
+  "review_cycles": 14,
+  "learning_cycles": 2,
+  "repair_cycles": 2,
+  "last_training": "2026-02-11T09:54:47.233390",
+  "last_review": "2026-02-11T09:54:47.217538",
+  "performance_history": [
+    {
+      "timestamp": "2026-02-11T09:54:25.556635",
+      "issue": "TEST000",
+      "red_hits": 3,
+      "blue_hit": 0,
+      "total_score": 3
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.563033",
+      "issue": "TEST001",
+      "red_hits": 1,
+      "blue_hit": 0,
+      "total_score": 1
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.569032",
+      "issue": "TEST002",
+      "red_hits": 2,
+      "blue_hit": 0,
+      "total_score": 2
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.574865",
+      "issue": "TEST003",
+      "red_hits": 1,
+      "blue_hit": 0,
+      "total_score": 1
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.580733",
+      "issue": "TEST004",
+      "red_hits": 1,
+      "blue_hit": 0,
+      "total_score": 1
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.610296",
+      "issue": "TEST002",
+      "red_hits": 0,
+      "blue_hit": 0,
+      "total_score": 0
+    },
+    {
+      "timestamp": "2026-02-11T09:54:25.724830",
+      "issue": "TEST002",
+      "red_hits": 0,
+      "blue_hit": 0,
+      "total_score": 0
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.053337",
+      "issue": "TEST000",
+      "red_hits": 1,
+      "blue_hit": 0,
+      "total_score": 1
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.058807",
+      "issue": "TEST001",
+      "red_hits": 1,
+      "blue_hit": 0,
+      "total_score": 1
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.064565",
+      "issue": "TEST002",
+      "red_hits": 2,
+      "blue_hit": 0,
+      "total_score": 2
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.070218",
+      "issue": "TEST003",
+      "red_hits": 2,
+      "blue_hit": 0,
+      "total_score": 2
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.075842",
+      "issue": "TEST004",
+      "red_hits": 2,
+      "blue_hit": 0,
+      "total_score": 2
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.104557",
+      "issue": "TEST002",
+      "red_hits": 0,
+      "blue_hit": 0,
+      "total_score": 0
+    },
+    {
+      "timestamp": "2026-02-11T09:54:47.217533",
+      "issue": "TEST002",
+      "red_hits": 0,
+      "blue_hit": 0,
+      "total_score": 0
+    }
+  ]
+}
